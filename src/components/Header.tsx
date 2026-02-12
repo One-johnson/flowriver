@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,6 +12,7 @@ import {
   SheetTrigger,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -26,6 +27,14 @@ const navLinks = [
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  function handleOpenChange(next: boolean) {
+    setOpen(next);
+    if (!next) {
+      requestAnimationFrame(() => menuButtonRef.current?.focus());
+    }
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-lg">
@@ -60,17 +69,18 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Desktop CTA */}
-        <div className="hidden md:block">
+        {/* Desktop: theme + CTA */}
+        <div className="hidden items-center gap-1 md:flex">
+          <ThemeToggle />
           <Button asChild size="sm">
             <Link href="/contact">Get Started</Link>
           </Button>
         </div>
 
         {/* Mobile menu */}
-        <Sheet open={open} onOpenChange={setOpen}>
+        <Sheet open={open} onOpenChange={handleOpenChange}>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon" aria-label="Toggle menu">
+            <Button ref={menuButtonRef} variant="ghost" size="icon" aria-label="Toggle menu" aria-expanded={open}>
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </SheetTrigger>
@@ -92,7 +102,11 @@ export function Header() {
                   {link.label}
                 </Link>
               ))}
-              <div className="mt-4">
+              <div className="mt-4 flex flex-col gap-2">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-muted-foreground">Theme</span>
+                  <ThemeToggle />
+                </div>
                 <Button asChild className="w-full" onClick={() => setOpen(false)}>
                   <Link href="/contact">Get Started</Link>
                 </Button>

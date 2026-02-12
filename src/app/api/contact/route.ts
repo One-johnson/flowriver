@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
 
+/**
+ * Legacy contact API. The contact form now submits to Formspree (see ContactForm.tsx).
+ * This route is kept for optional server-side use or future webhook handling.
+ */
 export async function POST(request: Request) {
   try {
     const body = await request.json();

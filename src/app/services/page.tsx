@@ -214,7 +214,7 @@ export default function ServicesPage() {
           <AnimatedSection delay={0.15} className="relative">
             <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
               <AnimatedImageBox
-                src="https://images.unsplash.com/photo-1551431009-a22ee0d75b2d?w=800&q=80&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80&auto=format&fit=crop"
                 alt="Digital services and development"
                 sizes="(max-width: 1024px) 90vw, 45vw"
                 priority

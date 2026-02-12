@@ -4,12 +4,22 @@ import Link from "next/link";
 import { Section } from "@/components/Section";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
-import {
-  ArrowRight,
-  Globe,
-  Server,
-  ExternalLink,
-} from "lucide-react";
+import { CategoryPills } from "./CategoryPills";
+import { ArrowRight, Globe, Server, ExternalLink } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
+type PortfolioProject = {
+  title: string;
+  category: string;
+  categoryIcon: LucideIcon;
+  description: string;
+  tags: string[];
+  image: string;
+  imageAlt: string;
+  client: string;
+  year: string;
+  clientUrl?: string;
+};
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -17,15 +27,7 @@ export const metadata: Metadata = {
     "FlowRiver Technologies portfolio — school management systems, e-commerce applications, websites, and database management systems. Clients include SourceOne Engineering And Logistics Services, SKILLSPRO LTD, CWU of TUC, and more.",
 };
 
-const categories = [
-  "All",
-  "Websites",
-  "Systems",
-  "E-Commerce",
-  "Database",
-];
-
-const projects = [
+const projects: PortfolioProject[] = [
   {
     title: "School Management System",
     category: "Systems",
@@ -130,7 +132,26 @@ const stats = [
   { value: "100%", label: "Client focus" },
 ];
 
-export default function PortfolioPage() {
+type PageProps = {
+  searchParams?: Promise<{ category?: string }> | { category?: string };
+};
+
+export default async function PortfolioPage(props: PageProps) {
+  const params =
+    props.searchParams instanceof Promise
+      ? await props.searchParams
+      : props.searchParams ?? {};
+  const categoryParam = params?.category ?? "All";
+  const categories = ["All", "Websites", "Systems", "E-Commerce", "Database"];
+  const category =
+    typeof categoryParam === "string" && categories.includes(categoryParam)
+      ? categoryParam
+      : "All";
+  const filtered =
+    category === "All"
+      ? projects
+      : projects.filter((p) => p.category === category);
+
   return (
     <>
       {/* Hero — text left, image right */}
@@ -190,92 +211,74 @@ export default function PortfolioPage() {
         </div>
       </div>
 
-      {/* Category pills */}
-      <Section className="pb-0 pt-16 sm:pt-20">
-        <AnimatedSection>
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {categories.map((cat) => (
-              <span
-                key={cat}
-                className="inline-flex cursor-default items-center rounded-full border border-border/50 bg-card px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:border-primary/30 hover:text-primary"
-              >
-                {cat}
-              </span>
-            ))}
+      {/* Category pills + Projects grid */}
+      <Section className="pt-16 sm:pt-20">
+        <AnimatedSection className="space-y-12">
+          <CategoryPills />
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+            {filtered.map((p, i) => {
+              const CatIcon = p.categoryIcon;
+              return (
+                <AnimatedSection key={p.title} delay={(i % 3) * 0.1}>
+                  <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-border/50 bg-card transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
+                    <div className="relative aspect-[16/10] overflow-hidden">
+                      <Image
+                        src={p.image}
+                        alt={p.imageAlt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                      <div className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-background/90 px-3 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
+                        <CatIcon className="h-3 w-3 text-primary" />
+                        {p.category}
+                      </div>
+                    </div>
+                    <div className="flex flex-1 flex-col p-5">
+                      <div className="flex items-center justify-between">
+                        <h3 className="font-display text-lg font-bold">
+                          {p.title}
+                        </h3>
+                        <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                      </div>
+                      <p className="mt-0.5 text-xs text-muted-foreground">
+                        {p.clientUrl ? (
+                          <>
+                            <a
+                              href={p.clientUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="underline decoration-primary/50 underline-offset-2 transition-colors hover:text-primary"
+                            >
+                              {p.client}
+                            </a>
+                            {" "}&middot; {p.year}
+                          </>
+                        ) : (
+                          <>{p.client} &middot; {p.year}</>
+                        )}
+                      </p>
+                      <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                        {p.description}
+                      </p>
+                      <div className="mt-4 flex flex-wrap gap-1.5">
+                        {p.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-full bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </AnimatedSection>
+              );
+            })}
           </div>
         </AnimatedSection>
-      </Section>
-
-      {/* Projects grid */}
-      <Section>
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p, i) => {
-            const CatIcon = p.categoryIcon;
-            return (
-              <AnimatedSection key={p.title} delay={(i % 3) * 0.1}>
-                <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-border/50 bg-card transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
-                  {/* Image */}
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <Image
-                      src={p.image}
-                      alt={p.imageAlt}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                    {/* Category badge on image */}
-                    <div className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-background/90 px-3 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
-                      <CatIcon className="h-3 w-3 text-primary" />
-                      {p.category}
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex flex-1 flex-col p-5">
-                    <div className="flex items-center justify-between">
-                      <h3 className="font-display text-lg font-bold">
-                        {p.title}
-                      </h3>
-                      <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
-                    </div>
-                    <p className="mt-0.5 text-xs text-muted-foreground">
-                      {"clientUrl" in p && p.clientUrl ? (
-                        <>
-                          <a
-                            href={p.clientUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline decoration-primary/50 underline-offset-2 transition-colors hover:text-primary"
-                          >
-                            {p.client}
-                          </a>
-                          {" "}&middot; {p.year}
-                        </>
-                      ) : (
-                        <>{p.client} &middot; {p.year}</>
-                      )}
-                    </p>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                      {p.description}
-                    </p>
-                    {/* Tech tags */}
-                    <div className="mt-4 flex flex-wrap gap-1.5">
-                      {p.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </AnimatedSection>
-            );
-          })}
-        </div>
       </Section>
 
       {/* CTA */}
