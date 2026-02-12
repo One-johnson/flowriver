@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Section } from "@/components/Section";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { HeroCarousel } from "@/components/HeroCarousel";
+import { FaqAccordion } from "@/components/FaqAccordion";
 import {
   ArrowRight,
   Zap,
@@ -13,6 +14,29 @@ import {
   Globe,
   ChevronRight,
 } from "lucide-react";
+
+const homeFaqs = [
+  {
+    question: "What does FlowRiver Technologies do?",
+    answer:
+      "We build websites, web and mobile apps, UI/UX design, graphic design, school and database management systems, e-commerce solutions, and AI integrations. We work with businesses and organisations of all sizes.",
+  },
+  {
+    question: "How do I get started?",
+    answer:
+      "Reach out via our contact form or email. We'll schedule a short call to understand your needs, then send a tailored proposal with scope, timeline, and quote. No obligation.",
+  },
+  {
+    question: "Where are you based?",
+    answer:
+      "We're headquartered in Accra, Ghana, and work with clients locally and internationally. Most of our collaboration happens remotely with clear communication and regular updates.",
+  },
+  {
+    question: "Do you offer support after delivery?",
+    answer:
+      "Yes. We offer ongoing maintenance, updates, and support so your project keeps running smoothly. Support options can be included in your proposal or added later.",
+  },
+];
 
 const valueProps = [
   {
@@ -88,19 +112,7 @@ export default function Home() {
         </AnimatedSection>
       </Section>
 
-      {/* Metrics bar */}
-      <div className="border-y border-border/40 bg-muted/30">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 py-10 sm:px-6 md:grid-cols-4 lg:px-8">
-          {metrics.map((m, i) => (
-            <AnimatedSection key={m.label} delay={i * 0.1} className="text-center">
-              <p className="font-display text-3xl font-bold text-primary sm:text-4xl">
-                {m.value}
-              </p>
-              <p className="mt-1 text-sm text-muted-foreground">{m.label}</p>
-            </AnimatedSection>
-          ))}
-        </div>
-      </div>
+     
 
       {/* Value Propositions */}
       <Section>
@@ -263,6 +275,26 @@ export default function Home() {
           </div>
         </div>
       </AnimatedSection>
+
+      {/* FAQs */}
+      <Section className="bg-muted/20">
+        <AnimatedSection className="text-center">
+          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+            Frequently asked questions
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            Quick answers about FlowRiver. Have more questions?{" "}
+            <Link href="/contact" className="font-medium text-primary underline-offset-4 hover:underline">Contact us</Link>.
+          </p>
+        </AnimatedSection>
+        <div className="mx-auto mt-12 max-w-2xl">
+          <AnimatedSection delay={0.1}>
+            <div className="rounded-xl border border-border/50 bg-card p-6">
+              <FaqAccordion items={homeFaqs} />
+            </div>
+          </AnimatedSection>
+        </div>
+      </Section>
 
       {/* Final CTA */}
       <Section>
