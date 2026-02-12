@@ -12,8 +12,14 @@ const navLinks = [
 ];
 
 const secondaryLinks = [
-  { href: "#", label: "Privacy Policy" },
-  { href: "#", label: "Terms of Service" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms of Service" },
+];
+
+const socialLinks = [
+  { href: "https://twitter.com/flowrivertech", label: "Twitter", icon: "𝕏" },
+  { href: "https://linkedin.com/company/flowrivertech", label: "LinkedIn", icon: "in" },
+  { href: "https://instagram.com/flowrivertech", label: "Instagram", icon: "ig" },
 ];
 
 export function Footer() {
@@ -57,23 +63,45 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
-          <div>
-            <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-foreground">
-              Legal
-            </h3>
-            <ul className="space-y-2">
-              {secondaryLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Legal & Social */}
+          <div className="space-y-4">
+            <div>
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-foreground">
+                Legal
+              </h3>
+              <ul className="space-y-2">
+                {secondaryLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-foreground">
+                Follow us
+              </h3>
+              <ul className="flex gap-3">
+                {socialLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                      aria-label={link.label}
+                    >
+                      {link.icon}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 

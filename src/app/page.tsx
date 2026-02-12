@@ -41,55 +41,55 @@ const homeFaqs = [
 const valueProps = [
   {
     icon: Zap,
-    title: "Lightning Fast",
+    title: "On-time delivery",
     description:
-      "Built for speed from the ground up. Sub-second responses that keep your team in flow state.",
+      "We set clear timelines and stick to them. From scoping to launch, you get predictable delivery and fewer surprises.",
   },
   {
     icon: Shield,
-    title: "Enterprise Secure",
+    title: "Quality-first",
     description:
-      "SOC 2 compliant with end-to-end encryption. Your data stays yours, always.",
+      "Clean code, tested features, and best practices so your project stays maintainable and scalable.",
   },
   {
     icon: BarChart3,
-    title: "Actionable Insights",
+    title: "Results that matter",
     description:
-      "Real-time analytics and dashboards that turn raw data into decisions.",
+      "Websites and systems built to meet your goals — more enquiries, smoother operations, and happier users.",
   },
   {
     icon: Workflow,
-    title: "Seamless Integrations",
+    title: "End-to-end support",
     description:
-      "Connects with 200+ tools you already use. No workflow disruption, just amplification.",
+      "From design and development to launch and beyond. We offer ongoing support so your project keeps performing.",
   },
 ];
 
 const metrics = [
-  { value: "99.9%", label: "Uptime SLA" },
-  { value: "10k+", label: "Teams worldwide" },
-  { value: "50M+", label: "Tasks automated" },
-  { value: "<200ms", label: "Avg response" },
+  { value: "7+", label: "Projects delivered" },
+  { value: "5+", label: "Clients served" },
+  { value: "4", label: "Support & maintenance" },
+  { value: "100%", label: "Client focus" },
 ];
 
 const testimonials = [
   {
     quote:
       "FlowRiver transformed how our engineering team collaborates. We shipped 40% faster in the first quarter.",
-    author: "Sarah Chen",
-    role: "VP Engineering, Nexus Labs",
+    author: "Simon Annan",
+    role: "CEO, SEALS",
   },
   {
     quote:
       "The integrations are seamless. We went from 6 disconnected tools to one unified workflow overnight.",
-    author: "Marcus Rivera",
-    role: "CTO, Parallel Systems",
+    author: "Osei Kwame",
+    role: "General Secretary, CBMWU of TUC",
   },
   {
     quote:
       "Finally, a platform that understands how modern teams actually work. The analytics alone are worth it.",
-    author: "Aisha Patel",
-    role: "Head of Ops, ScaleForge",
+    author: "Kwame Asare",
+    role: "General Secretary, CWU of TUC",
   },
 ];
 
@@ -114,15 +114,29 @@ export default function Home() {
 
      
 
+      {/* Metrics bar */}
+      <div className="border-y border-border/40 bg-muted/30">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 py-10 sm:px-6 md:grid-cols-4 lg:px-8">
+          {metrics.map((m, i) => (
+            <AnimatedSection key={m.label} delay={i * 0.1} className="text-center">
+              <p className="font-display text-3xl font-bold text-primary sm:text-4xl">
+                {m.value}
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">{m.label}</p>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+
       {/* Value Propositions */}
       <Section>
         <AnimatedSection className="text-center">
           <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            Everything your team needs to move faster
+            Why work with us
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            One platform. Zero friction. FlowRiver brings together the tools,
-            data, and intelligence your team needs in a single workflow.
+            We combine design, development, and support so you get a partner
+            that delivers — on time and on budget.
           </p>
         </AnimatedSection>
 
@@ -145,24 +159,24 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Product feature tease */}
+      {/* Feature tease */}
       <Section className="bg-muted/20">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <AnimatedSection direction="left">
             <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-              See the big picture.{" "}
-              <span className="text-primary">Act on the details.</span>
+              From idea to launch.{" "}
+              <span className="text-primary">One team.</span>
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              FlowRiver&apos;s unified dashboard puts everything at your
-              fingertips — from high-level KPIs to individual task progress.
-              Make data-driven decisions without switching context.
+              We handle design, development, and deployment so you can focus on
+              your business. Whether it&apos;s a website, app, or custom system,
+              we bring clarity and quality to every step.
             </p>
             <ul className="mt-8 space-y-4">
               {[
-                "Real-time collaboration across all projects",
-                "AI-assisted task prioritization and scheduling",
-                "Custom workflows that adapt to how you work",
+                "Discovery and scoping tailored to your goals",
+                "UI/UX and development with modern tech",
+                "Launch, training, and ongoing support",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <ChevronRight className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
@@ -218,8 +232,8 @@ export default function Home() {
             Trusted by teams that ship
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            From startups to enterprises, FlowRiver powers the workflows of
-            thousands of teams worldwide.
+            From unions and NGOs to businesses and schools — we help organisations
+            reach their audience and run their operations better.
           </p>
         </AnimatedSection>
 
@@ -315,8 +329,8 @@ export default function Home() {
                 Ready to find your flow?
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-lg opacity-90">
-                Join thousands of teams already using FlowRiver to ship faster,
-                collaborate better, and automate the rest.
+                Tell us your project — we&apos;ll scope it, quote it, and deliver
+                it. No obligation, just a clear path forward.
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button
@@ -325,7 +339,7 @@ export default function Home() {
                   variant="secondary"
                   className="min-w-[180px] text-base font-semibold"
                 >
-                  <Link href="/contact">Start free trial</Link>
+                  <Link href="/contact">Ready for your first project?</Link>
                 </Button>
                 <Button
                   asChild
