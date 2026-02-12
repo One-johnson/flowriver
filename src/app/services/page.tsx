@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Section } from "@/components/Section";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -20,6 +19,31 @@ import {
   Code,
   Server,
 } from "lucide-react";
+import { FaqAccordion } from "@/components/FaqAccordion";
+import { AnimatedImageBox } from "@/components/AnimatedImageBox";
+
+const servicesFaqs = [
+  {
+    question: "How long does a typical project take?",
+    answer:
+      "It depends on scope. A simple website might take 2–4 weeks; a custom web app or mobile app often 6–12 weeks. We'll give you a timeline and milestones in the proposal.",
+  },
+  {
+    question: "Do you work with clients outside Ghana?",
+    answer:
+      "Yes. We work remotely with clients worldwide. We use async updates, video calls, and shared project tools so distance isn't a barrier.",
+  },
+  {
+    question: "What's included in a quote?",
+    answer:
+      "A clear scope, deliverables, timeline, and fixed or phased pricing. We also outline what's out of scope so there are no surprises later.",
+  },
+  {
+    question: "Do you provide ongoing support after launch?",
+    answer:
+      "Yes. We offer maintenance and support packages — from bug fixes and updates to new features. We can include this in your initial quote or add it later.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Services",
@@ -166,7 +190,7 @@ const process = [
 export default function ServicesPage() {
   return (
     <>
-      {/* Hero */}
+      {/* Hero — text left, image right */}
       <Section className="relative overflow-hidden pt-28 pb-12 sm:pt-36">
         <div
           aria-hidden="true"
@@ -175,16 +199,33 @@ export default function ServicesPage() {
           <div className="absolute -top-24 right-1/3 h-[500px] w-[600px] rounded-full bg-primary/6 blur-3xl" />
         </div>
 
-        <AnimatedSection className="max-w-3xl">
-          <h1 className="font-display text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">
-            Everything you need to{" "}
-            <span className="text-primary">build, launch & grow.</span>
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            From stunning designs to powerful systems — FlowRiver Technologies
-            delivers end-to-end digital solutions tailored to your business.
-          </p>
-        </AnimatedSection>
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <AnimatedSection className="max-w-xl">
+            <h1 className="font-display text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">
+              Everything you need to{" "}
+              <span className="text-primary">build, launch & grow.</span>
+            </h1>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground sm:text-xl">
+              From stunning designs to powerful systems — FlowRiver Technologies
+              delivers end-to-end digital solutions tailored to your business.
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.15} className="relative">
+            <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
+              <AnimatedImageBox
+                src="https://images.unsplash.com/photo-1551431009-a22ee0d75b2d?w=800&q=80&auto=format&fit=crop"
+                alt="Digital services and development"
+                sizes="(max-width: 1024px) 90vw, 45vw"
+                priority
+              />
+            </div>
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-4 -z-10 rounded-3xl bg-primary/6 blur-2xl"
+            />
+          </AnimatedSection>
+        </div>
       </Section>
 
       {/* Services grid */}
@@ -244,16 +285,11 @@ export default function ServicesPage() {
                       isReversed ? "lg:order-1" : ""
                     }`}
                   >
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border/50 shadow-xl shadow-primary/5">
-                      <Image
-                        src={s.image}
-                        alt={s.imageAlt}
-                        fill
-                        sizes="(max-width: 1024px) 90vw, 45vw"
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
-                    </div>
+                    <AnimatedImageBox
+                      src={s.image}
+                      alt={s.imageAlt}
+                      sizes="(max-width: 1024px) 90vw, 45vw"
+                    />
                     <div
                       aria-hidden="true"
                       className="pointer-events-none absolute -inset-4 -z-10 rounded-3xl bg-primary/6 blur-2xl"
@@ -297,6 +333,26 @@ export default function ServicesPage() {
               </div>
             </AnimatedSection>
           ))}
+        </div>
+      </Section>
+
+      {/* FAQs */}
+      <Section className="bg-muted/20">
+        <AnimatedSection className="text-center">
+          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+            Frequently asked questions
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            Common questions about working with FlowRiver. Can&apos;t find what
+            you need? <Link href="/contact" className="font-medium text-primary underline-offset-4 hover:underline">Get in touch</Link>.
+          </p>
+        </AnimatedSection>
+        <div className="mx-auto mt-12 max-w-2xl">
+          <AnimatedSection delay={0.1}>
+            <div className="rounded-xl border border-border/50 bg-card p-6">
+              <FaqAccordion items={servicesFaqs} />
+            </div>
+          </AnimatedSection>
         </div>
       </Section>
 
