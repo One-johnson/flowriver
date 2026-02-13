@@ -39,8 +39,11 @@ export function TestimonialsCarousel({ items, className }: Props) {
   useEffect(() => {
     if (!emblaApi) return;
     onSelect();
-    emblaApi.on("select", onSelect);
-    return () => emblaApi.off("select", onSelect);
+    const handler = onSelect;
+    emblaApi.on("select", handler);
+    return () => {
+      emblaApi.off("select", handler);
+    };
   }, [emblaApi, onSelect]);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
