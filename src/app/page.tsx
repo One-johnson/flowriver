@@ -3,7 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Section } from "@/components/Section";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { HeroCarousel } from "@/components/HeroCarousel";
+import { TestimonialsCarousel } from "@/components/TestimonialsCarousel";
 import { FaqAccordion } from "@/components/FaqAccordion";
+import { sharedTestimonials } from "@/lib/services-data";
 import {
   ArrowRight,
   Zap,
@@ -70,27 +72,6 @@ const metrics = [
   { value: "5+", label: "Clients served" },
   { value: "4", label: "Support & maintenance" },
   { value: "100%", label: "Client focus" },
-];
-
-const testimonials = [
-  {
-    quote:
-      "FlowRiver transformed how our engineering team collaborates. We shipped 40% faster in the first quarter.",
-    author: "Simon Annan",
-    role: "CEO, SEALS",
-  },
-  {
-    quote:
-      "The integrations are seamless. We went from 6 disconnected tools to one unified workflow overnight.",
-    author: "Osei Kwame",
-    role: "General Secretary, CBMWU of TUC",
-  },
-  {
-    quote:
-      "Finally, a platform that understands how modern teams actually work. The analytics alone are worth it.",
-    author: "Kwame Asare",
-    role: "General Secretary, CWU of TUC",
-  },
 ];
 
 export default function Home() {
@@ -237,29 +218,9 @@ export default function Home() {
           </p>
         </AnimatedSection>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <AnimatedSection key={t.author} delay={i * 0.1}>
-              <div className="flex h-full flex-col justify-between rounded-xl border border-border/50 bg-card p-6">
-                <blockquote className="text-sm leading-relaxed text-muted-foreground">
-                  &ldquo;{t.quote}&rdquo;
-                </blockquote>
-                <div className="mt-6 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 font-display text-sm font-bold text-primary">
-                    {t.author
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold">{t.author}</p>
-                    <p className="text-xs text-muted-foreground">{t.role}</p>
-                  </div>
-                </div>
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
+        <AnimatedSection className="mt-16">
+          <TestimonialsCarousel items={sharedTestimonials} />
+        </AnimatedSection>
       </Section>
 
       {/* Logo cloud */}
