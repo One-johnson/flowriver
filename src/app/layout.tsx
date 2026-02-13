@@ -21,7 +21,7 @@ const syne = Syne({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://flowrivertech.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://flowrivertechnologies.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
