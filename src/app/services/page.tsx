@@ -3,24 +3,10 @@ import Link from "next/link";
 import { Section } from "@/components/Section";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
-import {
-  ArrowRight,
-  Globe,
-  BrainCircuit,
-  Smartphone,
-  PenTool,
-  Component,
-  Check,
-  MonitorSmartphone,
-  Cpu,
-  Palette,
-  Layers,
-  MousePointerClick,
-  Code,
-  Server,
-} from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { AnimatedImageBox } from "@/components/AnimatedImageBox";
+import { services, processSteps } from "@/lib/services-data";
 
 const servicesFaqs = [
   {
@@ -50,142 +36,6 @@ export const metadata: Metadata = {
   description:
     "FlowRiver Technologies offers web design & development, UI design, graphic design, AI integrations, mobile app development, and custom systems.",
 };
-
-const services = [
-  {
-    icon: Globe,
-    title: "Web Design & Development",
-    tagline: "Websites that work as hard as you do",
-    description:
-      "We design and build fast, responsive, and SEO-friendly websites — from sleek landing pages to complex web applications. Every pixel is intentional, every interaction is smooth.",
-    features: [
-      "Custom responsive websites",
-      "E-commerce & SaaS platforms",
-      "CMS integration (WordPress, Headless)",
-      "Performance optimisation & SEO",
-      "Ongoing maintenance & support",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80&auto=format&fit=crop",
-    imageAlt: "Modern website on a laptop screen",
-  },
-  {
-    icon: Component,
-    title: "UI Design",
-    tagline: "Interfaces users love to use",
-    description:
-      "User-centred interface design grounded in research and refined through iteration. We create intuitive, accessible designs backed by design systems that scale with your product.",
-    features: [
-      "User research & wireframing",
-      "High-fidelity UI mockups",
-      "Interactive prototyping",
-      "Design systems & component libraries",
-      "Usability testing & iteration",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&q=80&auto=format&fit=crop",
-    imageAlt: "UI design wireframes and components",
-  },
-  {
-    icon: PenTool,
-    title: "Graphic Design",
-    tagline: "Visuals that tell your story",
-    description:
-      "From brand identities to marketing collateral, we craft bold, memorable visuals. Whether it's a logo, social media kit, or full brand guide — we make you look exceptional.",
-    features: [
-      "Logo & brand identity design",
-      "Marketing & social media graphics",
-      "Illustrations & iconography",
-      "Print design (brochures, packaging)",
-      "Brand guidelines & style guides",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&q=80&auto=format&fit=crop",
-    imageAlt: "Creative graphic design workspace",
-  },
-  {
-    icon: BrainCircuit,
-    title: "AI Integrations",
-    tagline: "Smarter software, less manual work",
-    description:
-      "We integrate AI and machine learning into your existing products and workflows — chatbots, recommendation engines, intelligent automation, and more.",
-    features: [
-      "AI-powered chatbots & assistants",
-      "Natural language processing",
-      "Predictive analytics & recommendations",
-      "Workflow automation with AI",
-      "Custom model training & fine-tuning",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80&auto=format&fit=crop",
-    imageAlt: "AI neural network visualization",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile App Development",
-    tagline: "Apps for iOS, Android, and beyond",
-    description:
-      "Native and cross-platform mobile apps designed for performance and delight. From concept to App Store, we handle the full lifecycle.",
-    features: [
-      "iOS & Android development",
-      "Cross-platform (React Native, Flutter)",
-      "App UI/UX design",
-      "Backend & API development",
-      "App Store submission & optimisation",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80&auto=format&fit=crop",
-    imageAlt: "Mobile app on a smartphone",
-  },
-  {
-    icon: Server,
-    title: "Systems & Software",
-    tagline: "Robust systems built to scale",
-    description:
-      "Custom backend systems, APIs, databases, and cloud infrastructure — engineered for reliability, security, and growth. We build the engine behind your product.",
-    features: [
-      "Custom software development",
-      "API design & integration",
-      "Cloud infrastructure & DevOps",
-      "Database architecture",
-      "Security & performance audits",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80&auto=format&fit=crop",
-    imageAlt: "Server infrastructure and cloud systems",
-  },
-];
-
-const process = [
-  {
-    step: "01",
-    title: "Discovery",
-    description:
-      "We learn about your business, goals, audience, and technical requirements through an in-depth consultation.",
-    icon: MousePointerClick,
-  },
-  {
-    step: "02",
-    title: "Design",
-    description:
-      "We create wireframes, mockups, and prototypes — iterating with your feedback until the vision is pixel-perfect.",
-    icon: Palette,
-  },
-  {
-    step: "03",
-    title: "Develop",
-    description:
-      "Our engineers build your solution using modern, scalable technologies with clean code and best practices.",
-    icon: Code,
-  },
-  {
-    step: "04",
-    title: "Deliver & Support",
-    description:
-      "We launch, test, and optimise — then provide ongoing support to keep everything running smoothly.",
-    icon: Layers,
-  },
-];
 
 export default function ServicesPage() {
   return (
@@ -269,12 +119,15 @@ export default function ServicesPage() {
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-6">
-                      <Button asChild variant="outline">
-                        <Link href="/contact">
-                          Get a quote
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      <Button asChild>
+                        <Link href={`/services/${s.slug}`}>
+                          View full details
                           <ArrowRight className="ml-1 h-4 w-4" />
                         </Link>
+                      </Button>
+                      <Button asChild variant="outline">
+                        <Link href="/contact">Get a quote</Link>
                       </Button>
                     </div>
                   </div>
@@ -315,7 +168,7 @@ export default function ServicesPage() {
         </AnimatedSection>
 
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {process.map((p, i) => (
+          {processSteps.map((p, i) => (
             <AnimatedSection key={p.step} delay={i * 0.1}>
               <div className="relative flex h-full flex-col rounded-xl border border-border/50 bg-card p-6">
                 <span className="font-display text-3xl font-extrabold text-primary/20">
