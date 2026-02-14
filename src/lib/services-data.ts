@@ -5,7 +5,7 @@ import {
   PenTool,
   BrainCircuit,
   Smartphone,
-  Server,
+  Wrench,
   MousePointerClick,
   Palette,
   Code,
@@ -270,38 +270,43 @@ export const services: ServiceItem[] = [
     ],
   },
   {
-    slug: "systems-software",
-    icon: Server,
-    title: "Systems & Software",
-    tagline: "Robust systems built to scale",
+    slug: "computer-systems-sales-repairs",
+    icon: Wrench,
+    title: "Computer Systems, Sales & Repairs",
+    tagline: "Installations, sales and repairs of computers and accessories",
     description:
-      "Custom backend systems, APIs, databases, and cloud infrastructure — engineered for reliability, security, and growth. We build the engine behind your product.",
+      "We install, sell, and repair computer systems and accessories — including laptops, mobile phones, and related hardware. Get reliable service, genuine parts, and expert support under one roof.",
     longDescription:
-      "Behind every great product is solid infrastructure. We design and build APIs, databases, and cloud systems that are secure, scalable, and maintainable so your business can grow without technical debt holding you back.",
+      "Whether you need a new laptop, a phone screen fixed, or a full office setup, we offer installations, sales, and repairs for computer systems and accessories. We work with laptops, desktops, mobile phones, and peripherals so you can buy with confidence and get repairs done right.",
     features: [
-      "Custom software development",
-      "API design & integration",
-      "Cloud infrastructure & DevOps",
-      "Database architecture",
-      "Security & performance audits",
+      "Sales of laptops, desktops & mobile phones",
+      "Repairs for laptops, phones & tablets",
+      "Installation of computer systems & software",
+      "Accessories: chargers, cases, screens & more",
+      "Diagnostics, maintenance & support",
     ],
     image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80&auto=format&fit=crop",
-    imageAlt: "Server infrastructure and cloud systems",
+      "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&q=80&auto=format&fit=crop",
+    imageAlt: "Laptops, phones and tech accessories",
     heroImage:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=85&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1200&q=85&auto=format&fit=crop",
     approach: [
-      "We design for scale and maintenance from day one, not just the first release.",
-      "APIs are documented and versioned so frontends and partners can integrate reliably.",
-      "We use industry-standard security practices and can run audits when needed.",
-      "Infrastructure is defined as code so deployments are repeatable and traceable.",
+      "We help you choose the right device or accessory for your needs and budget.",
+      "Repairs are carried out with quality parts and clear pricing — no hidden fees.",
+      "Installations include setup, software, and basic training so you're ready to go.",
+      "We stand behind our work with honest diagnostics and follow-up support.",
     ],
     testimonials: sharedTestimonials,
     faqs: [
       {
-        question: "Do you take over existing systems?",
+        question: "Do you offer warranty on repairs?",
         answer:
-          "Yes. We can refactor, extend, or migrate existing systems. We'll review your stack and recommend the best path — whether that's incremental improvement or a planned rewrite.",
+          "Yes. We provide a warranty on our repair work. The period depends on the type of repair; we'll confirm this when you bring in your device.",
+      },
+      {
+        question: "Can I buy devices and get them installed in one go?",
+        answer:
+          "Absolutely. We can sell you laptops, phones, or full setups and handle installation, software setup, and data transfer so everything is ready to use.",
       },
     ],
   },

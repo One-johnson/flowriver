@@ -232,12 +232,11 @@ export default function Home() {
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
               {[
-                "Nexus Labs",
-                "Parallel Systems",
-                "ScaleForge",
-                "Vectrix",
-                "Arcline",
-                "NovaShift",
+                "SEALS GHANA",
+                "CBMWU OF TUC",
+                "CWU OF TUC",
+                "SKILLSPRO LTD",
+                "UNITED DENOMINATIONS",
               ].map((name) => (
                 <div key={name} className="flex items-center gap-2">
                   <Globe className="h-5 w-5 text-muted-foreground/50" />
