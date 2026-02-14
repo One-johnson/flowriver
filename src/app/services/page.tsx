@@ -34,7 +34,7 @@ const servicesFaqs = [
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "FlowRiver Technologies offers web design & development, UI design, graphic design, AI integrations, mobile app development, and custom systems.",
+    "FlowRiver Technologies offers web design & development, UI design, graphic design, AI integrations, mobile app development, and computer systems sales & repairs (laptops, phones, installations).",
 };
 
 export default function ServicesPage() {
@@ -56,7 +56,7 @@ export default function ServicesPage() {
               <span className="text-primary">build, launch & grow.</span>
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              From stunning designs to powerful systems — FlowRiver Technologies
+              From stunning designs to powerful solutions — FlowRiver Technologies
               delivers end-to-end digital solutions tailored to your business.
             </p>
           </AnimatedSection>
