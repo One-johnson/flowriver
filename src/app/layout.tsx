@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Syne } from "next/font/google";
+import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CookieNotice } from "@/components/CookieNotice";
+import { SITE_EMAIL } from "@/lib/site-config";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,8 +16,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const syne = Syne({
-  variable: "--font-syne",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
 });
@@ -85,6 +86,7 @@ const jsonLd = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
+    email: SITE_EMAIL,
     url: `${siteUrl}/contact`,
   },
 };
@@ -108,7 +110,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} font-sans antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${plusJakarta.variable} font-sans antialiased`}
       >
         <a
           href="#main-content"

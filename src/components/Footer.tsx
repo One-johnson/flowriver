@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Mail, MapPin, ArrowUpRight } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import { SITE_EMAIL, socialLinks } from "@/lib/site-config";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -16,20 +19,18 @@ const secondaryLinks = [
   { href: "/terms", label: "Terms of Service" },
 ];
 
-const socialLinks = [
-  { href: "https://twitter.com/flowrivertech", label: "Twitter", icon: "𝕏" },
-  { href: "https://linkedin.com/company/flowrivertech", label: "LinkedIn", icon: "in" },
-  { href: "https://instagram.com/flowrivertech", label: "Instagram", icon: "ig" },
-];
-
 export function Footer() {
   return (
-    <footer className="border-t border-border/40 bg-muted/30">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 py-12 md:grid-cols-3">
-          {/* Brand */}
-          <div className="space-y-3">
-            <Link href="/" className="flex items-center">
+    <footer className="relative mt-8 overflow-hidden border-t border-border/40 bg-muted/30">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 mesh-bg opacity-60"
+      />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+          <div className="space-y-5 lg:col-span-4">
+            <Link href="/" className="inline-flex items-center">
               <Image
                 src="/logo.png"
                 alt="FlowRiver Technologies"
@@ -38,18 +39,31 @@ export function Footer() {
                 className="h-10 w-auto sm:h-11"
               />
             </Link>
-            <p className="max-w-xs text-sm text-muted-foreground">
+            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
               Empowering businesses with intelligent software that flows
-              seamlessly into your workflow.
+              seamlessly into your workflow. Based in Accra, Ghana — serving
+              clients worldwide.
             </p>
+            <div className="space-y-3 pt-2">
+              <a
+                href={`mailto:${SITE_EMAIL}`}
+                className="flex items-center gap-2.5 text-sm text-muted-foreground transition-colors hover:text-primary"
+              >
+                <Mail className="h-4 w-4 shrink-0 text-primary" />
+                {SITE_EMAIL}
+              </a>
+              <p className="flex items-center gap-2.5 text-sm text-muted-foreground">
+                <MapPin className="h-4 w-4 shrink-0 text-primary" />
+                Accra, Ghana
+              </p>
+            </div>
           </div>
 
-          {/* Navigation */}
-          <div>
-            <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-foreground">
+          <div className="lg:col-span-2">
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-foreground">
               Navigation
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -63,51 +77,62 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Legal & Social */}
-          <div className="space-y-4">
-            <div>
-              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-foreground">
-                Legal
+          <div className="lg:col-span-2">
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-foreground">
+              Legal
+            </h3>
+            <ul className="space-y-2.5">
+              {secondaryLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h3 className="mb-4 mt-8 text-xs font-semibold uppercase tracking-widest text-foreground">
+              Follow us
+            </h3>
+            <ul className="flex flex-wrap gap-3">
+              {socialLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-primary"
+                    aria-label={link.label}
+                  >
+                    {link.label}
+                    <ArrowUpRight className="h-3 w-3" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="lg:col-span-4">
+            <div className="glass-card p-6 sm:p-8">
+              <h3 className="font-display text-lg font-bold">
+                Ready to start your project?
               </h3>
-              <ul className="space-y-2">
-                {secondaryLinks.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-foreground">
-                Follow us
-              </h3>
-              <ul className="flex gap-3">
-                {socialLinks.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
-                      aria-label={link.label}
-                    >
-                      {link.icon}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Tell us about your idea and we&apos;ll get back to you within 4
+                business hours with a clear path forward.
+              </p>
+              <Button asChild className="mt-5 w-full sm:w-auto">
+                <Link href="/contact">Get in touch</Link>
+              </Button>
             </div>
           </div>
         </div>
 
-        <Separator />
+        <Separator className="opacity-50" />
 
-        <div className="flex flex-col items-center justify-between gap-4 py-6 text-xs text-muted-foreground sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-3 py-6 text-xs text-muted-foreground sm:flex-row">
           <p>&copy; {new Date().getFullYear()} FlowRiver Technologies. All rights reserved.</p>
           <p>Built with purpose. Designed to flow.</p>
         </div>

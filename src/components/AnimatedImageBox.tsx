@@ -22,7 +22,7 @@ export function AnimatedImageBox({
 }: AnimatedImageBoxProps) {
   return (
     <motion.div
-      className={`relative aspect-[4/3] overflow-hidden rounded-2xl border border-border/50 shadow-xl shadow-primary/5 ${className}`}
+      className={`relative aspect-[4/3] overflow-hidden rounded-2xl border border-border/40 shadow-2xl shadow-primary/10 ${className}`}
       initial={{ opacity: 0, scale: 0.98 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}

@@ -3,10 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { Section } from "@/components/Section";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { Button } from "@/components/ui/button";
+import { PageHero } from "@/components/PageHero";
+import { StatsBar } from "@/components/StatsBar";
+import { CTABanner } from "@/components/CTABanner";
 import { CategoryPills } from "./CategoryPills";
-import { ArrowRight, Globe, Server, ExternalLink } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { ExternalLink } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { Globe, Server } from "lucide-react";
+
+type ProjectStatus = "live" | "in-development" | "coming-soon";
 
 type PortfolioProject = {
   title: string;
@@ -19,12 +25,21 @@ type PortfolioProject = {
   client: string;
   year: string;
   clientUrl?: string;
+  logoImage?: boolean;
+  logoImageDark?: boolean;
+  status?: ProjectStatus;
+};
+
+const statusLabels: Record<ProjectStatus, string> = {
+  live: "Live",
+  "in-development": "In development",
+  "coming-soon": "Not yet launched",
 };
 
 export const metadata: Metadata = {
   title: "Portfolio",
   description:
-    "FlowRiver Technologies portfolio — school management systems, e-commerce applications, websites, and database management systems. Clients include SourceOne Engineering And Logistics Services, SKILLSPRO LTD, CWU of TUC, and more.",
+    "FlowRiver Technologies portfolio — school management systems, e-commerce applications, websites, and database management systems. Clients include NPSC Ghana, SourceOne Engineering And Logistics Services, SKILLSPRO LTD, CWU of TUC, and more.",
 };
 
 const projects: PortfolioProject[] = [
@@ -33,27 +48,29 @@ const projects: PortfolioProject[] = [
     category: "Systems",
     categoryIcon: Server,
     description:
-      "A full-featured school management system for enrolment, attendance, grades, timetables, staff and student portals, reports, and fee management. Built to streamline daily operations for schools and educational institutions.",
-    tags: ["Web App", "Dashboard", "Reports", "User Roles"],
+      "A full-featured school management system for enrolment, attendance, grades, timetables, staff and student portals, reports, and fee management. Currently in final development — launch coming soon.",
+    tags: ["Web App", "Dashboard", "Reports", "Coming Soon"],
     image:
       "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80&auto=format&fit=crop",
     imageAlt: "School management system dashboard",
     client: "Schools",
     year: "—",
+    status: "coming-soon",
   },
   {
-    title: "E-Commerce Application",
+    title: "EU's Import — E-Commerce Application",
     category: "E-Commerce",
     categoryIcon: Globe,
     description:
-      "A complete e-commerce platform with product catalog, cart, checkout, order management, and admin panel. Responsive design and secure payment integration for online retail.",
-    tags: ["E-Commerce", "Payments", "Admin Panel", "Responsive"],
-    image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80&auto=format&fit=crop",
-    imageAlt: "E-commerce website on laptop",
-    client: "SKILLSPRO LTD",
-    clientUrl: "",
+      "A complete e-commerce platform with product catalog, cart, checkout, order management, and admin panel. Currently in active development for EU's Import.",
+    tags: ["E-Commerce", "Payments", "Admin Panel", "In Development"],
+    image: "/new.png",
+    imageAlt: "EU's Import e-commerce application logo",
+    client: "EU's Import",
     year: "—",
+    logoImage: true,
+    logoImageDark: true,
+    status: "in-development",
   },
   {
     title: "Database Management System",
@@ -76,24 +93,14 @@ const projects: PortfolioProject[] = [
     description:
       "Corporate website for the Communication Workers Union (CWU) of TUC — news, membership information, resources, and a clean, accessible design that reflects the union's mission and values.",
     tags: ["Website", "CMS", "Accessible", "Responsive"],
-    image:
-      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80&auto=format&fit=crop",
-    imageAlt: "Communication Workers Union website",
+    image: "/cwulog.png",
+    imageAlt: "Communication Workers Union (CWU Ghana) logo",
     client: "Communication Workers Union (CWU) of TUC",
+    clientUrl: "https://cwughana.com",
     year: "—",
-  },
-  {
-    title: "CBMWU of TUC — Website",
-    category: "Websites",
-    categoryIcon: Globe,
-    description:
-      "Professional website for the Construction and Building Materials Workers Union. Information on membership, campaigns, events, and contact — built for clarity and easy navigation.",
-    tags: ["Website", "Union", "Responsive", "Contact"],
-    image:
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80&auto=format&fit=crop",
-    imageAlt: "Union website on desktop",
-    client: "Construction and Building Materials Workers Union",
-    year: "—",
+    logoImage: true,
+    logoImageDark: true,
+    status: "live",
   },
   {
     title: "SourceOne Engineering And Logistics Services (SEALS) — Website",
@@ -102,12 +109,13 @@ const projects: PortfolioProject[] = [
     description:
       "Corporate website for SourceOne Engineering And Logistics Services (SEALS) — services, about, and contact. Modern, responsive design with clear messaging and a professional look that builds trust with visitors.",
     tags: ["Website", "Corporate", "Responsive", "SEO"],
-    image:
-      "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80&auto=format&fit=crop",
-    imageAlt: "SourceOne Engineering And Logistics Services corporate website",
+    image: "/seals.png",
+    imageAlt: "SourceOne Engineering And Logistics Services (SEALS) logo",
     client: "SourceOne Engineering And Logistics Services",
     clientUrl: "https://sealsghana.com",
     year: "—",
+    logoImage: true,
+    status: "live",
   },
   {
     title: "SKILLSPRO LTD — Website",
@@ -116,12 +124,29 @@ const projects: PortfolioProject[] = [
     description:
       "Website for SKILLSPRO LTD showcasing services, training programmes, and company information. Fast, mobile-friendly, and easy to update.",
     tags: ["Website", "Services", "Responsive", "Training"],
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&auto=format&fit=crop",
-    imageAlt: "SKILLSPRO LTD website",
+    image: "/skillspro-logo.png",
+    imageAlt: "SKILLSPRO LTD logo",
     client: "SKILLSPRO LTD",
     clientUrl: "https://skillsproltd.com",
     year: "—",
+    logoImage: true,
+    logoImageDark: true,
+    status: "live",
+  },
+  {
+    title: "National Procurement and Supply Conference — Website",
+    category: "Websites",
+    categoryIcon: Globe,
+    description:
+      "Official website for the National Procurement and Supply Conference (NPSC) — event information, registration, speakers, and resources for Ghana's procurement and supply community.",
+    tags: ["Website", "Conference", "Responsive", "Events"],
+    image: "/npsc.png",
+    imageAlt: "National Procurement and Supply Conference logo",
+    client: "National Procurement and Supply Conference (NPSC)",
+    clientUrl: "https://www.npscghana.com",
+    year: "—",
+    logoImage: true,
+    status: "live",
   },
 ];
 
@@ -154,95 +179,96 @@ export default async function PortfolioPage(props: PageProps) {
 
   return (
     <>
-      {/* Hero — text left, image right */}
-      <Section className="relative overflow-hidden pt-28 pb-12 sm:pt-36">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10"
-        >
-          <div className="absolute -top-24 left-1/3 h-[500px] w-[600px] rounded-full bg-primary/6 blur-3xl" />
-        </div>
+      <PageHero
+        badge="Portfolio"
+        title={
+          <>
+            Work that{" "}
+            <span className="gradient-text">speaks for itself</span>
+          </>
+        }
+        description="A selection of projects we're proud of — school management systems, e-commerce applications, websites, and database management systems for organisations across Ghana and beyond."
+        image={{
+          src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format&fit=crop",
+          alt: "Portfolio and project work",
+        }}
+      />
 
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <AnimatedSection className="max-w-xl">
-            <h1 className="font-display text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">
-              Work that{" "}
-              <span className="text-primary">speaks for itself</span>
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              A selection of projects we&apos;re proud of — school management
-              systems, e-commerce applications, websites, and database management
-              systems for organisations including SourceOne Engineering And Logistics Services, SKILLSPRO LTD, CWU of
-              TUC, and more.
-            </p>
-          </AnimatedSection>
+      <StatsBar stats={stats} />
 
-          <AnimatedSection delay={0.15} className="relative">
-            <div className="relative mx-auto aspect-[4/3] w-full max-w-lg overflow-hidden rounded-2xl border border-border/50 shadow-xl shadow-primary/5 lg:max-w-none">
-              <Image
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format&fit=crop"
-                alt="Portfolio and project work"
-                fill
-                sizes="(max-width: 1024px) 90vw, 45vw"
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
-            </div>
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -inset-4 -z-10 rounded-3xl bg-primary/6 blur-2xl"
-            />
-          </AnimatedSection>
-        </div>
-      </Section>
-
-      {/* Stats bar */}
-      <div className="border-y border-border/40 bg-muted/30">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 py-10 sm:px-6 md:grid-cols-4 lg:px-8">
-          {stats.map((s, i) => (
-            <AnimatedSection key={s.label} delay={i * 0.1} className="text-center">
-              <p className="font-display text-3xl font-bold text-primary sm:text-4xl">
-                {s.value}
-              </p>
-              <p className="mt-1 text-sm text-muted-foreground">{s.label}</p>
-            </AnimatedSection>
-          ))}
-        </div>
-      </div>
-
-      {/* Category pills + Projects grid */}
       <Section className="pt-16 sm:pt-20">
         <AnimatedSection className="space-y-12">
           <CategoryPills />
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filtered.map((p, i) => {
               const CatIcon = p.categoryIcon;
               return (
-                <AnimatedSection key={p.title} delay={(i % 3) * 0.1}>
-                  <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-border/50 bg-card transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
-                    <div className="relative aspect-[16/10] overflow-hidden">
+                <AnimatedSection key={p.title} delay={(i % 3) * 0.08}>
+                  <div className="glass-card card-hover group flex h-full flex-col overflow-hidden">
+                    <div
+                      className={cn(
+                        "relative aspect-[16/10] overflow-hidden",
+                        p.logoImage &&
+                          (p.logoImageDark ? "bg-zinc-950" : "bg-muted/60")
+                      )}
+                    >
                       <Image
                         src={p.image}
                         alt={p.imageAlt}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className={cn(
+                          "transition-transform duration-500 group-hover:scale-105",
+                          p.logoImage
+                            ? "object-contain p-8"
+                            : "object-cover"
+                        )}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                      <div className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-background/90 px-3 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
-                        <CatIcon className="h-3 w-3 text-primary" />
+                      <div
+                        className={cn(
+                          "absolute inset-0",
+                          p.logoImage
+                            ? "bg-gradient-to-t from-black/10 via-transparent to-transparent"
+                            : "bg-gradient-to-t from-black/50 via-transparent to-transparent"
+                        )}
+                      />
+                      {p.status && p.status !== "live" && (
+                        <div
+                          className={cn(
+                            "absolute right-4 top-4 rounded-full px-3 py-1 text-xs font-semibold backdrop-blur-md",
+                            p.status === "in-development" &&
+                              "border border-amber-500/30 bg-amber-500/15 text-amber-700 dark:text-amber-300",
+                            p.status === "coming-soon" &&
+                              "border border-primary/30 bg-primary/15 text-primary"
+                          )}
+                        >
+                          {statusLabels[p.status]}
+                        </div>
+                      )}
+                      <div
+                        className={cn(
+                          "absolute bottom-4 left-4 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium backdrop-blur-md",
+                          p.logoImage
+                            ? p.logoImageDark
+                              ? "border border-white/20 bg-black/50 text-white"
+                              : "border border-border/50 bg-background/90 text-foreground"
+                            : "border border-white/20 bg-black/30 text-white"
+                        )}
+                      >
+                        <CatIcon className="h-3 w-3" />
                         {p.category}
                       </div>
                     </div>
-                    <div className="flex flex-1 flex-col p-5">
-                      <div className="flex items-center justify-between">
+                    <div className="flex flex-1 flex-col p-6">
+                      <div className="flex items-start justify-between gap-2">
                         <h3 className="font-display text-lg font-bold">
                           {p.title}
                         </h3>
-                        <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                        {p.clientUrl && (
+                          <ExternalLink className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                        )}
                       </div>
-                      <p className="mt-0.5 text-xs text-muted-foreground">
+                      <p className="mt-1 text-xs text-muted-foreground">
                         {p.clientUrl ? (
                           <>
                             <a
@@ -256,7 +282,15 @@ export default async function PortfolioPage(props: PageProps) {
                             {" "}&middot; {p.year}
                           </>
                         ) : (
-                          <>{p.client} &middot; {p.year}</>
+                          <>
+                            {p.client}
+                            {p.status && p.status !== "live" && (
+                              <> &middot; {statusLabels[p.status]}</>
+                            )}
+                            {(!p.status || p.status === "live") && (
+                              <> &middot; {p.year}</>
+                            )}
+                          </>
                         )}
                       </p>
                       <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
@@ -266,7 +300,7 @@ export default async function PortfolioPage(props: PageProps) {
                         {p.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="rounded-full bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground"
+                            className="rounded-full border border-border/50 bg-muted/50 px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground"
                           >
                             {tag}
                           </span>
@@ -281,42 +315,13 @@ export default async function PortfolioPage(props: PageProps) {
         </AnimatedSection>
       </Section>
 
-      {/* CTA */}
-      <Section className="bg-muted/20">
-        <AnimatedSection>
-          <div className="relative overflow-hidden rounded-2xl bg-primary px-6 py-16 text-center text-primary-foreground sm:px-16 sm:py-20">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0"
-            >
-              <div className="absolute -top-20 -left-20 h-60 w-60 rounded-full bg-white/10 blur-3xl" />
-              <div className="absolute -right-20 -bottom-20 h-60 w-60 rounded-full bg-white/5 blur-3xl" />
-            </div>
-            <div className="relative z-10">
-              <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-                Want to be our next success story?
-              </h2>
-              <p className="mx-auto mt-4 max-w-xl text-lg opacity-90">
-                Let&apos;s discuss your project and see how FlowRiver can bring
-                your vision to life.
-              </p>
-              <div className="mt-8">
-                <Button
-                  asChild
-                  size="lg"
-                  variant="secondary"
-                  className="min-w-[180px] text-base font-semibold"
-                >
-                  <Link href="/contact">
-                    Start a project
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </AnimatedSection>
-      </Section>
+      <CTABanner
+        className="bg-muted/30"
+        title="Want to be our next success story?"
+        description="Let's discuss your project and see how FlowRiver can bring your vision to life."
+        primaryLabel="Start a project"
+        primaryHref="/contact"
+      />
     </>
   );
 }

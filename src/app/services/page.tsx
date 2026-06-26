@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Section } from "@/components/Section";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { PageHero } from "@/components/PageHero";
+import { SectionHeader } from "@/components/SectionHeader";
+import { CTABanner } from "@/components/CTABanner";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
 import { FaqAccordion } from "@/components/FaqAccordion";
@@ -40,64 +43,39 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      {/* Hero — text left, image right */}
-      <Section className="relative overflow-hidden pt-28 pb-12 sm:pt-36">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10"
-        >
-          <div className="absolute -top-24 right-1/3 h-[500px] w-[600px] rounded-full bg-primary/6 blur-3xl" />
-        </div>
+      <PageHero
+        badge="Services"
+        title={
+          <>
+            Everything you need to{" "}
+            <span className="gradient-text">build, launch & grow.</span>
+          </>
+        }
+        description="From stunning designs to powerful solutions — FlowRiver Technologies delivers end-to-end digital solutions tailored to your business."
+        image={{
+          src: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80&auto=format&fit=crop",
+          alt: "Digital services and development",
+        }}
+      />
 
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <AnimatedSection className="max-w-xl">
-            <h1 className="font-display text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">
-              Everything you need to{" "}
-              <span className="text-primary">build, launch & grow.</span>
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              From stunning designs to powerful solutions — FlowRiver Technologies
-              delivers end-to-end digital solutions tailored to your business.
-            </p>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.15} className="relative">
-            <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
-              <AnimatedImageBox
-                src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80&auto=format&fit=crop"
-                alt="Digital services and development"
-                sizes="(max-width: 1024px) 90vw, 45vw"
-                priority
-              />
-            </div>
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -inset-4 -z-10 rounded-3xl bg-primary/6 blur-2xl"
-            />
-          </AnimatedSection>
-        </div>
-      </Section>
-
-      {/* Services grid */}
       <Section>
-        <div className="space-y-20">
+        <div className="space-y-24">
           {services.map((s, i) => {
             const isReversed = i % 2 !== 0;
             return (
               <AnimatedSection key={s.title} delay={0.05}>
                 <div
-                  className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-16 ${
+                  className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-20 ${
                     isReversed ? "lg:direction-rtl" : ""
                   }`}
                 >
-                  {/* Text */}
                   <div className={isReversed ? "lg:order-2" : ""}>
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary">
                         <s.icon className="h-5 w-5" />
                       </div>
                       <div>
-                        <h3 className="font-display text-xl font-bold">
+                        <h3 className="font-display text-xl font-bold sm:text-2xl">
                           {s.title}
                         </h3>
                         <p className="text-sm font-medium text-primary">
@@ -105,34 +83,35 @@ export default function ServicesPage() {
                         </p>
                       </div>
                     </div>
-                    <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                    <p className="mt-5 text-base leading-relaxed text-muted-foreground">
                       {s.description}
                     </p>
-                    <ul className="mt-5 space-y-2.5">
+                    <ul className="mt-6 space-y-3">
                       {s.features.map((f) => (
                         <li
                           key={f}
-                          className="flex items-center gap-2.5 text-sm"
+                          className="flex items-center gap-3 text-sm"
                         >
-                          <Check className="h-4 w-4 shrink-0 text-primary" />
+                          <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                            <Check className="h-3 w-3 text-primary" />
+                          </div>
                           <span className="text-muted-foreground">{f}</span>
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-6 flex flex-wrap gap-3">
-                      <Button asChild>
+                    <div className="mt-8 flex flex-wrap gap-3">
+                      <Button asChild className="rounded-xl">
                         <Link href={`/services/${s.slug}`}>
                           View full details
                           <ArrowRight className="ml-1 h-4 w-4" />
                         </Link>
                       </Button>
-                      <Button asChild variant="outline">
+                      <Button asChild variant="outline" className="rounded-xl">
                         <Link href="/contact">Get a quote</Link>
                       </Button>
                     </div>
                   </div>
 
-                  {/* Image */}
                   <div
                     className={`relative mx-auto w-full max-w-lg lg:max-w-none ${
                       isReversed ? "lg:order-1" : ""
@@ -145,7 +124,7 @@ export default function ServicesPage() {
                     />
                     <div
                       aria-hidden="true"
-                      className="pointer-events-none absolute -inset-4 -z-10 rounded-3xl bg-primary/6 blur-2xl"
+                      className="pointer-events-none absolute -inset-6 -z-10 rounded-3xl bg-primary/10 blur-3xl"
                     />
                   </div>
                 </div>
@@ -155,29 +134,26 @@ export default function ServicesPage() {
         </div>
       </Section>
 
-      {/* Process */}
-      <Section className="bg-muted/20">
-        <AnimatedSection className="text-center">
-          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            How we work
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            A proven process that keeps things transparent, collaborative, and
-            on schedule from day one.
-          </p>
+      <Section className="bg-muted/30">
+        <AnimatedSection>
+          <SectionHeader
+            badge="Process"
+            title="How we work"
+            description="A proven process that keeps things transparent, collaborative, and on schedule from day one."
+          />
         </AnimatedSection>
 
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((p, i) => (
-            <AnimatedSection key={p.step} delay={i * 0.1}>
-              <div className="relative flex h-full flex-col rounded-xl border border-border/50 bg-card p-6">
-                <span className="font-display text-3xl font-extrabold text-primary/20">
+            <AnimatedSection key={p.step} delay={i * 0.08}>
+              <div className="glass-card card-hover relative flex h-full flex-col p-7">
+                <span className="font-display text-4xl font-extrabold text-primary/15">
                   {p.step}
                 </span>
-                <div className="mt-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <div className="mt-4 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary">
                   <p.icon className="h-5 w-5" />
                 </div>
-                <h3 className="mt-4 font-display text-lg font-semibold">
+                <h3 className="mt-5 font-display text-lg font-semibold">
                   {p.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -189,62 +165,41 @@ export default function ServicesPage() {
         </div>
       </Section>
 
-      {/* FAQs */}
-      <Section className="bg-muted/20">
-        <AnimatedSection className="text-center">
-          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            Frequently asked questions
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            Common questions about working with FlowRiver. Can&apos;t find what
-            you need? <Link href="/contact" className="font-medium text-primary underline-offset-4 hover:underline">Get in touch</Link>.
-          </p>
+      <Section className="bg-muted/30">
+        <AnimatedSection>
+          <SectionHeader
+            badge="FAQ"
+            title="Frequently asked questions"
+            description={
+              <>
+                Common questions about working with FlowRiver. Can&apos;t find
+                what you need?{" "}
+                <Link
+                  href="/contact"
+                  className="font-medium text-primary underline-offset-4 hover:underline"
+                >
+                  Get in touch
+                </Link>
+                .
+              </>
+            }
+          />
         </AnimatedSection>
         <div className="mx-auto mt-12 max-w-2xl">
           <AnimatedSection delay={0.1}>
-            <div className="rounded-xl border border-border/50 bg-card p-6">
+            <div className="glass-card p-6 sm:p-8">
               <FaqAccordion items={servicesFaqs} />
             </div>
           </AnimatedSection>
         </div>
       </Section>
 
-      {/* CTA */}
-      <Section>
-        <AnimatedSection>
-          <div className="relative overflow-hidden rounded-2xl bg-primary px-6 py-16 text-center text-primary-foreground sm:px-16 sm:py-20">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0"
-            >
-              <div className="absolute -top-20 -left-20 h-60 w-60 rounded-full bg-white/10 blur-3xl" />
-              <div className="absolute -right-20 -bottom-20 h-60 w-60 rounded-full bg-white/5 blur-3xl" />
-            </div>
-            <div className="relative z-10">
-              <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-                Have a project in mind?
-              </h2>
-              <p className="mx-auto mt-4 max-w-xl text-lg opacity-90">
-                Tell us what you need and we&apos;ll put together a tailored
-                plan and quote — no obligations, no surprises.
-              </p>
-              <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Button
-                  asChild
-                  size="lg"
-                  variant="secondary"
-                  className="min-w-[180px] text-base font-semibold"
-                >
-                  <Link href="/contact">
-                    Get a free quote
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </AnimatedSection>
-      </Section>
+      <CTABanner
+        title="Have a project in mind?"
+        description="Tell us what you need and we'll put together a tailored plan and quote — no obligations, no surprises."
+        primaryLabel="Get a free quote"
+        primaryHref="/contact"
+      />
     </>
   );
 }

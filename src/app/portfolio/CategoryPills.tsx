@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 const CATEGORIES = [
   "All",
@@ -34,11 +35,12 @@ export function CategoryPills() {
           key={cat}
           type="button"
           onClick={() => select(cat)}
-          className={`inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-medium transition-colors hover:border-primary/30 hover:text-primary ${
+          className={cn(
+            "inline-flex items-center rounded-full border px-5 py-2 text-sm font-medium transition-all",
             valid === cat
-              ? "border-primary bg-primary/10 text-primary"
-              : "border-border/50 bg-card text-muted-foreground"
-          }`}
+              ? "border-primary bg-primary text-primary-foreground shadow-md shadow-primary/20"
+              : "border-border/50 bg-card/60 text-muted-foreground backdrop-blur-sm hover:border-primary/30 hover:text-primary"
+          )}
         >
           {cat}
         </button>
