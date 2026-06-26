@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { Section } from "@/components/Section";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
+import { SectionHeader } from "@/components/SectionHeader";
+import { CTABanner } from "@/components/CTABanner";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { TestimonialsCarousel } from "@/components/TestimonialsCarousel";
 import {
@@ -51,7 +53,7 @@ export default async function ServiceDetailPage({ params }: Props) {
     <>
       {/* Hero — full-width large image + overlay text */}
       <Section className="relative overflow-hidden pt-28 pb-20 sm:pt-36 sm:pb-28">
-        <div className="relative aspect-[21/9] w-full max-w-6xl mx-auto overflow-hidden rounded-2xl border border-border/50 shadow-2xl">
+        <div className="relative aspect-[21/9] w-full max-w-7xl mx-auto overflow-hidden rounded-2xl border border-border/40 shadow-2xl shadow-primary/10">
           <Image
             src={service.heroImage}
             alt={service.imageAlt}
@@ -111,7 +113,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             </div>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
-            <div className="rounded-xl border border-border/50 bg-muted/20 p-6">
+            <div className="glass-card p-6">
               <h3 className="font-display text-lg font-semibold">Included</h3>
               <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
                 {service.features.map((f) => (
@@ -127,22 +129,20 @@ export default async function ServiceDetailPage({ params }: Props) {
       </Section>
 
       {/* How we work */}
-      <Section className="bg-muted/20">
-        <AnimatedSection className="text-center">
-          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            How we work
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            A proven process that keeps things transparent, collaborative, and
-            on schedule — for every project, including {service.title}.
-          </p>
+      <Section className="bg-muted/30">
+        <AnimatedSection>
+          <SectionHeader
+            badge="Process"
+            title="How we work"
+            description={`A proven process that keeps things transparent, collaborative, and on schedule — for every project, including ${service.title}.`}
+          />
         </AnimatedSection>
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((p, i) => {
             const StepIcon = p.icon;
             return (
-              <AnimatedSection key={p.step} delay={i * 0.1}>
-                <div className="relative flex h-full flex-col rounded-xl border border-border/50 bg-card p-6">
+              <AnimatedSection key={p.step} delay={i * 0.08}>
+                <div className="glass-card card-hover relative flex h-full flex-col p-7">
                   <span className="font-display text-3xl font-extrabold text-primary/20">
                     {p.step}
                   </span>
@@ -175,7 +175,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         <ul className="mx-auto mt-12 max-w-3xl space-y-6">
           {service.approach.map((item, i) => (
             <AnimatedSection key={i} delay={i * 0.05}>
-              <li className="flex gap-4 rounded-xl border border-border/50 bg-card p-6">
+              <li className="glass-card flex gap-4 p-6">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 font-display text-sm font-bold text-primary">
                   {i + 1}
                 </span>
@@ -214,7 +214,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           </AnimatedSection>
           <div className="mx-auto mt-12 max-w-2xl">
             <AnimatedSection delay={0.1}>
-              <div className="rounded-xl border border-border/50 bg-card p-6">
+              <div className="glass-card p-6 sm:p-8">
                 <FaqAccordion items={service.faqs} />
               </div>
             </AnimatedSection>
@@ -239,7 +239,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               <AnimatedSection key={s.slug} delay={i * 0.1}>
                 <Link
                   href={`/services/${s.slug}`}
-                  className="group flex flex-col rounded-xl border border-border/50 bg-card p-6 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+                  className="glass-card card-hover group flex flex-col p-6"
                 >
                   <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     <RelatedIcon className="h-5 w-5" />
@@ -259,50 +259,14 @@ export default async function ServiceDetailPage({ params }: Props) {
         </div>
       </Section>
 
-      {/* CTA */}
-      <Section>
-        <AnimatedSection>
-          <div className="relative overflow-hidden rounded-2xl bg-primary px-6 py-16 text-center text-primary-foreground sm:px-16 sm:py-20">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0"
-            >
-              <div className="absolute -top-20 -left-20 h-60 w-60 rounded-full bg-white/10 blur-3xl" />
-              <div className="absolute -right-20 -bottom-20 h-60 w-60 rounded-full bg-white/5 blur-3xl" />
-            </div>
-            <div className="relative z-10">
-              <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-                Ready to get started with {service.title}?
-              </h2>
-              <p className="mx-auto mt-4 max-w-xl text-lg opacity-90">
-                Tell us about your project and we&apos;ll put together a tailored
-                plan and quote — no obligations.
-              </p>
-              <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Button
-                  asChild
-                  size="lg"
-                  variant="secondary"
-                  className="min-w-[180px] text-base font-semibold"
-                >
-                  <Link href="/contact">
-                    Get a free quote
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="min-w-[180px] border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
-                >
-                  <Link href="/services">View all services</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </AnimatedSection>
-      </Section>
+      <CTABanner
+        title={`Ready to get started with ${service.title}?`}
+        description="Tell us about your project and we'll put together a tailored plan and quote — no obligations."
+        primaryLabel="Get a free quote"
+        primaryHref="/contact"
+        secondaryLabel="View all services"
+        secondaryHref="/services"
+      />
     </>
   );
 }

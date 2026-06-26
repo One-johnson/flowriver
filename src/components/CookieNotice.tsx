@@ -27,7 +27,7 @@ export function CookieNotice() {
     <div
       role="dialog"
       aria-label="Cookie notice"
-      className="fixed bottom-0 left-0 right-0 z-50 border-t border-border/40 bg-background/95 p-4 shadow-lg backdrop-blur sm:px-6"
+      className="fixed bottom-4 left-4 right-4 z-50 rounded-2xl border border-border/50 bg-background/90 p-4 shadow-2xl backdrop-blur-xl sm:left-auto sm:max-w-lg sm:px-6"
     >
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 sm:flex-row sm:justify-between">
         <p className="text-center text-sm text-muted-foreground sm:text-left">

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export type TestimonialItem = {
@@ -65,12 +65,13 @@ export function TestimonialsCarousel({ items, className }: Props) {
               key={`${t.author}-${i}`}
               className="min-w-0 flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_calc(33.333%-1rem)]"
             >
-              <div className="flex h-full flex-col justify-between rounded-xl border border-border/50 bg-card p-6">
-                <blockquote className="text-sm leading-relaxed text-muted-foreground">
+              <div className="glass-card card-hover flex h-full flex-col justify-between p-7">
+                <Quote className="h-8 w-8 text-primary/30" />
+                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
-                <div className="mt-6 flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 font-display text-sm font-bold text-primary">
+                <div className="mt-6 flex items-center gap-3 border-t border-border/40 pt-5">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-primary/5 font-display text-sm font-bold text-primary">
                     {t.author
                       .split(" ")
                       .map((n) => n[0])
@@ -87,14 +88,13 @@ export function TestimonialsCarousel({ items, className }: Props) {
         </div>
       </div>
 
-      {/* Prev/Next + Dots */}
       <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
         <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={scrollPrev}
             aria-label="Previous testimonial"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-border/50 bg-background text-muted-foreground transition-colors hover:border-primary/30 hover:text-primary"
+            className="flex h-11 w-11 items-center justify-center rounded-xl border border-border/50 bg-card text-muted-foreground transition-all hover:border-primary/30 hover:text-primary hover:shadow-md"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
@@ -102,7 +102,7 @@ export function TestimonialsCarousel({ items, className }: Props) {
             type="button"
             onClick={scrollNext}
             aria-label="Next testimonial"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-border/50 bg-background text-muted-foreground transition-colors hover:border-primary/30 hover:text-primary"
+            className="flex h-11 w-11 items-center justify-center rounded-xl border border-border/50 bg-card text-muted-foreground transition-all hover:border-primary/30 hover:text-primary hover:shadow-md"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
@@ -118,7 +118,7 @@ export function TestimonialsCarousel({ items, className }: Props) {
                 "h-2 rounded-full transition-all duration-300",
                 selectedIndex === i
                   ? "w-8 bg-primary"
-                  : "w-2 bg-primary/25 hover:bg-primary/40"
+                  : "w-2 bg-primary/20 hover:bg-primary/40"
               )}
             />
           ))}
