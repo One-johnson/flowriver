@@ -2,20 +2,17 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
-
-const CATEGORIES = [
-  "All",
-  "Websites",
-  "Systems",
-  "E-Commerce",
-  "Database",
-];
+import { portfolioCategories } from "@/lib/portfolio-data";
 
 export function CategoryPills() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const current = searchParams.get("category") ?? "All";
-  const valid = CATEGORIES.includes(current) ? current : "All";
+  const valid = portfolioCategories.includes(
+    current as (typeof portfolioCategories)[number]
+  )
+    ? current
+    : "All";
 
   function select(category: string) {
     const next = new URLSearchParams(searchParams.toString());
@@ -30,7 +27,7 @@ export function CategoryPills() {
 
   return (
     <div className="flex flex-wrap items-center justify-center gap-2">
-      {CATEGORIES.map((cat) => (
+      {portfolioCategories.map((cat) => (
         <button
           key={cat}
           type="button"

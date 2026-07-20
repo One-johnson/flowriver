@@ -81,7 +81,7 @@ const clients = [
   "CWU OF TUC",
   "SKILLSPRO LTD",
   "NPSC GHANA",
-  "UNITED DENOMINATIONS",
+  "THE HOMECOMING",
 ];
 
 export default function Home() {
