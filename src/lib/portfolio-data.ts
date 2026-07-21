@@ -27,6 +27,30 @@ export const statusLabels: Record<ProjectStatus, string> = {
 
 export const portfolioProjects: PortfolioProject[] = [
   {
+    slug: "tendzu-ventures-inventory-system",
+    title: "Tendzu Ventures — Inventory & Sales Management System",
+    shortTitle: "Tendzu Ventures",
+    category: "Systems",
+    description:
+      "A full-stack inventory and sales management system built for a heavy-equipment company, covering stock, restocking, sales, profits, reports, alerts, and administration.",
+    longDescription:
+      "We built a responsive operations dashboard for Tendzu Ventures to manage its heavy-equipment catalog and day-to-day commercial activity in one place. The system tracks machines and stock levels, supports restocking and sales workflows, calculates profit, surfaces reports and alerts, and gives administrators control over business settings. It was developed with Next.js, TypeScript, Tailwind CSS, Shadcn UI, and Convex.",
+    highlights: [
+      "Machine catalog and real-time stock management",
+      "Restocking and end-to-end sales workflows",
+      "Profit tracking, reports, and operational alerts",
+      "Responsive dashboard with administrative controls",
+    ],
+    tags: ["Next.js", "TypeScript", "Convex", "Shadcn UI"],
+    image: "/tendzu-ventures-logo.png",
+    imageAlt: "Tendzu Ventures logo",
+    client: "Tendzu Ventures",
+    year: "2026",
+    logoImage: true,
+    logoImageDark: true,
+    status: "live",
+  },
+  {
     slug: "homecoming-convention",
     title: "Mountain of the Lord — The Homecoming",
     shortTitle: "The Homecoming",
@@ -47,78 +71,6 @@ export const portfolioProjects: PortfolioProject[] = [
     client: "Dag Heward-Mills Ministries (DHMM)",
     year: "2026",
     clientUrl: "https://www.homecomingconvention.com",
-    status: "live",
-  },
-  {
-    slug: "school-management-system",
-    title: "School Management System",
-    shortTitle: "School Management",
-    category: "Systems",
-    description:
-      "A full-featured school management system for enrolment, attendance, grades, timetables, staff and student portals, reports, and fee management.",
-    longDescription:
-      "A comprehensive school management platform built to streamline daily operations for educational institutions. From enrolment and attendance to grades, timetables, fee management, and dedicated staff and student portals — the system brings school administration into one clear, reliable workspace. Currently in final development ahead of launch.",
-    highlights: [
-      "Enrolment, attendance, and grade management",
-      "Staff and student portals with role-based access",
-      "Timetables, reports, and fee tracking",
-      "Designed for schools of different sizes",
-    ],
-    tags: ["Web App", "Dashboard", "Reports", "Coming Soon"],
-    image:
-      "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80&auto=format&fit=crop",
-    imageAlt: "School management system dashboard",
-    client: "Schools",
-    year: "—",
-    status: "coming-soon",
-  },
-  {
-    slug: "ells-import-ecommerce",
-    title: "Ell's Import — E-Commerce Application",
-    shortTitle: "Ell's Import",
-    category: "E-Commerce",
-    description:
-      "A complete e-commerce platform with product catalog, cart, checkout, order management, and admin panel for Ell's Import.",
-    longDescription:
-      "We're building a full e-commerce experience for Ell's Import — product catalog, cart and checkout flows, order management, and an admin panel for day-to-day retail operations. The platform is designed to feel premium, load fast on mobile, and scale as the brand grows. Currently in active development.",
-    highlights: [
-      "Product catalog with rich product detail pages",
-      "Cart, checkout, and order management",
-      "Admin panel for inventory and orders",
-      "Responsive storefront experience",
-    ],
-    tags: ["E-Commerce", "Payments", "Admin Panel", "In Development"],
-    image: "/new.png",
-    imageAlt: "Ell's Import e-commerce application logo",
-    client: "Ell's Import",
-    year: "—",
-    logoImage: true,
-    logoImageDark: true,
-    status: "in-development",
-  },
-  {
-    slug: "cwu-ghana-website",
-    title: "CWU of TUC Website",
-    shortTitle: "CWU Ghana",
-    category: "Websites",
-    description:
-      "Corporate website for the Communication Workers Union (CWU) of TUC — news, membership, resources, and accessible design.",
-    longDescription:
-      "A professional corporate website for the Communication Workers Union (CWU) of TUC. The site presents news, membership information, and resources with a clean, accessible design that reflects the union's mission and makes it easy for members and the public to stay informed.",
-    highlights: [
-      "Clear membership and resources sections",
-      "News and updates for union members",
-      "Accessible, responsive layout",
-      "Brand-aligned visual identity",
-    ],
-    tags: ["Website", "CMS", "Accessible", "Responsive"],
-    image: "/cwulog.png",
-    imageAlt: "Communication Workers Union (CWU Ghana) logo",
-    client: "Communication Workers Union (CWU) of TUC",
-    year: "—",
-    clientUrl: "https://cwughana.com",
-    logoImage: true,
-    logoImageDark: true,
     status: "live",
   },
   {
@@ -212,6 +164,5 @@ export const portfolioCategories = [
   "All",
   "Websites",
   "Systems",
-  "E-Commerce",
   "Events",
 ] as const;
