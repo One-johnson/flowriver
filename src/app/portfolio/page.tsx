@@ -19,13 +19,13 @@ import {
 export const metadata: Metadata = {
   title: "Portfolio",
   description:
-    "FlowRiver Technologies portfolio — websites, systems, e-commerce, and event platforms. Clients include Homecoming Convention, SEALS, SKILLSPRO, CWU Ghana, NPSC, and more.",
+    "FlowRiver Technologies portfolio — websites, systems, and event platforms. Clients include Tendzu Ventures, Homecoming Convention, SEALS, SKILLSPRO, NPSC, and more.",
 };
 
 const stats = [
-  { value: "6+", label: "Clients served" },
-  { value: "7+", label: "Projects delivered" },
-  { value: "4", label: "Project types" },
+  { value: "5+", label: "Clients served" },
+  { value: "5+", label: "Projects delivered" },
+  { value: "3", label: "Project types" },
   { value: "100%", label: "Client focus" },
 ];
 
@@ -59,7 +59,7 @@ export default async function PortfolioPage(props: PageProps) {
             <span className="gradient-text">speaks for itself</span>
           </>
         }
-        description="A selection of projects we're proud of — websites, systems, e-commerce, and event platforms for organisations across Ghana and beyond."
+        description="A selection of projects we're proud of — websites, systems, and event platforms for organisations across Ghana and beyond."
         image={{
           src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format&fit=crop",
           alt: "Portfolio and project work",

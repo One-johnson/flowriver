@@ -37,20 +37,6 @@ const teamMembers = [
     image: placeholderImage("Ernest Des-Border"),
     socials: { linkedin: "#", github: "#" },
   },
-  {
-    name: "John Adanini",
-    role: "System Administrator",
-    bio: "Keeps our infrastructure and client systems running smoothly. Responsible for servers, security, deployments, and reliability.",
-    image: placeholderImage("John Adanini"),
-    socials: { linkedin: "#" },
-  },
-  {
-    name: "Kelvin Osei-Mensah Bonsu",
-    role: "Software Engineer",
-    bio: "Builds and maintains the software that powers our clients' products. Full-stack focus with an eye for clean code and user experience.",
-    image: placeholderImage("Kelvin Osei-Mensah Bonsu"),
-    socials: { linkedin: "#", github: "#" },
-  },
 ];
 
 const values = [
