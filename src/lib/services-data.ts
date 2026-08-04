@@ -66,27 +66,33 @@ export const sharedTestimonials: {
 }[] = [
   {
     quote:
-      "FlowRiver transformed how our engineering team collaborates. We shipped 40% faster in the first quarter.",
-    author: "Simon Annan",
-    role: "CEO, SEALS",
+      "FlowRiver Technologies has consistently demonstrated professionalism, innovation, and technical excellence. Their ability to understand client requirements and deliver reliable digital solutions is truly commendable. I highly recommend them to any organization seeking a dependable technology partner.",
+    author: "Ofosu Acheampong",
+    role: "Senior IRO/Organizer, Communication Workers Union of Trades Union Congress",
   },
   {
     quote:
-      "The integrations are seamless. We went from 6 disconnected tools to one unified workflow overnight.",
-    author: "Osei Kwame",
-    role: "General Secretary, CBMWU of TUC",
+      "Our experience with FlowRiver Technologies has been exceptional. Their team combines technical expertise with outstanding customer service, delivering solutions that are both practical and effective. They are committed to excellence and always ensure projects are completed to the highest standards.",
+    author: "Dr. Simon Annan",
+    role: "Chief Executive Officer, SourceOne Management Services Ltd",
   },
   {
     quote:
-      "Finally, a platform that understands how modern teams actually work. The analytics alone are worth it.",
-    author: "Kwame Asare",
-    role: "General Secretary, CWU of TUC",
+      "FlowRiver Technologies is a trusted technology partner that consistently delivers quality results. Their innovative approach, attention to detail, and dedication to client satisfaction make them stand out. I have no hesitation in recommending their services to any business looking to embrace digital transformation.",
+    author: "Nana Agyemang",
+    role: "Chief Executive Officer, SourceOne Engineering And Logistic Services (SEALS)",
   },
   {
     quote:
-      "Professional, responsive, and they delivered on time. Our new website has made a real difference to how we reach our members.",
-    author: "Sarah Mensah",
-    role: "Communications Lead, CBMWU of TUC",
+      "Working with FlowRiver Technologies has been a rewarding experience. Their professionalism, responsiveness, and ability to develop tailored digital solutions have exceeded our expectations. They are passionate about helping businesses leverage technology to improve efficiency and growth.",
+    author: "Albert Agyekum",
+    role: "Public Relations Officer (PRO), SkillsPro Ltd.",
+  },
+  {
+    quote:
+      "FlowRiver Technologies exemplifies innovation, integrity, and excellence. Their team delivers modern technology solutions with a strong focus on quality and customer satisfaction. I confidently recommend FlowRiver Technologies to organizations seeking reliable and forward-thinking IT solutions.",
+    author: "Celestine Djanie",
+    role: "Vice President, Ghana Institute of Purchasing & Supply (GIPS)",
   },
 ];
 
