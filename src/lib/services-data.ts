@@ -11,7 +11,7 @@ import {
   Code,
   Layers,
 } from "lucide-react";
-import { reader } from "@/lib/keystatic";
+import { getContentEntries, getContentEntry } from "@/lib/content";
 
 const iconMap: Record<string, LucideIcon> = {
   Globe,
@@ -75,14 +75,36 @@ export type TestimonialItem = {
   role: string;
 };
 
+type TestimonialData = {
+  author: string;
+  role: string;
+  quote: string;
+  order?: number;
+};
+
+type ServiceData = {
+  title: string;
+  tagline: string;
+  description: string;
+  longDescription?: string;
+  icon: string;
+  features?: string[];
+  approach?: string[];
+  image: string;
+  imageAlt: string;
+  heroImage: string;
+  faqs?: { question: string; answer: string }[];
+  order?: number;
+};
+
 export async function getTestimonials(): Promise<TestimonialItem[]> {
-  const entries = await reader.collections.testimonials.all();
+  const entries = await getContentEntries<TestimonialData>("testimonials");
   return entries
-    .map(({ entry }) => ({
-      author: entry.author,
-      role: entry.role,
-      quote: entry.quote,
-      order: entry.order ?? 0,
+    .map(({ data }) => ({
+      author: data.author,
+      role: data.role,
+      quote: data.quote,
+      order: data.order ?? 0,
     }))
     .sort((a, b) => a.order - b.order)
     .map(({ quote, author, role }) => ({ quote, author, role }));
@@ -90,50 +112,38 @@ export async function getTestimonials(): Promise<TestimonialItem[]> {
 
 function mapService(
   slug: string,
-  entry: {
-    title: string;
-    tagline: string;
-    description: string;
-    longDescription: string;
-    icon: string;
-    features: readonly string[];
-    approach: readonly string[];
-    image: string;
-    imageAlt: string;
-    heroImage: string;
-    faqs: readonly { question: string; answer: string }[];
-  },
+  data: ServiceData,
   testimonials: TestimonialItem[]
 ): ServiceItem {
   return {
     slug,
-    icon: iconMap[entry.icon] ?? Globe,
-    title: entry.title,
-    tagline: entry.tagline,
-    description: entry.description,
-    longDescription: entry.longDescription || undefined,
-    features: [...entry.features],
-    image: entry.image,
-    imageAlt: entry.imageAlt,
-    heroImage: entry.heroImage,
-    approach: [...entry.approach],
+    icon: iconMap[data.icon] ?? Globe,
+    title: data.title,
+    tagline: data.tagline,
+    description: data.description,
+    longDescription: data.longDescription || undefined,
+    features: [...(data.features ?? [])],
+    image: data.image,
+    imageAlt: data.imageAlt,
+    heroImage: data.heroImage,
+    approach: [...(data.approach ?? [])],
     testimonials,
-    faqs: entry.faqs?.length
-      ? entry.faqs.map((f) => ({ question: f.question, answer: f.answer }))
+    faqs: data.faqs?.length
+      ? data.faqs.map((f) => ({ question: f.question, answer: f.answer }))
       : undefined,
   };
 }
 
 export async function getServices(): Promise<ServiceItem[]> {
   const [entries, testimonials] = await Promise.all([
-    reader.collections.services.all(),
+    getContentEntries<ServiceData>("services"),
     getTestimonials(),
   ]);
 
   return entries
-    .map(({ slug, entry }) => ({
-      service: mapService(slug, entry, testimonials),
-      order: entry.order ?? 0,
+    .map(({ slug, data }) => ({
+      service: mapService(slug, data, testimonials),
+      order: data.order ?? 0,
     }))
     .sort((a, b) => a.order - b.order)
     .map(({ service }) => service);
@@ -143,11 +153,11 @@ export async function getServiceBySlug(
   slug: string
 ): Promise<ServiceItem | undefined> {
   const [entry, testimonials] = await Promise.all([
-    reader.collections.services.read(slug),
+    getContentEntry<ServiceData>("services", slug),
     getTestimonials(),
   ]);
   if (!entry) return undefined;
-  return mapService(slug, entry, testimonials);
+  return mapService(slug, entry.data, testimonials);
 }
 
 export async function getServiceSlugs(): Promise<string[]> {

@@ -1,7 +1,8 @@
+﻿---
 title: Computer Systems, Sales & Repairs
 tagline: Installations, sales and repairs of computers and accessories
 description: >-
-  We install, sell, and repair computer systems and accessories — including
+  We install, sell, and repair computer systems and accessories â€” including
   laptops, mobile phones, and related hardware. Get reliable service, genuine
   parts, and expert support under one roof.
 longDescription: >-
@@ -18,7 +19,7 @@ features:
   - Diagnostics, maintenance & support
 approach:
   - We help you choose the right device or accessory for your needs and budget.
-  - Repairs are carried out with quality parts and clear pricing — no hidden fees.
+  - Repairs are carried out with quality parts and clear pricing â€” no hidden fees.
   - Installations include setup, software, and basic training so you're ready to go.
   - We stand behind our work with honest diagnostics and follow-up support.
 image: https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&q=80&auto=format&fit=crop
@@ -34,3 +35,4 @@ faqs:
       Absolutely. We can sell you laptops, phones, or full setups and handle
       installation, software setup, and data transfer so everything is ready to use.
 order: 6
+---

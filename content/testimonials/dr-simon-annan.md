@@ -1,3 +1,4 @@
+﻿---
 author: Dr. Simon Annan
 role: Chief Executive Officer, SourceOne Management Services Ltd
 quote: >-
@@ -6,3 +7,4 @@ quote: >-
   solutions that are both practical and effective. They are committed to
   excellence and always ensure projects are completed to the highest standards.
 order: 2
+---

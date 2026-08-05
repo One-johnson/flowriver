@@ -1,50 +1,64 @@
-import { reader } from "@/lib/keystatic";
+import { getContentEntries, getContentEntry } from "@/lib/content";
 import type { PortfolioProject, ProjectStatus } from "@/lib/portfolio-types";
 
 export type { PortfolioProject, ProjectStatus } from "@/lib/portfolio-types";
 export { statusLabels, portfolioCategories } from "@/lib/portfolio-types";
 
-function mapProject(
-  slug: string,
-  entry: NonNullable<
-    Awaited<ReturnType<typeof reader.collections.portfolio.read>>
-  >
-): PortfolioProject {
+type PortfolioData = {
+  title: string;
+  shortTitle: string;
+  category: PortfolioProject["category"];
+  description: string;
+  longDescription: string;
+  highlights?: string[];
+  tags?: string[];
+  image: string;
+  imageAlt: string;
+  client: string;
+  year: string;
+  clientUrl?: string | null;
+  logoImage?: boolean;
+  logoImageDark?: boolean;
+  status?: ProjectStatus;
+  order?: number;
+};
+
+function mapProject(slug: string, data: PortfolioData): PortfolioProject {
   return {
     slug,
-    title: entry.title,
-    shortTitle: entry.shortTitle,
-    category: entry.category,
-    description: entry.description,
-    longDescription: entry.longDescription,
-    highlights: [...entry.highlights],
-    tags: [...entry.tags],
-    image: entry.image,
-    imageAlt: entry.imageAlt,
-    client: entry.client,
-    year: entry.year,
-    clientUrl: entry.clientUrl ?? undefined,
-    logoImage: entry.logoImage || undefined,
-    logoImageDark: entry.logoImageDark || undefined,
-    status: entry.status as ProjectStatus,
+    title: data.title,
+    shortTitle: data.shortTitle,
+    category: data.category,
+    description: data.description,
+    longDescription: data.longDescription,
+    highlights: [...(data.highlights ?? [])],
+    tags: [...(data.tags ?? [])],
+    image: data.image,
+    imageAlt: data.imageAlt,
+    client: data.client,
+    year: data.year,
+    clientUrl: data.clientUrl ?? undefined,
+    logoImage: data.logoImage || undefined,
+    logoImageDark: data.logoImageDark || undefined,
+    status: data.status,
   };
 }
 
 export async function getPortfolioProjects(): Promise<PortfolioProject[]> {
-  const entries = await reader.collections.portfolio.all();
+  const entries = await getContentEntries<PortfolioData>("portfolio");
   return entries
-    .map(({ slug, entry }) => ({
-      project: mapProject(slug, entry),
-      order: entry.order ?? 0,
+    .map(({ slug, data }) => ({
+      project: mapProject(slug, data),
+      order: data.order ?? 0,
     }))
     .sort((a, b) => a.order - b.order)
     .map(({ project }) => project);
 }
 
 export async function getPortfolioBySlug(slug: string) {
-  const entry = await reader.collections.portfolio.read(slug);
+  const entry = await getContentEntry<PortfolioData>("portfolio", slug);
   if (!entry) return undefined;
-  return mapProject(slug, entry);
+  return mapProject(slug, entry.data);
 }
 
 export async function getPortfolioSlugs() {

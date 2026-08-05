@@ -1,8 +1,9 @@
+﻿---
 title: Graphic Design
 tagline: Visuals that tell your story
 description: >-
   From brand identities to marketing collateral, we craft bold, memorable
-  visuals. Whether it's a logo, social media kit, or full brand guide — we make
+  visuals. Whether it's a logo, social media kit, or full brand guide â€” we make
   you look exceptional.
 longDescription: >-
   Strong visuals build recognition and trust. We create logos, brand guidelines,
@@ -25,3 +26,4 @@ imageAlt: Creative graphic design workspace
 heroImage: https://images.unsplash.com/photo-1626785774573-4b799315345d?w=1200&q=85&auto=format&fit=crop
 faqs: []
 order: 3
+---

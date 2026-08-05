@@ -1,8 +1,9 @@
+﻿---
 title: AI Integrations
 tagline: Smarter software, less manual work
 description: >-
   We integrate AI and machine learning into your existing products and workflows
-  — chatbots, recommendation engines, intelligent automation, and more.
+  â€” chatbots, recommendation engines, intelligent automation, and more.
 longDescription: >-
   AI can automate repetitive tasks, personalise experiences, and surface
   insights. We help you choose the right use cases and integrate models and APIs
@@ -29,3 +30,4 @@ faqs:
       your data for training or personalisation. We'll outline what's needed in the
       proposal.
 order: 4
+---

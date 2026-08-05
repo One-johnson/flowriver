@@ -1,3 +1,4 @@
+﻿---
 author: Nana Agyemang
 role: Chief Executive Officer, SourceOne Engineering And Logistic Services (SEALS)
 quote: >-
@@ -7,3 +8,4 @@ quote: >-
   recommending their services to any business looking to embrace digital
   transformation.
 order: 3
+---

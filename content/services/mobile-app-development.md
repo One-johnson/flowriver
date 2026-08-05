@@ -1,3 +1,4 @@
+﻿---
 title: Mobile App Development
 tagline: Apps for iOS, Android, and beyond
 description: >-
@@ -25,7 +26,8 @@ heroImage: https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&q
 faqs:
   - question: How long does it take to build an app?
     answer: >-
-      A simple app might take 8–12 weeks; a more complex product can take 4–6
+      A simple app might take 8â€“12 weeks; a more complex product can take 4â€“6
       months. We'll break the work into phases and give you a clear timeline and
       milestones.
 order: 5
+---

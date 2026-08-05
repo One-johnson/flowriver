@@ -1,3 +1,4 @@
+﻿---
 author: Ofosu Acheampong
 role: Senior IRO/Organizer, Communication Workers Union of Trades Union Congress
 quote: >-
@@ -7,3 +8,4 @@ quote: >-
   highly recommend them to any organization seeking a dependable technology
   partner.
 order: 1
+---
