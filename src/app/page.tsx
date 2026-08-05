@@ -8,7 +8,7 @@ import { FaqAccordion } from "@/components/FaqAccordion";
 import { SectionHeader } from "@/components/SectionHeader";
 import { StatsBar } from "@/components/StatsBar";
 import { CTABanner } from "@/components/CTABanner";
-import { sharedTestimonials } from "@/lib/services-data";
+import { getTestimonials } from "@/lib/services-data";
 import {
   ArrowRight,
   Zap,
@@ -84,7 +84,8 @@ const clients = [
   "THE HOMECOMING",
 ];
 
-export default function Home() {
+export default async function Home() {
+  const testimonials = await getTestimonials();
   return (
     <>
       <Section className="relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-24 mesh-bg">
@@ -216,7 +217,7 @@ export default function Home() {
         </AnimatedSection>
 
         <AnimatedSection className="mt-16">
-          <TestimonialsCarousel items={sharedTestimonials} />
+          <TestimonialsCarousel items={testimonials} />
         </AnimatedSection>
       </Section>
 

@@ -1,0 +1,32 @@
+title: Tendzu Ventures — Inventory & Sales Management System
+shortTitle: Tendzu Ventures
+category: Systems
+description: >-
+  A full-stack inventory and sales management system built for a heavy-equipment
+  company, covering stock, restocking, sales, profits, reports, alerts, and
+  administration.
+longDescription: >-
+  We built a responsive operations dashboard for Tendzu Ventures to manage its
+  heavy-equipment catalog and day-to-day commercial activity in one place. The
+  system tracks machines and stock levels, supports restocking and sales
+  workflows, calculates profit, surfaces reports and alerts, and gives
+  administrators control over business settings. It was developed with Next.js,
+  TypeScript, Tailwind CSS, Shadcn UI, and Convex.
+highlights:
+  - Machine catalog and real-time stock management
+  - Restocking and end-to-end sales workflows
+  - Profit tracking, reports, and operational alerts
+  - Responsive dashboard with administrative controls
+tags:
+  - Next.js
+  - TypeScript
+  - Convex
+  - Shadcn UI
+image: /tendzu-ventures-logo.png
+imageAlt: Tendzu Ventures logo
+client: Tendzu Ventures
+year: "2026"
+logoImage: true
+logoImageDark: true
+status: live
+order: 1

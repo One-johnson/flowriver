@@ -1,0 +1,36 @@
+title: Computer Systems, Sales & Repairs
+tagline: Installations, sales and repairs of computers and accessories
+description: >-
+  We install, sell, and repair computer systems and accessories — including
+  laptops, mobile phones, and related hardware. Get reliable service, genuine
+  parts, and expert support under one roof.
+longDescription: >-
+  Whether you need a new laptop, a phone screen fixed, or a full office setup,
+  we offer installations, sales, and repairs for computer systems and
+  accessories. We work with laptops, desktops, mobile phones, and peripherals so
+  you can buy with confidence and get repairs done right.
+icon: Wrench
+features:
+  - Sales of laptops, desktops & mobile phones
+  - Repairs for laptops, phones & tablets
+  - Installation of computer systems & software
+  - "Accessories: chargers, cases, screens & more"
+  - Diagnostics, maintenance & support
+approach:
+  - We help you choose the right device or accessory for your needs and budget.
+  - Repairs are carried out with quality parts and clear pricing — no hidden fees.
+  - Installations include setup, software, and basic training so you're ready to go.
+  - We stand behind our work with honest diagnostics and follow-up support.
+image: https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&q=80&auto=format&fit=crop
+imageAlt: Laptops, phones and tech accessories
+heroImage: https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1200&q=85&auto=format&fit=crop
+faqs:
+  - question: Do you offer warranty on repairs?
+    answer: >-
+      Yes. We provide a warranty on our repair work. The period depends on the type
+      of repair; we'll confirm this when you bring in your device.
+  - question: Can I buy devices and get them installed in one go?
+    answer: >-
+      Absolutely. We can sell you laptops, phones, or full setups and handle
+      installation, software setup, and data transfer so everything is ready to use.
+order: 6

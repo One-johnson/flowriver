@@ -11,7 +11,7 @@ import { CategoryPills } from "./CategoryPills";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import {
-  portfolioProjects,
+  getPortfolioProjects,
   portfolioCategories,
   statusLabels,
 } from "@/lib/portfolio-data";
@@ -44,6 +44,7 @@ export default async function PortfolioPage(props: PageProps) {
     (portfolioCategories as readonly string[]).includes(categoryParam)
       ? categoryParam
       : "All";
+  const portfolioProjects = await getPortfolioProjects();
   const filtered =
     category === "All"
       ? portfolioProjects

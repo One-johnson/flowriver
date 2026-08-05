@@ -11,6 +11,16 @@ import {
   Code,
   Layers,
 } from "lucide-react";
+import { reader } from "@/lib/keystatic";
+
+const iconMap: Record<string, LucideIcon> = {
+  Globe,
+  Component,
+  PenTool,
+  BrainCircuit,
+  Smartphone,
+  Wrench,
+};
 
 export const processSteps = [
   {
@@ -59,273 +69,96 @@ export type ServiceItem = {
   faqs?: { question: string; answer: string }[];
 };
 
-export const sharedTestimonials: {
+export type TestimonialItem = {
   quote: string;
   author: string;
   role: string;
-}[] = [
-  {
-    quote:
-      "FlowRiver Technologies has consistently demonstrated professionalism, innovation, and technical excellence. Their ability to understand client requirements and deliver reliable digital solutions is truly commendable. I highly recommend them to any organization seeking a dependable technology partner.",
-    author: "Ofosu Acheampong",
-    role: "Senior IRO/Organizer, Communication Workers Union of Trades Union Congress",
-  },
-  {
-    quote:
-      "Our experience with FlowRiver Technologies has been exceptional. Their team combines technical expertise with outstanding customer service, delivering solutions that are both practical and effective. They are committed to excellence and always ensure projects are completed to the highest standards.",
-    author: "Dr. Simon Annan",
-    role: "Chief Executive Officer, SourceOne Management Services Ltd",
-  },
-  {
-    quote:
-      "FlowRiver Technologies is a trusted technology partner that consistently delivers quality results. Their innovative approach, attention to detail, and dedication to client satisfaction make them stand out. I have no hesitation in recommending their services to any business looking to embrace digital transformation.",
-    author: "Nana Agyemang",
-    role: "Chief Executive Officer, SourceOne Engineering And Logistic Services (SEALS)",
-  },
-  {
-    quote:
-      "Working with FlowRiver Technologies has been a rewarding experience. Their professionalism, responsiveness, and ability to develop tailored digital solutions have exceeded our expectations. They are passionate about helping businesses leverage technology to improve efficiency and growth.",
-    author: "Albert Agyekum",
-    role: "Public Relations Officer (PRO), SkillsPro Ltd.",
-  },
-  {
-    quote:
-      "FlowRiver Technologies exemplifies innovation, integrity, and excellence. Their team delivers modern technology solutions with a strong focus on quality and customer satisfaction. I confidently recommend FlowRiver Technologies to organizations seeking reliable and forward-thinking IT solutions.",
-    author: "Celestine Djanie",
-    role: "Vice President, Ghana Institute of Purchasing & Supply (GIPS)",
-  },
-];
+};
 
-export const services: ServiceItem[] = [
-  {
-    slug: "web-design-development",
-    icon: Globe,
-    title: "Web Design & Development",
-    tagline: "Websites that work as hard as you do",
-    description:
-      "We design and build fast, responsive, and SEO-friendly websites — from sleek landing pages to complex web applications. Every pixel is intentional, every interaction is smooth.",
-    longDescription:
-      "Whether you need a simple landing page or a full-scale web application, we combine strong design with solid engineering. We focus on performance, accessibility, and SEO so your site not only looks great but reaches the right people and converts.",
-    features: [
-      "Custom responsive websites",
-      "E-commerce & SaaS platforms",
-      "CMS integration (WordPress, Headless)",
-      "Performance optimisation & SEO",
-      "Ongoing maintenance & support",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80&auto=format&fit=crop",
-    imageAlt: "Modern website on a laptop screen",
-    heroImage:
-      "https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&q=85&auto=format&fit=crop",
-    approach: [
-      "We start with your goals and audience so the site is built for results, not just looks.",
-      "Design and development happen in sync — no handoff surprises or last-minute changes.",
-      "We use modern stacks (Next.js, React, etc.) so your site is fast and maintainable.",
-      "Launch includes training, documentation, and a clear support path so you're never stuck.",
-    ],
-    testimonials: sharedTestimonials,
-    faqs: [
-      {
-        question: "How long does a typical website project take?",
-        answer:
-          "A simple marketing site often takes 2–4 weeks; a larger site or web app can take 6–12 weeks. We'll give you a clear timeline and milestones in the proposal.",
-      },
-      {
-        question: "Do you work with existing sites or only new builds?",
-        answer:
-          "Both. We can redesign and rebuild your current site, add new features, or integrate with other tools. We'll assess your codebase and recommend the best approach.",
-      },
-    ],
-  },
-  {
-    slug: "ui-design",
-    icon: Component,
-    title: "UI Design",
-    tagline: "Interfaces users love to use",
-    description:
-      "User-centred interface design grounded in research and refined through iteration. We create intuitive, accessible designs backed by design systems that scale with your product.",
-    longDescription:
-      "Great UI reduces friction and helps users achieve their goals. We combine research, wireframes, and high-fidelity design with reusable systems so your product stays consistent and scalable as it grows.",
-    features: [
-      "User research & wireframing",
-      "High-fidelity UI mockups",
-      "Interactive prototyping",
-      "Design systems & component libraries",
-      "Usability testing & iteration",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&q=80&auto=format&fit=crop",
-    imageAlt: "UI design wireframes and components",
-    heroImage:
-      "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=1200&q=85&auto=format&fit=crop",
-    approach: [
-      "We align every screen with user goals and business outcomes, not just aesthetics.",
-      "Wireframes and prototypes let you test flows before a single line of code is written.",
-      "Design systems keep your product consistent and speed up future development.",
-      "We iterate based on feedback and usability testing so the final UI truly works.",
-    ],
-    testimonials: sharedTestimonials,
-    faqs: [
-      {
-        question: "Do you provide design-only or design + development?",
-        answer:
-          "We offer both. You can hire us for UI design only (handoff to your dev team) or for full design and development so one team owns the whole product.",
-      },
-    ],
-  },
-  {
-    slug: "graphic-design",
-    icon: PenTool,
-    title: "Graphic Design",
-    tagline: "Visuals that tell your story",
-    description:
-      "From brand identities to marketing collateral, we craft bold, memorable visuals. Whether it's a logo, social media kit, or full brand guide — we make you look exceptional.",
-    longDescription:
-      "Strong visuals build recognition and trust. We create logos, brand guidelines, marketing assets, and print-ready materials so your brand looks professional everywhere it appears.",
-    features: [
-      "Logo & brand identity design",
-      "Marketing & social media graphics",
-      "Illustrations & iconography",
-      "Print design (brochures, packaging)",
-      "Brand guidelines & style guides",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&q=80&auto=format&fit=crop",
-    imageAlt: "Creative graphic design workspace",
-    heroImage:
-      "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=1200&q=85&auto=format&fit=crop",
-    approach: [
-      "We start with your story and audience so every asset supports your message.",
-      "From concept to final files, we deliver print- and digital-ready work.",
-      "Brand guidelines ensure your team and partners use the brand consistently.",
-      "We work in your tools (e.g. Canva, Figma) when needed so you can iterate yourself.",
-    ],
-    testimonials: sharedTestimonials,
-  },
-  {
-    slug: "ai-integrations",
-    icon: BrainCircuit,
-    title: "AI Integrations",
-    tagline: "Smarter software, less manual work",
-    description:
-      "We integrate AI and machine learning into your existing products and workflows — chatbots, recommendation engines, intelligent automation, and more.",
-    longDescription:
-      "AI can automate repetitive tasks, personalise experiences, and surface insights. We help you choose the right use cases and integrate models and APIs safely into your stack.",
-    features: [
-      "AI-powered chatbots & assistants",
-      "Natural language processing",
-      "Predictive analytics & recommendations",
-      "Workflow automation with AI",
-      "Custom model training & fine-tuning",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80&auto=format&fit=crop",
-    imageAlt: "AI neural network visualization",
-    heroImage:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=85&auto=format&fit=crop",
-    approach: [
-      "We identify where AI adds real value instead of adding tech for its own sake.",
-      "We use proven APIs and platforms where possible to reduce cost and risk.",
-      "Data privacy and security are built in from the start.",
-      "We design for iteration so you can improve models and prompts over time.",
-    ],
-    testimonials: sharedTestimonials,
-    faqs: [
-      {
-        question: "Do we need our own data to get started with AI?",
-        answer:
-          "It depends. Some solutions work with public or third-party data; others need your data for training or personalisation. We'll outline what's needed in the proposal.",
-      },
-    ],
-  },
-  {
-    slug: "mobile-app-development",
-    icon: Smartphone,
-    title: "Mobile App Development",
-    tagline: "Apps for iOS, Android, and beyond",
-    description:
-      "Native and cross-platform mobile apps designed for performance and delight. From concept to App Store, we handle the full lifecycle.",
-    longDescription:
-      "We build mobile apps that users love and that fit your business. From UX and UI to backend APIs and store submission, we take care of the full journey so you can focus on growth.",
-    features: [
-      "iOS & Android development",
-      "Cross-platform (React Native, Flutter)",
-      "App UI/UX design",
-      "Backend & API development",
-      "App Store submission & optimisation",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80&auto=format&fit=crop",
-    imageAlt: "Mobile app on a smartphone",
-    heroImage:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&q=85&auto=format&fit=crop",
-    approach: [
-      "We choose native vs cross-platform based on your goals, timeline, and budget.",
-      "Performance and battery impact are part of the design, not an afterthought.",
-      "We design for both iOS and Android guidelines so the app feels at home on each platform.",
-      "We handle store listings, screenshots, and submission so you can launch on time.",
-    ],
-    testimonials: sharedTestimonials,
-    faqs: [
-      {
-        question: "How long does it take to build an app?",
-        answer:
-          "A simple app might take 8–12 weeks; a more complex product can take 4–6 months. We'll break the work into phases and give you a clear timeline and milestones.",
-      },
-    ],
-  },
-  {
-    slug: "computer-systems-sales-repairs",
-    icon: Wrench,
-    title: "Computer Systems, Sales & Repairs",
-    tagline: "Installations, sales and repairs of computers and accessories",
-    description:
-      "We install, sell, and repair computer systems and accessories — including laptops, mobile phones, and related hardware. Get reliable service, genuine parts, and expert support under one roof.",
-    longDescription:
-      "Whether you need a new laptop, a phone screen fixed, or a full office setup, we offer installations, sales, and repairs for computer systems and accessories. We work with laptops, desktops, mobile phones, and peripherals so you can buy with confidence and get repairs done right.",
-    features: [
-      "Sales of laptops, desktops & mobile phones",
-      "Repairs for laptops, phones & tablets",
-      "Installation of computer systems & software",
-      "Accessories: chargers, cases, screens & more",
-      "Diagnostics, maintenance & support",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&q=80&auto=format&fit=crop",
-    imageAlt: "Laptops, phones and tech accessories",
-    heroImage:
-      "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1200&q=85&auto=format&fit=crop",
-    approach: [
-      "We help you choose the right device or accessory for your needs and budget.",
-      "Repairs are carried out with quality parts and clear pricing — no hidden fees.",
-      "Installations include setup, software, and basic training so you're ready to go.",
-      "We stand behind our work with honest diagnostics and follow-up support.",
-    ],
-    testimonials: sharedTestimonials,
-    faqs: [
-      {
-        question: "Do you offer warranty on repairs?",
-        answer:
-          "Yes. We provide a warranty on our repair work. The period depends on the type of repair; we'll confirm this when you bring in your device.",
-      },
-      {
-        question: "Can I buy devices and get them installed in one go?",
-        answer:
-          "Absolutely. We can sell you laptops, phones, or full setups and handle installation, software setup, and data transfer so everything is ready to use.",
-      },
-    ],
-  },
-];
-
-export function getServiceBySlug(slug: string): ServiceItem | undefined {
-  return services.find((s) => s.slug === slug);
+export async function getTestimonials(): Promise<TestimonialItem[]> {
+  const entries = await reader.collections.testimonials.all();
+  return entries
+    .map(({ entry }) => ({
+      author: entry.author,
+      role: entry.role,
+      quote: entry.quote,
+      order: entry.order ?? 0,
+    }))
+    .sort((a, b) => a.order - b.order)
+    .map(({ quote, author, role }) => ({ quote, author, role }));
 }
 
-export function getServiceSlugs(): string[] {
+function mapService(
+  slug: string,
+  entry: {
+    title: string;
+    tagline: string;
+    description: string;
+    longDescription: string;
+    icon: string;
+    features: readonly string[];
+    approach: readonly string[];
+    image: string;
+    imageAlt: string;
+    heroImage: string;
+    faqs: readonly { question: string; answer: string }[];
+  },
+  testimonials: TestimonialItem[]
+): ServiceItem {
+  return {
+    slug,
+    icon: iconMap[entry.icon] ?? Globe,
+    title: entry.title,
+    tagline: entry.tagline,
+    description: entry.description,
+    longDescription: entry.longDescription || undefined,
+    features: [...entry.features],
+    image: entry.image,
+    imageAlt: entry.imageAlt,
+    heroImage: entry.heroImage,
+    approach: [...entry.approach],
+    testimonials,
+    faqs: entry.faqs?.length
+      ? entry.faqs.map((f) => ({ question: f.question, answer: f.answer }))
+      : undefined,
+  };
+}
+
+export async function getServices(): Promise<ServiceItem[]> {
+  const [entries, testimonials] = await Promise.all([
+    reader.collections.services.all(),
+    getTestimonials(),
+  ]);
+
+  return entries
+    .map(({ slug, entry }) => ({
+      service: mapService(slug, entry, testimonials),
+      order: entry.order ?? 0,
+    }))
+    .sort((a, b) => a.order - b.order)
+    .map(({ service }) => service);
+}
+
+export async function getServiceBySlug(
+  slug: string
+): Promise<ServiceItem | undefined> {
+  const [entry, testimonials] = await Promise.all([
+    reader.collections.services.read(slug),
+    getTestimonials(),
+  ]);
+  if (!entry) return undefined;
+  return mapService(slug, entry, testimonials);
+}
+
+export async function getServiceSlugs(): Promise<string[]> {
+  const services = await getServices();
   return services.map((s) => s.slug);
 }
 
-export function getRelatedServices(currentSlug: string, limit = 3): ServiceItem[] {
+export async function getRelatedServices(
+  currentSlug: string,
+  limit = 3
+): Promise<ServiceItem[]> {
+  const services = await getServices();
   return services.filter((s) => s.slug !== currentSlug).slice(0, limit);
 }

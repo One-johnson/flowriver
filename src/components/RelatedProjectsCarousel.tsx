@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { PortfolioProject } from "@/lib/portfolio-data";
+import type { PortfolioProject } from "@/lib/portfolio-types";
 
 type Props = {
   projects: PortfolioProject[];

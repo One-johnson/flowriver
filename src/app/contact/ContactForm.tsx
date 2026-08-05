@@ -10,10 +10,6 @@ import Link from "next/link";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
-const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID
-  ? `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID}`
-  : null;
-
 export function ContactForm() {
   const [state, setState] = useState<FormState>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -21,18 +17,16 @@ export function ContactForm() {
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!FORMSPREE_ENDPOINT) {
-      setState("error");
-      setErrorMessage("Form is not configured. Please set NEXT_PUBLIC_FORMSPREE_FORM_ID.");
-      return;
-    }
 
     const form = e.currentTarget;
     const formData = new FormData(form);
+    const name = (formData.get("name") as string) || "";
     const email = (formData.get("email") as string) || "";
-    const honeypot = formData.get("website") as string;
+    const company = (formData.get("company") as string) || "";
+    const message = (formData.get("message") as string) || "";
+    const website = (formData.get("website") as string) || "";
 
-    if (honeypot) {
+    if (website) {
       setState("success");
       setSubmittedEmail(email);
       return;
@@ -42,10 +36,10 @@ export function ContactForm() {
     setErrorMessage("");
 
     try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        body: formData,
-        headers: { Accept: "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ name, email, company, message, website }),
       });
 
       const data = await res.json().catch(() => ({}));
@@ -56,6 +50,7 @@ export function ContactForm() {
 
       setSubmittedEmail(email);
       setState("success");
+      form.reset();
     } catch (err) {
       setState("error");
       setErrorMessage(

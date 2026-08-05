@@ -29,12 +29,13 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  return getPortfolioSlugs().map((slug) => ({ slug }));
+  const slugs = await getPortfolioSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const project = getPortfolioBySlug(slug);
+  const project = await getPortfolioBySlug(slug);
   if (!project) return { title: "Project not found" };
   return {
     title: project.title,
@@ -49,10 +50,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PortfolioDetailPage({ params }: Props) {
   const { slug } = await params;
-  const project = getPortfolioBySlug(slug);
+  const project = await getPortfolioBySlug(slug);
   if (!project) notFound();
 
-  const related = getRelatedProjects(slug);
+  const related = await getRelatedProjects(slug);
   const status = project.status ?? "live";
 
   return (
