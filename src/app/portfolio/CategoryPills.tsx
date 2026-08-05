@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { portfolioCategories } from "@/lib/portfolio-data";
+import { portfolioCategories } from "@/lib/portfolio-types";
 
 export function CategoryPills() {
   const router = useRouter();

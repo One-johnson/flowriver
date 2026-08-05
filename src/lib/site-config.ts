@@ -1,4 +1,4 @@
-export const SITE_EMAIL = "flowrivertechnologies@gmail.com";
+export const SITE_EMAIL = "support@flowrivertechnologies.com";
 
 export const socialLinks = [
   { href: "https://twitter.com/flowrivertech", label: "Twitter" },

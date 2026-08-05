@@ -22,12 +22,13 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  return getServiceSlugs().map((slug) => ({ slug }));
+  const slugs = await getServiceSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const service = getServiceBySlug(slug);
+  const service = await getServiceBySlug(slug);
   if (!service) return { title: "Service not found" };
   return {
     title: service.title,
@@ -43,10 +44,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ServiceDetailPage({ params }: Props) {
   const { slug } = await params;
-  const service = getServiceBySlug(slug);
+  const service = await getServiceBySlug(slug);
   if (!service) notFound();
 
-  const related = getRelatedServices(slug);
+  const related = await getRelatedServices(slug);
   const Icon = service.icon;
 
   return (

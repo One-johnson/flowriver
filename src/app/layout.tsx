@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { CookieNotice } from "@/components/CookieNotice";
+import { SiteShell } from "@/components/SiteShell";
 import { SITE_EMAIL } from "@/lib/site-config";
 import "./globals.css";
 
@@ -118,10 +116,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <Header />
-        <main id="main-content" className="min-h-[calc(100vh-4.5rem)]">{children}</main>
-        <Footer />
-        <CookieNotice />
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );

@@ -3,7 +3,7 @@ import { getServiceSlugs } from "@/lib/services-data";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://flowrivertechnologies.com";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes = [
     "",
     "/about",
@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: (path === "" ? "weekly" : "monthly") as "weekly" | "monthly",
     priority: path === "" ? 1 : 0.8,
   }));
-  const serviceSlugs = getServiceSlugs();
+  const serviceSlugs = await getServiceSlugs();
   const serviceEntries: MetadataRoute.Sitemap = serviceSlugs.map((slug) => ({
     url: `${baseUrl}/services/${slug}`,
     lastModified: new Date(),

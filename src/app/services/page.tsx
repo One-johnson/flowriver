@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { AnimatedImageBox } from "@/components/AnimatedImageBox";
-import { services, processSteps } from "@/lib/services-data";
+import { getServices, processSteps } from "@/lib/services-data";
 
 const servicesFaqs = [
   {
@@ -40,7 +40,8 @@ export const metadata: Metadata = {
     "FlowRiver Technologies offers web design & development, UI design, graphic design, AI integrations, mobile app development, and computer systems sales & repairs (laptops, phones, installations).",
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const services = await getServices();
   return (
     <>
       <PageHero
