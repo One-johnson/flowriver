@@ -2,14 +2,14 @@ import { config, fields, collection } from "@keystatic/core";
 
 const githubRepo = "One-johnson/flowriver";
 
-// Local mode: works on your machine (and shows existing content/* entries).
-// GitHub mode: only when explicitly enabled for setup, or in production WITH credentials.
-//   KEYSTATIC_STORAGE=github  → run the Create GitHub App wizard locally
-//   Production + KEYSTATIC_GITHUB_CLIENT_ID → live /keystatic on Vercel
+// IMPORTANT: client + server must agree on storage kind.
+// KEYSTATIC_GITHUB_CLIENT_ID is server-only, so it cannot drive this check
+// (the Admin UI would think it's "local" on Vercel and call missing APIs → "Not Found").
+// NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG is available in both environments.
 const useGithubStorage =
   process.env.KEYSTATIC_STORAGE === "github" ||
-  (process.env.NODE_ENV === "production" &&
-    Boolean(process.env.KEYSTATIC_GITHUB_CLIENT_ID));
+  (process.env.KEYSTATIC_STORAGE !== "local" &&
+    Boolean(process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG));
 
 export default config({
   storage: useGithubStorage
