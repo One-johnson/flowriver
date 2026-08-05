@@ -1,8 +1,9 @@
+﻿---
 title: National Procurement and Supply Conference
 shortTitle: NPSC Ghana
 category: Websites
 description: >-
-  Official website for the National Procurement and Supply Conference (NPSC) —
+  Official website for the National Procurement and Supply Conference (NPSC) â€”
   events, speakers, and resources.
 longDescription: >-
   The official website for the National Procurement and Supply Conference (NPSC),
@@ -22,9 +23,10 @@ tags:
 image: /npsc.png
 imageAlt: National Procurement and Supply Conference logo
 client: National Procurement and Supply Conference (NPSC)
-year: "—"
+year: "â€”"
 clientUrl: https://www.npscghana.com
 logoImage: true
 logoImageDark: false
 status: live
 order: 5
+---

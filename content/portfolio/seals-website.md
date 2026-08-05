@@ -1,8 +1,9 @@
-title: SEALS — Corporate Website
+﻿---
+title: SEALS â€” Corporate Website
 shortTitle: SEALS Ghana
 category: Websites
 description: >-
-  Corporate website for SourceOne Engineering And Logistics Services (SEALS) —
+  Corporate website for SourceOne Engineering And Logistics Services (SEALS) â€”
   services, about, and contact.
 longDescription: >-
   We delivered a modern corporate website for SourceOne Engineering And Logistics
@@ -22,9 +23,10 @@ tags:
 image: /seals.png
 imageAlt: SourceOne Engineering And Logistics Services (SEALS) logo
 client: SourceOne Engineering And Logistics Services
-year: "—"
+year: "â€”"
 clientUrl: https://sealsghana.com
 logoImage: true
 logoImageDark: false
 status: live
 order: 3
+---

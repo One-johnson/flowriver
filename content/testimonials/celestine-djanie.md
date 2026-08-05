@@ -1,3 +1,4 @@
+﻿---
 author: Celestine Djanie
 role: Vice President, Ghana Institute of Purchasing & Supply (GIPS)
 quote: >-
@@ -6,3 +7,4 @@ quote: >-
   and customer satisfaction. I confidently recommend FlowRiver Technologies to
   organizations seeking reliable and forward-thinking IT solutions.
 order: 5
+---

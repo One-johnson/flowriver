@@ -1,3 +1,4 @@
+﻿---
 author: Albert Agyekum
 role: Public Relations Officer (PRO), SkillsPro Ltd.
 quote: >-
@@ -6,3 +7,4 @@ quote: >-
   solutions have exceeded our expectations. They are passionate about helping
   businesses leverage technology to improve efficiency and growth.
 order: 4
+---
