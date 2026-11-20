@@ -38,4 +38,4 @@ Add a markdown file to `content/portfolio/` (copy an existing one), put its imag
 
 ## Deploying to Vercel
 
-Nitro detects Vercel during the build and outputs a Vercel deployment automatically. In the Vercel project settings, set the framework preset to **TanStack Start** (or "Other") rather than Next.js, with build command `npm run build`.
+`vercel.json` sets the framework to TanStack Start, which overrides the project's dashboard preset. Nitro detects Vercel during the build and writes the deployment to `.vercel/output`, which Vercel uses directly. Production deploys from `main`; pushes to other branches get preview deployments.
