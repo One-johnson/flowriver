@@ -15,6 +15,8 @@ const retiredServices = new Set([
   "ai-integrations",
   "mobile-app-development",
   "computer-systems-sales-repairs",
+  "ui-design",
+  "graphic-design",
 ]);
 
 export const Route = createFileRoute("/services/$slug")({
@@ -136,7 +138,7 @@ function ServiceDetailPage() {
 
       <Section>
         <SectionHeader title="Other services" />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
           {related.map((s) => (
             <Link
               key={s.slug}

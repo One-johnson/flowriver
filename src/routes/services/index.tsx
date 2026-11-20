@@ -16,7 +16,7 @@ export const Route = createFileRoute("/services/")({
     seo({
       title: "Services",
       description:
-        "Web design and development, progressive web apps and custom applications from FlowRiver Technologies in Accra, plus UI and graphic design.",
+        "Web design and development, progressive web apps and custom applications from FlowRiver Technologies in Accra.",
       path: "/services",
     }),
   component: ServicesPage,
@@ -52,13 +52,13 @@ function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="What we can build for you"
-        description="Most clients come to us for a website or a custom system, then stay for design, support and the next project. Pick a service to see what's included."
+        description="Most clients come to us for a website or a custom system, then stay for support, upgrades and the next project. Pick a service to see what's included."
       />
 
       <Section>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
-            <AnimatedSection key={s.slug} delay={(i % 2) * 0.08}>
+            <AnimatedSection key={s.slug} delay={i * 0.08}>
               <Link
                 to="/services/$slug"
                 params={{ slug: s.slug }}

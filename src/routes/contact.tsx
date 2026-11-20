@@ -32,7 +32,7 @@ const contactFaqs = [
   {
     question: "Do you take on small projects?",
     answer:
-      "Yes. We work on everything from single landing pages and logo designs to full custom systems.",
+      "Yes. We work on everything from single landing pages to full custom systems.",
   },
   {
     question: "Do you offer support after delivery?",

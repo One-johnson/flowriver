@@ -22,7 +22,7 @@ const homeFaqs = [
   {
     question: "What does FlowRiver Technologies do?",
     answer:
-      "We design and build websites, progressive web apps that install on phones and work offline, and custom systems such as inventory, school and membership management. We also do UI and graphic design.",
+      "We design and build websites, progressive web apps that install on phones and work offline, and custom systems such as inventory, school and membership management.",
   },
   {
     question: "How do I get started?",
