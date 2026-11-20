@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { FlowLines } from "@/components/FlowLines";
 import { Section } from "@/components/Section";
 import { cn } from "@/lib/utils";
 
@@ -7,35 +7,34 @@ interface PageHeroProps {
   eyebrow?: string;
   title: React.ReactNode;
   description: string;
-  image?: {
-    src: string;
-    alt: string;
-    contain?: boolean;
-  };
   children?: React.ReactNode;
+  aside?: React.ReactNode;
   className?: string;
 }
 
+/** Dark navy page header with the animated flow lines behind it. */
 export function PageHero({
   eyebrow,
   title,
   description,
-  image,
   children,
+  aside,
   className,
 }: PageHeroProps) {
   return (
-    <Section className={cn("pt-28 pb-12 sm:pt-36 sm:pb-16", className)}>
+    <Section
+      tone="ink"
+      className={cn("overflow-hidden pt-20 pb-16 sm:pt-28 sm:pb-20", className)}
+    >
+      <FlowLines className="opacity-70" />
       <div
         className={cn(
-          "grid items-center gap-12",
-          image && "lg:grid-cols-2 lg:gap-20"
+          "relative grid items-center gap-12",
+          aside && "lg:grid-cols-2 lg:gap-20"
         )}
       >
         <AnimatedSection className="max-w-2xl">
-          {eyebrow && (
-            <p className="text-sm font-medium text-primary">{eyebrow}</p>
-          )}
+          {eyebrow && <p className="eyebrow">{eyebrow}</p>}
           <h1
             className={cn(
               "font-display text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl",
@@ -49,26 +48,7 @@ export function PageHero({
           </p>
           {children}
         </AnimatedSection>
-
-        {image && (
-          <AnimatedSection delay={0.1}>
-            <div
-              className={cn(
-                "relative mx-auto aspect-[4/3] w-full max-w-lg overflow-hidden rounded-xl border border-border lg:max-w-none",
-                image.contain && "bg-muted/50"
-              )}
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                sizes="(max-width: 1024px) 90vw, 45vw"
-                className={image.contain ? "object-contain p-10" : "object-cover"}
-                priority
-              />
-            </div>
-          </AnimatedSection>
-        )}
+        {aside && <AnimatedSection delay={0.1}>{aside}</AnimatedSection>}
       </div>
     </Section>
   );

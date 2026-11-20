@@ -28,5 +28,5 @@ clientUrl: https://sealsghana.com
 logoImage: true
 logoImageDark: false
 status: live
-order: 3
+order: 6
 ---

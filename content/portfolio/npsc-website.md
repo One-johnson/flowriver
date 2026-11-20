@@ -28,5 +28,5 @@ clientUrl: https://www.npscghana.com
 logoImage: true
 logoImageDark: false
 status: live
-order: 5
+order: 8
 ---

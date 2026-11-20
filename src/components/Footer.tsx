@@ -1,7 +1,5 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Mail, MapPin, ArrowUpRight } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import { Link } from "@tanstack/react-router";
+import { ArrowUpRight, Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   RESPONSE_TIME,
@@ -10,39 +8,35 @@ import {
   socialLinks,
 } from "@/lib/site-config";
 
-const secondaryLinks = [
-  { href: "/privacy", label: "Privacy Policy" },
-  { href: "/terms", label: "Terms of Service" },
-];
-
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-muted/40">
+    <footer className="theme-ink">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           <div className="space-y-5 lg:col-span-4">
-            <Link href="/" className="inline-flex items-center">
-              <Image
+            <Link to="/" className="inline-flex rounded-md bg-white p-1.5">
+              <img
                 src="/logo.png"
                 alt="FlowRiver Technologies"
-                width={180}
-                height={45}
-                className="h-10 w-auto sm:h-11"
+                width={150}
+                height={100}
+                loading="lazy"
+                className="h-14 w-auto"
               />
             </Link>
             <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-              A design and development studio in Accra. We build websites,
-              apps and business systems for organisations in Ghana and abroad.
+              A design and development studio in Accra. We build websites, apps
+              and business systems for organisations in Ghana and abroad.
             </p>
-            <div className="space-y-3 pt-2">
+            <div className="space-y-3 pt-2 text-sm">
               <a
                 href={`mailto:${SITE_EMAIL}`}
-                className="flex items-center gap-2.5 text-sm text-muted-foreground transition-colors hover:text-primary"
+                className="flex items-center gap-2.5 text-muted-foreground transition-colors hover:text-primary"
               >
                 <Mail className="h-4 w-4 shrink-0 text-primary" />
                 {SITE_EMAIL}
               </a>
-              <p className="flex items-center gap-2.5 text-sm text-muted-foreground">
+              <p className="flex items-center gap-2.5 text-muted-foreground">
                 <MapPin className="h-4 w-4 shrink-0 text-primary" />
                 Accra, Ghana
               </p>
@@ -50,14 +44,14 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-foreground">
-              Navigation
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest">
+              Pages
             </h3>
             <ul className="space-y-2.5">
               {navLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.to}>
                   <Link
-                    href={link.href}
+                    to={link.to}
                     className="text-sm text-muted-foreground transition-colors hover:text-primary"
                   >
                     {link.label}
@@ -68,22 +62,28 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-foreground">
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest">
               Legal
             </h3>
             <ul className="space-y-2.5">
-              {secondaryLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link
+                  to="/privacy"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/terms"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
+                  Terms of Service
+                </Link>
+              </li>
             </ul>
-            <h3 className="mb-4 mt-8 text-xs font-semibold uppercase tracking-widest text-foreground">
+            <h3 className="mb-4 mt-8 text-xs font-semibold uppercase tracking-widest">
               Follow us
             </h3>
             <ul className="flex flex-wrap gap-3">
@@ -111,17 +111,18 @@ export function Footer() {
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 Tell us what you need. We reply {RESPONSE_TIME}.
               </p>
-              <Button asChild className="mt-5 w-full sm:w-auto">
-                <Link href="/contact">Get in touch</Link>
+              <Button asChild className="mt-5">
+                <Link to="/contact">Get in touch</Link>
               </Button>
             </div>
           </div>
         </div>
 
-        <Separator className="opacity-50" />
-
-        <div className="py-6 text-xs text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} FlowRiver Technologies. All rights reserved.</p>
+        <div className="border-t border-border py-6 text-xs text-muted-foreground">
+          <p>
+            &copy; {new Date().getFullYear()} FlowRiver Technologies. All rights
+            reserved.
+          </p>
         </div>
       </div>
     </footer>

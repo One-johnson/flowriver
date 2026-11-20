@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 
 interface SectionHeaderProps {
+  eyebrow?: string;
   title: string;
   description?: React.ReactNode;
   className?: string;
@@ -8,6 +9,7 @@ interface SectionHeaderProps {
 }
 
 export function SectionHeader({
+  eyebrow,
   title,
   description,
   className,
@@ -20,7 +22,13 @@ export function SectionHeader({
         className
       )}
     >
-      <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+      <h2
+        className={cn(
+          "font-display text-3xl font-bold tracking-tight sm:text-4xl",
+          eyebrow && "mt-3"
+        )}
+      >
         {title}
       </h2>
       {description && (

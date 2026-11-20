@@ -1,10 +1,7 @@
-"use client";
-
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ProjectCard } from "@/components/ProjectCard";
 import { cn } from "@/lib/utils";
 import type { PortfolioProject } from "@/lib/portfolio-types";
 
@@ -39,47 +36,13 @@ export function RelatedProjectsCarousel({ projects }: Props) {
   return (
     <div className="relative">
       <div ref={emblaRef} className="overflow-hidden">
-        <div className="flex touch-pan-y gap-5">
+        <div className="flex touch-pan-y gap-5 py-2">
           {projects.map((p) => (
             <div
               key={p.slug}
               className="min-w-0 flex-[0_0_85%] sm:flex-[0_0_48%] lg:flex-[0_0_32%]"
             >
-              <Link
-                href={`/portfolio/${p.slug}`}
-                className="surface link-card group block overflow-hidden"
-              >
-                <div
-                  className={cn(
-                    "relative aspect-[16/10] overflow-hidden",
-                    p.logoImage &&
-                      (p.logoImageDark ? "bg-zinc-950" : "bg-muted/60")
-                  )}
-                >
-                  <Image
-                    src={p.image}
-                    alt={p.imageAlt}
-                    fill
-                    sizes="(max-width: 640px) 85vw, (max-width: 1024px) 48vw, 32vw"
-                    className={cn(
-                      p.logoImage ? "object-contain p-6" : "object-cover"
-                    )}
-                  />
-                </div>
-                <div className="flex items-center justify-between gap-3 p-4">
-                  <div>
-                    <p className="text-xs font-medium uppercase tracking-wider text-primary">
-                      {p.category}
-                    </p>
-                    <h3 className="mt-1 font-display text-base font-bold">
-                      {p.shortTitle}
-                    </h3>
-                  </div>
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border/50 text-muted-foreground transition-all group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground">
-                    <ArrowRight className="h-4 w-4" />
-                  </span>
-                </div>
-              </Link>
+              <ProjectCard project={p} />
             </div>
           ))}
         </div>

@@ -27,5 +27,5 @@ clientUrl: https://skillsproltd.com
 logoImage: true
 logoImageDark: true
 status: live
-order: 4
+order: 7
 ---

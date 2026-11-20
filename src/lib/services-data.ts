@@ -1,53 +1,7 @@
-import type { LucideIcon } from "lucide-react";
-import {
-  Globe,
-  Component,
-  PenTool,
-  BrainCircuit,
-  Smartphone,
-  Wrench,
-} from "lucide-react";
 import { getContentEntries, getContentEntry } from "@/lib/content";
-
-const iconMap: Record<string, LucideIcon> = {
-  Globe,
-  Component,
-  PenTool,
-  BrainCircuit,
-  Smartphone,
-  Wrench,
-};
-
-export const processSteps = [
-  {
-    step: "01",
-    title: "Discovery",
-    description:
-      "We learn about your business, your users and what the project needs to do, then agree scope, timeline and price.",
-  },
-  {
-    step: "02",
-    title: "Design",
-    description:
-      "Wireframes and mockups you can review and comment on. We revise until you're happy before building.",
-  },
-  {
-    step: "03",
-    title: "Develop",
-    description:
-      "We build and test in stages and share progress as we go, so there are no surprises at the end.",
-  },
-  {
-    step: "04",
-    title: "Deliver & Support",
-    description:
-      "We launch, train your team and hand over documentation, then stay on for fixes and updates.",
-  },
-];
 
 export type ServiceItem = {
   slug: string;
-  icon: LucideIcon;
   title: string;
   tagline: string;
   description: string;
@@ -78,7 +32,6 @@ type ServiceData = {
   tagline: string;
   description: string;
   longDescription?: string;
-  icon: string;
   features?: string[];
   approach?: string[];
   image: string;
@@ -104,7 +57,6 @@ export async function getTestimonials(): Promise<TestimonialItem[]> {
 function mapService(slug: string, data: ServiceData): ServiceItem {
   return {
     slug,
-    icon: iconMap[data.icon] ?? Globe,
     title: data.title,
     tagline: data.tagline,
     description: data.description,
