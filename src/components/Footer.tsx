@@ -1,9 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Mail, MapPin } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   RESPONSE_TIME,
   SITE_EMAIL,
+  SITE_PHONE,
+  SITE_PHONE_DISPLAY,
+  WHATSAPP_URL,
   navLinks,
   socialLinks,
 } from "@/lib/site-config";
@@ -25,8 +28,9 @@ export function Footer() {
               />
             </Link>
             <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-              A design and development studio in Accra. We build websites, apps
-              and business systems for organisations in Ghana and abroad.
+              A design and development studio in Accra. We build websites, web
+              apps and custom systems, host them, and advise on IT and ERP for
+              organisations in Ghana and abroad.
             </p>
             <div className="space-y-3 pt-2 text-sm">
               <a
@@ -35,6 +39,22 @@ export function Footer() {
               >
                 <Mail className="h-4 w-4 shrink-0 text-primary" />
                 {SITE_EMAIL}
+              </a>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2.5 text-muted-foreground transition-colors hover:text-primary"
+              >
+                <MessageCircle className="h-4 w-4 shrink-0 text-primary" />
+                WhatsApp {SITE_PHONE_DISPLAY}
+              </a>
+              <a
+                href={`tel:${SITE_PHONE}`}
+                className="flex items-center gap-2.5 text-muted-foreground transition-colors hover:text-primary"
+              >
+                <Phone className="h-4 w-4 shrink-0 text-primary" />
+                Call {SITE_PHONE_DISPLAY}
               </a>
               <p className="flex items-center gap-2.5 text-muted-foreground">
                 <MapPin className="h-4 w-4 shrink-0 text-primary" />
@@ -83,24 +103,28 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
-            <h3 className="mb-4 mt-8 text-xs font-semibold uppercase tracking-widest">
-              Follow us
-            </h3>
-            <ul className="flex flex-wrap gap-3">
-              {socialLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    {link.label}
-                    <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {socialLinks.length > 0 && (
+              <>
+                <h3 className="mb-4 mt-8 text-xs font-semibold uppercase tracking-widest">
+                  Follow us
+                </h3>
+                <ul className="flex flex-wrap gap-3">
+                  {socialLinks.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-primary"
+                      >
+                        {link.label}
+                        <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
           </div>
 
           <div className="lg:col-span-4">

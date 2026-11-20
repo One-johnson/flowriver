@@ -1,10 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Clock, Mail, MapPin } from "lucide-react";
+import { Clock, Mail, MapPin, MessageCircle } from "lucide-react";
 import { Section } from "@/components/Section";
 import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/components/ContactForm";
 import { FaqAccordion } from "@/components/FaqAccordion";
-import { RESPONSE_TIME, SITE_EMAIL } from "@/lib/site-config";
+import {
+  RESPONSE_TIME,
+  SITE_EMAIL,
+  SITE_PHONE,
+  SITE_PHONE_DISPLAY,
+  WHATSAPP_URL,
+} from "@/lib/site-config";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
@@ -74,6 +80,29 @@ function ContactPage() {
                     className="font-medium text-primary underline-offset-4 hover:underline"
                   >
                     {SITE_EMAIL}
+                  </a>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                  <MessageCircle className="h-4 w-4" />
+                </span>
+                <div>
+                  <p className="text-sm text-muted-foreground">WhatsApp or call</p>
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-primary underline-offset-4 hover:underline"
+                  >
+                    Chat on WhatsApp
+                  </a>
+                  <span className="text-muted-foreground"> · </span>
+                  <a
+                    href={`tel:${SITE_PHONE}`}
+                    className="font-medium underline-offset-4 hover:underline"
+                  >
+                    {SITE_PHONE_DISPLAY}
                   </a>
                 </div>
               </li>

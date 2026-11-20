@@ -17,9 +17,11 @@ export const navLinks = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
-// TODO: confirm these handles exist before launch.
-export const socialLinks = [
-  { href: "https://twitter.com/flowrivertech", label: "Twitter" },
-  { href: "https://linkedin.com/company/flowrivertech", label: "LinkedIn" },
-  { href: "https://instagram.com/flowrivertech", label: "Instagram" },
-] as const;
+/** Phone and WhatsApp number, in international format and as displayed. */
+export const SITE_PHONE = "+233553301044";
+export const SITE_PHONE_DISPLAY = "055 330 1044";
+export const WHATSAPP_URL = "https://wa.me/233553301044";
+
+// Company social accounts. Add entries once the accounts exist; the
+// footer hides the "Follow us" list while this is empty.
+export const socialLinks: { href: string; label: string }[] = [];

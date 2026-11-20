@@ -7,7 +7,7 @@ import {
 } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { SITE_EMAIL, SITE_NAME, SITE_URL } from "@/lib/site-config";
+import { SITE_EMAIL, SITE_NAME, SITE_PHONE, SITE_URL } from "@/lib/site-config";
 import { seo } from "@/lib/seo";
 import appCss from "@/styles/app.css?url";
 
@@ -30,6 +30,7 @@ const jsonLd = {
     "@type": "ContactPoint",
     contactType: "customer service",
     email: SITE_EMAIL,
+    telephone: SITE_PHONE,
     url: `${SITE_URL}/contact`,
   },
 };
