@@ -72,12 +72,13 @@ function Home() {
           <AnimatedSection>
             <p className="eyebrow">Design and development studio · Accra, Ghana</p>
             <h1 className="mt-4 font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
-              Websites, apps and business systems for organisations in Ghana.
+              Websites, web apps and custom systems for organisations in Ghana.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              We design, build and maintain software for businesses, unions,
-              schools and NGOs, from the first conversation through to support
-              after launch.
+              We build fast websites, progressive web apps that install on any
+              phone and work offline, and systems built around how your team
+              works. Businesses, unions, schools and NGOs use them, and we
+              support them after launch.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
