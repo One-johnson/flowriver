@@ -1,5 +1,5 @@
 ﻿---
-title: SKILLSPRO LTD â€” Website
+title: SKILLSPRO LTD — Website
 shortTitle: SkillsPro
 category: Websites
 description: >-
@@ -22,7 +22,7 @@ tags:
 image: /skillspro-logo.png
 imageAlt: SKILLSPRO LTD logo
 client: SKILLSPRO LTD
-year: "â€”"
+year: "—"
 clientUrl: https://skillsproltd.com
 logoImage: true
 logoImageDark: true

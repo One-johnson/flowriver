@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 import Link from "next/link";
+import { RESPONSE_TIME } from "@/lib/site-config";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
@@ -67,8 +68,7 @@ export function ContactForm() {
           Message sent!
         </h3>
         <p className="mt-2 text-sm text-muted-foreground">
-          Thanks for reaching out. We&apos;ll get back to you within 4
-          business hours.
+          Thanks for getting in touch. We&apos;ll reply {RESPONSE_TIME}.
           {submittedEmail && (
             <>
               {" "}

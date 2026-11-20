@@ -2,12 +2,11 @@
 title: Mobile App Development
 tagline: Apps for iOS, Android, and beyond
 description: >-
-  Native and cross-platform mobile apps designed for performance and delight.
-  From concept to App Store, we handle the full lifecycle.
+  Cross-platform and native mobile apps for iOS and Android, from first
+  design through to App Store and Play Store release.
 longDescription: >-
-  We build mobile apps that users love and that fit your business. From UX and
-  UI to backend APIs and store submission, we take care of the full journey so
-  you can focus on growth.
+  We handle the whole build: UX and UI design, the backend and APIs the app
+  depends on, testing on real devices, and store submission.
 icon: Smartphone
 features:
   - iOS & Android development
@@ -26,7 +25,7 @@ heroImage: https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&q
 faqs:
   - question: How long does it take to build an app?
     answer: >-
-      A simple app might take 8â€“12 weeks; a more complex product can take 4â€“6
+      A simple app might take 8–12 weeks; a more complex product can take 4–6
       months. We'll break the work into phases and give you a clear timeline and
       milestones.
 order: 5

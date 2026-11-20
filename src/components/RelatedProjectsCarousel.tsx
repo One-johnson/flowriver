@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
@@ -15,9 +14,11 @@ type Props = {
 
 export function RelatedProjectsCarousel({ projects }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "start", containScroll: "trimSnaps" },
-    [Autoplay({ delay: 4500, stopOnInteraction: false, stopOnMouseEnter: true })]
-  );
+{
+    loop: true,
+    align: "start",
+    containScroll: "trimSnaps",
+  });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const onSelect = useCallback(() => {
@@ -27,10 +28,9 @@ export function RelatedProjectsCarousel({ projects }: Props) {
 
   useEffect(() => {
     if (!emblaApi) return;
-    onSelect();
-    emblaApi.on("select", onSelect);
+    emblaApi.on("select", onSelect).on("reInit", onSelect);
     return () => {
-      emblaApi.off("select", onSelect);
+      emblaApi.off("select", onSelect).off("reInit", onSelect);
     };
   }, [emblaApi, onSelect]);
 
@@ -47,7 +47,7 @@ export function RelatedProjectsCarousel({ projects }: Props) {
             >
               <Link
                 href={`/portfolio/${p.slug}`}
-                className="glass-card card-hover group block overflow-hidden"
+                className="surface link-card group block overflow-hidden"
               >
                 <div
                   className={cn(
@@ -62,7 +62,6 @@ export function RelatedProjectsCarousel({ projects }: Props) {
                     fill
                     sizes="(max-width: 640px) 85vw, (max-width: 1024px) 48vw, 32vw"
                     className={cn(
-                      "transition-transform duration-500 group-hover:scale-105",
                       p.logoImage ? "object-contain p-6" : "object-cover"
                     )}
                   />

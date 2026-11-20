@@ -1,14 +1,12 @@
 ﻿---
 title: UI Design
-tagline: Interfaces users love to use
+tagline: Clear, accessible interfaces for web and mobile products
 description: >-
-  User-centred interface design grounded in research and refined through
-  iteration. We create intuitive, accessible designs backed by design systems
-  that scale with your product.
+  Wireframes, high-fidelity screens and clickable prototypes for web and mobile
+  products, with a reusable component set your developers can build from.
 longDescription: >-
-  Great UI reduces friction and helps users achieve their goals. We combine
-  research, wireframes, and high-fidelity design with reusable systems so your
-  product stays consistent and scalable as it grows.
+  We combine research, wireframes and high-fidelity design with a reusable
+  component system, so your product stays consistent as it grows.
 icon: Component
 features:
   - User research & wireframing

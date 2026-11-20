@@ -2,8 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export type TestimonialItem = {
@@ -19,15 +18,11 @@ type Props = {
 
 export function TestimonialsCarousel({ items, className }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    {
-      loop: true,
-      align: "start",
-      containScroll: "trimSnaps",
-    },
-    [
-      Autoplay({ delay: 6000, stopOnInteraction: false, stopOnMouseEnter: true }),
-    ]
-  );
+{
+    loop: true,
+    align: "start",
+    containScroll: "trimSnaps",
+  });
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -38,11 +33,10 @@ export function TestimonialsCarousel({ items, className }: Props) {
 
   useEffect(() => {
     if (!emblaApi) return;
-    onSelect();
     const handler = onSelect;
-    emblaApi.on("select", handler);
+    emblaApi.on("select", handler).on("reInit", handler);
     return () => {
-      emblaApi.off("select", handler);
+      emblaApi.off("select", handler).off("reInit", handler);
     };
   }, [emblaApi, onSelect]);
 
@@ -65,13 +59,12 @@ export function TestimonialsCarousel({ items, className }: Props) {
               key={`${t.author}-${i}`}
               className="min-w-0 flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_calc(33.333%-1rem)]"
             >
-              <div className="glass-card card-hover flex h-full flex-col justify-between p-7">
-                <Quote className="h-8 w-8 text-primary/30" />
-                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
+              <div className="surface flex h-full flex-col justify-between p-7">
+                <blockquote className="flex-1 text-base leading-relaxed text-foreground/90">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
-                <div className="mt-6 flex items-center gap-3 border-t border-border/40 pt-5">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-primary/5 font-display text-sm font-bold text-primary">
+                <div className="mt-6 flex items-center gap-3 border-t border-border pt-5">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-muted font-display text-sm font-bold text-primary">
                     {t.author
                       .split(" ")
                       .map((n) => n[0])
@@ -94,7 +87,7 @@ export function TestimonialsCarousel({ items, className }: Props) {
             type="button"
             onClick={scrollPrev}
             aria-label="Previous testimonial"
-            className="flex h-11 w-11 items-center justify-center rounded-xl border border-border/50 bg-card text-muted-foreground transition-all hover:border-primary/30 hover:text-primary hover:shadow-md"
+            className="flex h-11 w-11 items-center justify-center rounded-xl border border-border/50 bg-card text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
@@ -102,7 +95,7 @@ export function TestimonialsCarousel({ items, className }: Props) {
             type="button"
             onClick={scrollNext}
             aria-label="Next testimonial"
-            className="flex h-11 w-11 items-center justify-center rounded-xl border border-border/50 bg-card text-muted-foreground transition-all hover:border-primary/30 hover:text-primary hover:shadow-md"
+            className="flex h-11 w-11 items-center justify-center rounded-xl border border-border/50 bg-card text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
           >
             <ChevronRight className="h-5 w-5" />
           </button>

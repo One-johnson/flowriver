@@ -1,5 +1,5 @@
 ﻿---
-title: Tendzu Ventures â€” Inventory & Sales Management System
+title: Tendzu Ventures — Inventory & Sales Management System
 shortTitle: Tendzu Ventures
 category: Systems
 description: >-

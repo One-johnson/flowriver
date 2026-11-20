@@ -1,137 +1,97 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Section } from "@/components/Section";
-import { AnimatedSection } from "@/components/AnimatedSection";
 import { PageHero } from "@/components/PageHero";
-import { SectionHeader } from "@/components/SectionHeader";
-import { CTABanner } from "@/components/CTABanner";
 import { ContactForm } from "@/app/contact/ContactForm";
 import { FaqAccordion } from "@/components/FaqAccordion";
-import { SITE_EMAIL } from "@/lib/site-config";
-import { Mail, MapPin, Clock } from "lucide-react";
+import { RESPONSE_TIME, SITE_EMAIL } from "@/lib/site-config";
 
 const contactFaqs = [
   {
-    question: "What services does FlowRiver Technologies provide?",
+    question: "What should I include in my message?",
     answer:
-      "We specialize in innovative technology solutions tailored to your business needs. Our core offerings include custom software development, system integration, automation tools, and ongoing technical support—delivered directly to help your operations run smoothly and efficiently.",
+      "A short description of what you need, who it's for, and any deadline or budget you have in mind. Links to sites you like are helpful too. Don't worry if you don't have all the details yet.",
   },
   {
-    question: "How do I get started with your services?",
+    question: "What happens after I get in touch?",
     answer:
-      "It's simple: Reach out via our contact form, email, or phone. We'll schedule an initial consultation (no obligation) to understand your requirements and propose a tailored solution. No payment details are needed to begin the conversation.",
+      "We'll reply with a few questions or suggest a short call. After that we send a proposal with scope, timeline and price. There's no obligation and no payment needed to start the conversation.",
   },
   {
-    question: "What is the typical response time for enquiries?",
+    question: "Do you take on small projects?",
     answer:
-      "We aim to respond within 4 business hours during standard working days. For time-sensitive matters, please indicate urgency in your message—we prioritize accordingly to ensure prompt attention.",
+      "Yes. We work on everything from single landing pages and logo designs to full custom systems.",
   },
   {
-    question: "Do you offer ongoing support after project delivery?",
+    question: "Do you offer support after delivery?",
     answer:
-      "Yes. We provide comprehensive post-delivery support, including maintenance, updates, troubleshooting, and enhancements as your needs evolve. Our goal is long-term partnership and reliable service you can count on.",
+      "Yes. Maintenance, updates, troubleshooting and new features are all available after launch.",
   },
 ];
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with FlowRiver Technologies. Start a free trial, book a demo, or ask us anything.",
+    "Contact FlowRiver Technologies in Accra about a website, app, system or design project.",
 };
-
-const contactInfo = [
-  {
-    icon: Mail,
-    label: "Email us",
-    value: SITE_EMAIL,
-    href: `mailto:${SITE_EMAIL}`,
-  },
-  {
-    icon: MapPin,
-    label: "Headquarters",
-    value: "Accra, Ghana",
-    href: undefined,
-  },
-  {
-    icon: Clock,
-    label: "Response time",
-    value: "We typically reply within 4 business hours",
-    href: undefined,
-  },
-];
 
 export default function ContactPage() {
   return (
     <>
       <PageHero
-        badge="Contact"
-        title={
-          <>
-            Let&apos;s{" "}
-            <span className="gradient-text">start a conversation</span>
-          </>
-        }
-        description="Whether you're ready to dive in or just exploring — we'd love to hear from you. No sales pitch, just honest answers."
-        image={{
-          src: "https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=800&q=80&auto=format&fit=crop",
-          alt: "Get in touch",
-        }}
+        eyebrow="Contact"
+        title="Tell us about your project"
+        description={`Send a message with whatever detail you have. We reply ${RESPONSE_TIME}.`}
       />
 
-      <Section className="pt-0">
-        <div className="grid gap-12 lg:grid-cols-5">
-          <AnimatedSection className="lg:col-span-3" direction="left">
-            <div className="glass-card p-6 sm:p-8">
-              <h2 className="font-display text-xl font-bold">
-                Send us a message
-              </h2>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Fill out the form below and we&apos;ll get back to you shortly.
-              </p>
-              <div className="mt-6">
-                <ContactForm />
+      <Section className="border-t border-border pt-12 sm:pt-12 lg:pt-12">
+        <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
+          <div className="surface p-6 sm:p-8 lg:col-span-3">
+            <h2 className="font-display text-xl font-bold">Send a message</h2>
+            <div className="mt-6">
+              <ContactForm />
+            </div>
+          </div>
+
+          <div className="lg:col-span-2">
+            <dl className="space-y-6">
+              <div>
+                <dt className="text-sm font-medium text-muted-foreground">
+                  Email
+                </dt>
+                <dd className="mt-1">
+                  <a
+                    href={`mailto:${SITE_EMAIL}`}
+                    className="font-medium text-primary underline-offset-4 hover:underline"
+                  >
+                    {SITE_EMAIL}
+                  </a>
+                </dd>
               </div>
-            </div>
-          </AnimatedSection>
+              <div>
+                <dt className="text-sm font-medium text-muted-foreground">
+                  Location
+                </dt>
+                <dd className="mt-1 font-medium">Accra, Ghana</dd>
+              </div>
+              <div>
+                <dt className="text-sm font-medium text-muted-foreground">
+                  Reply time
+                </dt>
+                <dd className="mt-1 font-medium">
+                  {RESPONSE_TIME.charAt(0).toUpperCase() + RESPONSE_TIME.slice(1)}
+                </dd>
+              </div>
+            </dl>
 
-          <AnimatedSection className="lg:col-span-2" direction="right" delay={0.15}>
-            <div className="space-y-6">
-              {contactInfo.map((info) => (
-                <div key={info.label} className="glass-card flex gap-4 p-5">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary">
-                    <info.icon className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold">{info.label}</h3>
-                    {info.href ? (
-                      <a
-                        href={info.href}
-                        className="mt-1 block text-sm text-muted-foreground transition-colors hover:text-primary"
-                      >
-                        {info.value}
-                      </a>
-                    ) : (
-                      <p className="mt-1 text-sm text-muted-foreground">
-                        {info.value}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="glass-card mt-8 p-6">
-              <h3 className="font-display text-base font-semibold">
-                Frequently asked questions
-              </h3>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Quick answers to common questions.
-              </p>
+            <div className="mt-12 border-t border-border pt-8">
+              <h2 className="font-display text-lg font-semibold">
+                Common questions
+              </h2>
               <div className="mt-4">
                 <FaqAccordion items={contactFaqs} />
               </div>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </Section>
     </>

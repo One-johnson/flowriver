@@ -1,9 +1,9 @@
 ﻿---
 title: AI Integrations
-tagline: Smarter software, less manual work
+tagline: Chatbots, automation and AI features in your existing tools
 description: >-
-  We integrate AI and machine learning into your existing products and workflows
-  â€” chatbots, recommendation engines, intelligent automation, and more.
+  We add AI features to your existing products and workflows: chatbots,
+  document processing, recommendations and automated routine tasks.
 longDescription: >-
   AI can automate repetitive tasks, personalise experiences, and surface
   insights. We help you choose the right use cases and integrate models and APIs

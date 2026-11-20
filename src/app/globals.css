@@ -134,64 +134,13 @@
 }
 
 @layer utilities {
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary via-primary to-primary/60 bg-clip-text text-transparent;
+  /* Plain bordered surface used for cards and panels. */
+  .surface {
+    @apply rounded-xl border border-border bg-card;
   }
 
-  .glass-card {
-    @apply rounded-2xl border border-border/50 bg-card/80 shadow-sm backdrop-blur-sm;
-  }
-
-  .glass-panel {
-    @apply border border-border/40 bg-background/70 backdrop-blur-xl;
-  }
-
-  .section-badge {
-    @apply inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary;
-  }
-
-  .mesh-bg {
-    background-image:
-      radial-gradient(at 20% 20%, oklch(0.52 0.17 220 / 8%) 0px, transparent 50%),
-      radial-gradient(at 80% 0%, oklch(0.62 0.15 175 / 6%) 0px, transparent 50%),
-      radial-gradient(at 50% 100%, oklch(0.58 0.12 260 / 5%) 0px, transparent 50%);
-  }
-
-  .dark .mesh-bg {
-    background-image:
-      radial-gradient(at 20% 20%, oklch(0.68 0.15 220 / 12%) 0px, transparent 50%),
-      radial-gradient(at 80% 0%, oklch(0.72 0.13 175 / 8%) 0px, transparent 50%),
-      radial-gradient(at 50% 100%, oklch(0.68 0.11 260 / 6%) 0px, transparent 50%);
-  }
-
-  .dot-grid {
-    background-image: radial-gradient(circle, oklch(0.52 0.17 220 / 12%) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-
-  .dark .dot-grid {
-    background-image: radial-gradient(circle, oklch(0.68 0.15 220 / 15%) 1px, transparent 1px);
-  }
-
-  .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-xl hover:shadow-primary/5;
-  }
-
-  .cta-gradient {
-    background: linear-gradient(
-      135deg,
-      oklch(0.48 0.17 220) 0%,
-      oklch(0.42 0.14 240) 50%,
-      oklch(0.38 0.12 260) 100%
-    );
-  }
-
-  .dark .cta-gradient {
-    background: linear-gradient(
-      135deg,
-      oklch(0.55 0.16 220) 0%,
-      oklch(0.48 0.14 240) 50%,
-      oklch(0.42 0.12 260) 100%
-    );
+  /* Hover state for cards that are links. Only use on <a>/<Link>. */
+  .link-card {
+    @apply transition-colors duration-200 hover:border-primary/40;
   }
 }

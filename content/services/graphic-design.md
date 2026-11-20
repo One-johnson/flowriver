@@ -1,10 +1,9 @@
 ﻿---
 title: Graphic Design
-tagline: Visuals that tell your story
+tagline: Logos, brand identities and marketing materials
 description: >-
-  From brand identities to marketing collateral, we craft bold, memorable
-  visuals. Whether it's a logo, social media kit, or full brand guide â€” we make
-  you look exceptional.
+  Logos, brand guidelines, social media kits, flyers and print-ready materials,
+  designed to keep your organisation consistent everywhere it appears.
 longDescription: >-
   Strong visuals build recognition and trust. We create logos, brand guidelines,
   marketing assets, and print-ready materials so your brand looks professional

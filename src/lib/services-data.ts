@@ -6,10 +6,6 @@ import {
   BrainCircuit,
   Smartphone,
   Wrench,
-  MousePointerClick,
-  Palette,
-  Code,
-  Layers,
 } from "lucide-react";
 import { getContentEntries, getContentEntry } from "@/lib/content";
 
@@ -27,29 +23,25 @@ export const processSteps = [
     step: "01",
     title: "Discovery",
     description:
-      "We learn about your business, goals, audience, and technical requirements through an in-depth consultation.",
-    icon: MousePointerClick,
+      "We learn about your business, your users and what the project needs to do, then agree scope, timeline and price.",
   },
   {
     step: "02",
     title: "Design",
     description:
-      "We create wireframes, mockups, and prototypes — iterating with your feedback until the vision is pixel-perfect.",
-    icon: Palette,
+      "Wireframes and mockups you can review and comment on. We revise until you're happy before building.",
   },
   {
     step: "03",
     title: "Develop",
     description:
-      "Our engineers build your solution using modern, scalable technologies with clean code and best practices.",
-    icon: Code,
+      "We build and test in stages and share progress as we go, so there are no surprises at the end.",
   },
   {
     step: "04",
     title: "Deliver & Support",
     description:
-      "We launch, test, and optimise — then provide ongoing support to keep everything running smoothly.",
-    icon: Layers,
+      "We launch, train your team and hand over documentation, then stay on for fixes and updates.",
   },
 ];
 
@@ -65,7 +57,6 @@ export type ServiceItem = {
   imageAlt: string;
   heroImage: string;
   approach: string[];
-  testimonials: { quote: string; author: string; role: string }[];
   faqs?: { question: string; answer: string }[];
 };
 
@@ -110,11 +101,7 @@ export async function getTestimonials(): Promise<TestimonialItem[]> {
     .map(({ quote, author, role }) => ({ quote, author, role }));
 }
 
-function mapService(
-  slug: string,
-  data: ServiceData,
-  testimonials: TestimonialItem[]
-): ServiceItem {
+function mapService(slug: string, data: ServiceData): ServiceItem {
   return {
     slug,
     icon: iconMap[data.icon] ?? Globe,
@@ -127,7 +114,6 @@ function mapService(
     imageAlt: data.imageAlt,
     heroImage: data.heroImage,
     approach: [...(data.approach ?? [])],
-    testimonials,
     faqs: data.faqs?.length
       ? data.faqs.map((f) => ({ question: f.question, answer: f.answer }))
       : undefined,
@@ -135,14 +121,11 @@ function mapService(
 }
 
 export async function getServices(): Promise<ServiceItem[]> {
-  const [entries, testimonials] = await Promise.all([
-    getContentEntries<ServiceData>("services"),
-    getTestimonials(),
-  ]);
+  const entries = await getContentEntries<ServiceData>("services");
 
   return entries
     .map(({ slug, data }) => ({
-      service: mapService(slug, data, testimonials),
+      service: mapService(slug, data),
       order: data.order ?? 0,
     }))
     .sort((a, b) => a.order - b.order)
@@ -152,12 +135,9 @@ export async function getServices(): Promise<ServiceItem[]> {
 export async function getServiceBySlug(
   slug: string
 ): Promise<ServiceItem | undefined> {
-  const [entry, testimonials] = await Promise.all([
-    getContentEntry<ServiceData>("services", slug),
-    getTestimonials(),
-  ]);
+  const entry = await getContentEntry<ServiceData>("services", slug);
   if (!entry) return undefined;
-  return mapService(slug, entry.data, testimonials);
+  return mapService(slug, entry.data);
 }
 
 export async function getServiceSlugs(): Promise<string[]> {

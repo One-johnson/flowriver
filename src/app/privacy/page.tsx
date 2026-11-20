@@ -41,7 +41,7 @@ export default function PrivacyPage() {
       <h2 className="font-display text-xl font-semibold mt-8">5. Cookies</h2>
       <p>
         We may use cookies and similar technologies for essential site function, preferences (e.g. theme), and
-        analytics. You can control cookies through your browser settings and our cookie notice.
+        analytics. You can control cookies through your browser settings.
       </p>
 
       <h2 className="font-display text-xl font-semibold mt-8">6. Security and retention</h2>

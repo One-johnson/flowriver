@@ -1,37 +1,31 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const THEME_KEY = "theme";
+const listeners = new Set<() => void>();
+
+function subscribe(listener: () => void) {
+  listeners.add(listener);
+  return () => listeners.delete(listener);
+}
+
+// The inline script in layout.tsx sets the class before hydration.
+function isDark() {
+  return document.documentElement.classList.contains("dark");
+}
 
 export function ThemeToggle() {
-  const [mounted, setMounted] = useState(false);
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    const stored = localStorage.getItem(THEME_KEY);
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = stored === "dark" || (stored !== "light" && prefersDark);
-    setDark(isDark);
-    document.documentElement.classList.toggle("dark", isDark);
-  }, []);
+  // null on the server, so the first client render matches the server HTML.
+  const dark = useSyncExternalStore<boolean | null>(subscribe, isDark, () => null);
 
   function toggle() {
-    const next = !dark;
-    setDark(next);
+    const next = !isDark();
     document.documentElement.classList.toggle("dark", next);
     localStorage.setItem(THEME_KEY, next ? "dark" : "light");
-  }
-
-  if (!mounted) {
-    return (
-      <Button variant="ghost" size="icon" aria-label="Toggle theme" className="h-9 w-9">
-        <Sun className="h-4 w-4" />
-      </Button>
-    );
+    listeners.forEach((l) => l());
   }
 
   return (
@@ -39,6 +33,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={toggle}
+      disabled={dark === null}
       aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
       className="h-9 w-9"
     >

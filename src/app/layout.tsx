@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { CookieNotice } from "@/components/CookieNotice";
 import { SITE_EMAIL } from "@/lib/site-config";
 import "./globals.css";
 
@@ -50,14 +49,6 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "FlowRiver Technologies",
-    images: [
-      {
-        url: "/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "FlowRiver Technologies",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -99,19 +90,25 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* suppressHydrationWarning: some browser extensions rewrite inline
+            scripts before React hydrates. */}
         <script
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: `(function(){var d=document.documentElement,c=localStorage.getItem('theme');if(c==='dark'||(c!='light'&&window.matchMedia('(prefers-color-scheme:dark)').matches))d.classList.add('dark');else d.classList.remove('dark');})();`,
           }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${plusJakarta.variable} font-sans antialiased`}
       >
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground focus:outline-none"
@@ -123,7 +120,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <CookieNotice />
       </body>
     </html>
   );

@@ -1,15 +1,14 @@
 ﻿---
 title: Web Design & Development
-tagline: Websites that work as hard as you do
+tagline: Fast, responsive websites and web applications
 description: >-
-  We design and build fast, responsive, and SEO-friendly websites â€” from sleek
-  landing pages to complex web applications. Every pixel is intentional, every
-  interaction is smooth.
+  We design and build fast, responsive, search-friendly websites, from
+  single landing pages to custom web applications with logins and dashboards.
 longDescription: >-
   Whether you need a simple landing page or a full-scale web application, we
   combine strong design with solid engineering. We focus on performance,
   accessibility, and SEO so your site not only looks great but reaches the right
-  people and converts.
+  people.
 icon: Globe
 features:
   - Custom responsive websites
@@ -19,7 +18,7 @@ features:
   - Ongoing maintenance & support
 approach:
   - We start with your goals and audience so the site is built for results, not just looks.
-  - Design and development happen in sync â€” no handoff surprises or last-minute changes.
+  - Design and development happen in sync — no handoff surprises or last-minute changes.
   - We use modern stacks (Next.js, React, etc.) so your site is fast and maintainable.
   - Launch includes training, documentation, and a clear support path so you're never stuck.
 image: https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80&auto=format&fit=crop
@@ -28,8 +27,8 @@ heroImage: https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&q=85
 faqs:
   - question: How long does a typical website project take?
     answer: >-
-      A simple marketing site often takes 2â€“4 weeks; a larger site or web app can
-      take 6â€“12 weeks. We'll give you a clear timeline and milestones in the proposal.
+      A simple marketing site often takes 2–4 weeks; a larger site or web app can
+      take 6–12 weeks. We'll give you a clear timeline and milestones in the proposal.
   - question: Do you work with existing sites or only new builds?
     answer: >-
       Both. We can redesign and rebuild your current site, add new features, or

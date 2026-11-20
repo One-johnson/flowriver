@@ -3,16 +3,12 @@ import Image from "next/image";
 import { Mail, MapPin, ArrowUpRight } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
-import { SITE_EMAIL, socialLinks } from "@/lib/site-config";
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/team", label: "Team" },
-  { href: "/contact", label: "Contact" },
-];
+import {
+  RESPONSE_TIME,
+  SITE_EMAIL,
+  navLinks,
+  socialLinks,
+} from "@/lib/site-config";
 
 const secondaryLinks = [
   { href: "/privacy", label: "Privacy Policy" },
@@ -21,13 +17,8 @@ const secondaryLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative mt-8 overflow-hidden border-t border-border/40 bg-muted/30">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 mesh-bg opacity-60"
-      />
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <footer className="border-t border-border bg-muted/40">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           <div className="space-y-5 lg:col-span-4">
             <Link href="/" className="inline-flex items-center">
@@ -40,9 +31,8 @@ export function Footer() {
               />
             </Link>
             <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-              Empowering businesses with intelligent software that flows
-              seamlessly into your workflow. Based in Accra, Ghana — serving
-              clients worldwide.
+              A design and development studio in Accra. We build websites,
+              apps and business systems for organisations in Ghana and abroad.
             </p>
             <div className="space-y-3 pt-2">
               <a
@@ -99,29 +89,27 @@ export function Footer() {
             <ul className="flex flex-wrap gap-3">
               {socialLinks.map((link) => (
                 <li key={link.label}>
-                  <Link
+                  <a
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-primary"
-                    aria-label={link.label}
                   >
                     {link.label}
-                    <ArrowUpRight className="h-3 w-3" />
-                  </Link>
+                    <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
 
           <div className="lg:col-span-4">
-            <div className="glass-card p-6 sm:p-8">
+            <div className="surface p-6 sm:p-8">
               <h3 className="font-display text-lg font-bold">
-                Ready to start your project?
+                Have a project in mind?
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Tell us about your idea and we&apos;ll get back to you within 4
-                business hours with a clear path forward.
+                Tell us what you need. We reply {RESPONSE_TIME}.
               </p>
               <Button asChild className="mt-5 w-full sm:w-auto">
                 <Link href="/contact">Get in touch</Link>
@@ -132,9 +120,8 @@ export function Footer() {
 
         <Separator className="opacity-50" />
 
-        <div className="flex flex-col items-center justify-between gap-3 py-6 text-xs text-muted-foreground sm:flex-row">
+        <div className="py-6 text-xs text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} FlowRiver Technologies. All rights reserved.</p>
-          <p>Built with purpose. Designed to flow.</p>
         </div>
       </div>
     </footer>

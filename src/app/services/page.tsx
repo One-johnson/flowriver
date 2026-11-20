@@ -5,39 +5,37 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeader } from "@/components/SectionHeader";
 import { CTABanner } from "@/components/CTABanner";
-import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
 import { FaqAccordion } from "@/components/FaqAccordion";
-import { AnimatedImageBox } from "@/components/AnimatedImageBox";
 import { getServices, processSteps } from "@/lib/services-data";
 
 const servicesFaqs = [
   {
     question: "How long does a typical project take?",
     answer:
-      "It depends on scope. A simple website might take 2–4 weeks; a custom web app or mobile app often 6–12 weeks. We'll give you a timeline and milestones in the proposal.",
+      "It depends on scope. A simple website might take 2–4 weeks; a custom web or mobile app often takes 6–12 weeks. The proposal includes a timeline and milestones.",
   },
   {
     question: "Do you work with clients outside Ghana?",
     answer:
-      "Yes. We work remotely with clients worldwide. We use async updates, video calls, and shared project tools so distance isn't a barrier.",
+      "Yes. We work remotely with clients abroad using video calls, written updates and shared project tools.",
   },
   {
     question: "What's included in a quote?",
     answer:
-      "A clear scope, deliverables, timeline, and fixed or phased pricing. We also outline what's out of scope so there are no surprises later.",
+      "Scope, deliverables, timeline, and fixed or phased pricing. We also list what is out of scope so there are no surprises later.",
   },
   {
-    question: "Do you provide ongoing support after launch?",
+    question: "Do you provide support after launch?",
     answer:
-      "Yes. We offer maintenance and support packages — from bug fixes and updates to new features. We can include this in your initial quote or add it later.",
+      "Yes. Maintenance and support covers bug fixes, updates and new features. It can be part of the initial quote or added later.",
   },
 ];
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "FlowRiver Technologies offers web design & development, UI design, graphic design, AI integrations, mobile app development, and computer systems sales & repairs (laptops, phones, installations).",
+    "Web design and development, UI design, graphic design, AI integrations, mobile apps, and computer sales and repairs from FlowRiver Technologies in Accra.",
 };
 
 export default async function ServicesPage() {
@@ -45,160 +43,101 @@ export default async function ServicesPage() {
   return (
     <>
       <PageHero
-        badge="Services"
-        title={
-          <>
-            Everything you need to{" "}
-            <span className="gradient-text">build, launch & grow.</span>
-          </>
-        }
-        description="From stunning designs to powerful solutions — FlowRiver Technologies delivers end-to-end digital solutions tailored to your business."
-        image={{
-          src: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80&auto=format&fit=crop",
-          alt: "Digital services and development",
-        }}
+        eyebrow="Services"
+        title="What we can build for you"
+        description="Most clients come to us for a website or a custom system, then stay for design, support and the next project. Pick a service to see what's included."
       />
 
-      <Section>
-        <div className="space-y-24">
-          {services.map((s, i) => {
-            const isReversed = i % 2 !== 0;
-            return (
-              <AnimatedSection key={s.title} delay={0.05}>
-                <div
-                  className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-20 ${
-                    isReversed ? "lg:direction-rtl" : ""
-                  }`}
-                >
-                  <div className={isReversed ? "lg:order-2" : ""}>
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary">
-                        <s.icon className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <h3 className="font-display text-xl font-bold sm:text-2xl">
-                          {s.title}
-                        </h3>
-                        <p className="text-sm font-medium text-primary">
-                          {s.tagline}
-                        </p>
-                      </div>
-                    </div>
-                    <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-                      {s.description}
-                    </p>
-                    <ul className="mt-6 space-y-3">
+      <Section className="border-t border-border pt-0 sm:pt-0 lg:pt-0">
+        <ul className="divide-y divide-border">
+          {services.map((s) => (
+            <li key={s.slug} id={s.slug} className="scroll-mt-20">
+              <AnimatedSection className="grid gap-8 py-12 lg:grid-cols-3 lg:gap-12">
+                <div>
+                  <h2 className="font-display text-2xl font-bold tracking-tight">
+                    {s.title}
+                  </h2>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {s.tagline}
+                  </p>
+                </div>
+                <div className="lg:col-span-2">
+                  <p className="text-base leading-relaxed text-muted-foreground">
+                    {s.description}
+                  </p>
+                  {s.features.length > 0 && (
+                    <ul className="mt-6 grid gap-x-8 gap-y-2 sm:grid-cols-2">
                       {s.features.map((f) => (
-                        <li
-                          key={f}
-                          className="flex items-center gap-3 text-sm"
-                        >
-                          <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                            <Check className="h-3 w-3 text-primary" />
-                          </div>
-                          <span className="text-muted-foreground">{f}</span>
+                        <li key={f} className="flex items-start gap-2 text-sm">
+                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                          <span>{f}</span>
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-8 flex flex-wrap gap-3">
-                      <Button asChild className="rounded-xl">
-                        <Link href={`/services/${s.slug}`}>
-                          View full details
-                          <ArrowRight className="ml-1 h-4 w-4" />
-                        </Link>
-                      </Button>
-                      <Button asChild variant="outline" className="rounded-xl">
-                        <Link href="/contact">Get a quote</Link>
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div
-                    className={`relative mx-auto w-full max-w-lg lg:max-w-none ${
-                      isReversed ? "lg:order-1" : ""
-                    }`}
+                  )}
+                  <Link
+                    href={`/services/${s.slug}`}
+                    className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
                   >
-                    <AnimatedImageBox
-                      src={s.image}
-                      alt={s.imageAlt}
-                      sizes="(max-width: 1024px) 90vw, 45vw"
-                    />
-                    <div
-                      aria-hidden="true"
-                      className="pointer-events-none absolute -inset-6 -z-10 rounded-3xl bg-primary/10 blur-3xl"
-                    />
-                  </div>
+                    More about {s.title.toLowerCase()}
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
                 </div>
               </AnimatedSection>
-            );
-          })}
-        </div>
-      </Section>
-
-      <Section className="bg-muted/30">
-        <AnimatedSection>
-          <SectionHeader
-            badge="Process"
-            title="How we work"
-            description="A proven process that keeps things transparent, collaborative, and on schedule from day one."
-          />
-        </AnimatedSection>
-
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {processSteps.map((p, i) => (
-            <AnimatedSection key={p.step} delay={i * 0.08}>
-              <div className="glass-card card-hover relative flex h-full flex-col p-7">
-                <span className="font-display text-4xl font-extrabold text-primary/15">
-                  {p.step}
-                </span>
-                <div className="mt-4 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary">
-                  <p.icon className="h-5 w-5" />
-                </div>
-                <h3 className="mt-5 font-display text-lg font-semibold">
-                  {p.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {p.description}
-                </p>
-              </div>
-            </AnimatedSection>
+            </li>
           ))}
-        </div>
+        </ul>
       </Section>
 
-      <Section className="bg-muted/30">
-        <AnimatedSection>
+      <Section id="process" className="scroll-mt-16 bg-muted/40">
+        <SectionHeader
+          title="How we work"
+          description="The same four stages for every project, whatever the size."
+        />
+        <ol className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          {processSteps.map((p) => (
+            <li key={p.step} className="border-t border-border pt-6">
+              <span className="font-mono text-sm text-muted-foreground">
+                {p.step}
+              </span>
+              <h3 className="mt-2 font-display text-lg font-semibold">
+                {p.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {p.description}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section>
+        <div className="grid gap-12 lg:grid-cols-3">
           <SectionHeader
-            badge="FAQ"
-            title="Frequently asked questions"
+            title="Common questions"
             description={
               <>
-                Common questions about working with FlowRiver. Can&apos;t find
-                what you need?{" "}
+                Can&apos;t find your answer?{" "}
                 <Link
                   href="/contact"
                   className="font-medium text-primary underline-offset-4 hover:underline"
                 >
-                  Get in touch
+                  Ask us
                 </Link>
                 .
               </>
             }
           />
-        </AnimatedSection>
-        <div className="mx-auto mt-12 max-w-2xl">
-          <AnimatedSection delay={0.1}>
-            <div className="glass-card p-6 sm:p-8">
-              <FaqAccordion items={servicesFaqs} />
-            </div>
-          </AnimatedSection>
+          <div className="lg:col-span-2">
+            <FaqAccordion items={servicesFaqs} />
+          </div>
         </div>
       </Section>
 
       <CTABanner
         title="Have a project in mind?"
-        description="Tell us what you need and we'll put together a tailored plan and quote — no obligations, no surprises."
-        primaryLabel="Get a free quote"
+        description="Tell us what you need and we'll send a plan and a quote. There's no obligation."
+        primaryLabel="Get a quote"
         primaryHref="/contact"
       />
     </>

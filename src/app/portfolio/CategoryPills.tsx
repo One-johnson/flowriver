@@ -26,7 +26,7 @@ export function CategoryPills() {
   }
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-2">
+    <div className="flex flex-wrap items-center gap-2">
       {portfolioCategories.map((cat) => (
         <button
           key={cat}
@@ -35,8 +35,8 @@ export function CategoryPills() {
           className={cn(
             "inline-flex items-center rounded-full border px-5 py-2 text-sm font-medium transition-all",
             valid === cat
-              ? "border-primary bg-primary text-primary-foreground shadow-md shadow-primary/20"
-              : "border-border/50 bg-card/60 text-muted-foreground backdrop-blur-sm hover:border-primary/30 hover:text-primary"
+              ? "border-primary bg-primary text-primary-foreground"
+              : "border-border/50 bg-card text-muted-foreground hover:border-primary/40 hover:text-primary"
           )}
         >
           {cat}

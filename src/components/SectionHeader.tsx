@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 
 interface SectionHeaderProps {
-  badge?: string;
   title: string;
   description?: React.ReactNode;
   className?: string;
@@ -9,11 +8,10 @@ interface SectionHeaderProps {
 }
 
 export function SectionHeader({
-  badge,
   title,
   description,
   className,
-  align = "center",
+  align = "left",
 }: SectionHeaderProps) {
   return (
     <div
@@ -22,13 +20,7 @@ export function SectionHeader({
         className
       )}
     >
-      {badge && <span className="section-badge">{badge}</span>}
-      <h2
-        className={cn(
-          "font-display text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem]",
-          badge && "mt-4"
-        )}
-      >
+      <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
         {title}
       </h2>
       {description && (
