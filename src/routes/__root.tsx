@@ -55,9 +55,9 @@ export const Route = createRootRoute({
       ],
       links: [
         { rel: "stylesheet", href: appCss },
-        { rel: "icon", href: "/favicon.ico", sizes: "any" },
-        { rel: "icon", href: "/icon.png", type: "image/png" },
-        { rel: "apple-touch-icon", href: "/icon.png" },
+        { rel: "icon", href: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+        { rel: "icon", href: "/icon.png", type: "image/png", sizes: "512x512" },
+        { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
       ],
     };
   },
