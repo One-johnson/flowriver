@@ -22,7 +22,7 @@ const homeFaqs = [
   {
     question: "What does FlowRiver Technologies do?",
     answer:
-      "We design and build websites, progressive web apps that install on phones and work offline, and custom systems such as inventory, school and membership management.",
+      "We design and build websites, progressive web apps that install on phones and work offline, and custom systems such as inventory, school and membership management. We also register domains, host sites and business email, and offer IT and ERP consultancy.",
   },
   {
     question: "How do I get started?",
@@ -77,8 +77,8 @@ function Home() {
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
               We build fast websites, progressive web apps that install on any
               phone and work offline, and systems built around how your team
-              works. Businesses, unions, schools and NGOs use them, and we
-              support them after launch.
+              works. We also handle domains and hosting, and advise on IT and
+              ERP decisions for businesses, unions, schools and NGOs.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">

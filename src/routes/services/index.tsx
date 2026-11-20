@@ -16,7 +16,7 @@ export const Route = createFileRoute("/services/")({
     seo({
       title: "Services",
       description:
-        "Web design and development, progressive web apps and custom applications from FlowRiver Technologies in Accra.",
+        "Web design and development, progressive web apps, custom applications, domains and hosting, and IT consultancy from FlowRiver Technologies in Accra.",
       path: "/services",
     }),
   component: ServicesPage,

@@ -25,7 +25,7 @@ export const Route = createFileRoute("/portfolio/")({
     seo({
       title: "Work",
       description:
-        "Websites, systems and event platforms built by FlowRiver Technologies for CWU Ghana, the Simon Annan Foundation, Goldenmark Ghana, Tendzu Ventures, SEALS, NPSC and others.",
+        "Websites, web apps and custom systems built by FlowRiver Technologies for CWU Ghana, the Simon Annan Foundation, Goldenmark Ghana, Tendzu Ventures, SEALS, NPSC and others.",
       path: "/portfolio",
     }),
   component: PortfolioPage,
@@ -44,7 +44,7 @@ function PortfolioPage() {
       <PageHero
         eyebrow="Work"
         title="Projects we've built"
-        description="Websites, internal systems and event platforms for unions, foundations, conferences and businesses. Each project page covers what we delivered and links to the live site."
+        description="Websites, web apps and custom systems for unions, foundations, conferences and businesses, many of them hosted and supported by us after launch. Each project page covers what we delivered and links to the live site."
       />
 
       <Section tone="tint" className="pt-12 sm:pt-14 lg:pt-16">
