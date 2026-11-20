@@ -4,7 +4,7 @@ export const SITE_URL = (
 
 export const SITE_NAME = "FlowRiver Technologies";
 
-export const SITE_EMAIL = "support@flowrivertechnologies.com";
+export const SITE_EMAIL = "flowrivertechnologies@gmail.com";
 
 /** Promised reply time, shown on the contact page, form and footer. */
 export const RESPONSE_TIME = "within 4 business hours";

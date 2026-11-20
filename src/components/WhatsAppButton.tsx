@@ -1,3 +1,4 @@
+import { useRouterState } from "@tanstack/react-router";
 import { MessageCircle } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/site-config";
 
@@ -5,8 +6,11 @@ const message = encodeURIComponent(
   "Hi Prince, I found FlowRiver Technologies online and I'd like to talk about a project."
 );
 
-/** Fixed WhatsApp chat button, shown on every page. */
+/** Fixed WhatsApp chat button. Hidden on /contact, which has its own. */
 export function WhatsAppButton() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  if (pathname === "/contact") return null;
+
   return (
     <a
       href={`${WHATSAPP_URL}?text=${message}`}

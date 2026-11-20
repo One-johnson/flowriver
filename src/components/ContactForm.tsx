@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import { RESPONSE_TIME } from "@/lib/site-config";
 
 type FormState = "idle" | "submitting" | "success" | "error";
@@ -60,8 +61,19 @@ export function ContactForm() {
 
   if (state === "success") {
     return (
-      <div className="flex flex-col items-center py-12 text-center">
-        <CheckCircle2 className="h-12 w-12 text-primary" />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4 }}
+        className="flex flex-col items-center py-12 text-center"
+      >
+        <motion.span
+          initial={{ scale: 0, rotate: -30 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{ type: "spring", stiffness: 260, damping: 16, delay: 0.1 }}
+        >
+          <CheckCircle2 className="h-12 w-12 text-primary" />
+        </motion.span>
         <h3 className="mt-4 font-display text-xl font-bold">
           Message sent!
         </h3>
@@ -85,7 +97,7 @@ export function ContactForm() {
             <Link to="/">Back to home</Link>
           </Button>
         </div>
-      </div>
+      </motion.div>
     );
   }
 
