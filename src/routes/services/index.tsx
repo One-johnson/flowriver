@@ -16,7 +16,7 @@ export const Route = createFileRoute("/services/")({
     seo({
       title: "Services",
       description:
-        "Web design and development, UI design, graphic design, AI integrations, mobile apps, and computer sales and repairs from FlowRiver Technologies in Accra.",
+        "Web design and development, progressive web apps and custom applications from FlowRiver Technologies in Accra, plus UI and graphic design.",
       path: "/services",
     }),
   component: ServicesPage,
@@ -26,7 +26,7 @@ const servicesFaqs = [
   {
     question: "How long does a typical project take?",
     answer:
-      "It depends on scope. A simple website might take 2–4 weeks; a custom web or mobile app often takes 6–12 weeks. The proposal includes a timeline and milestones.",
+      "It depends on scope. A simple website might take 2–4 weeks; a progressive web app or custom system often takes 6–12 weeks. The proposal includes a timeline and milestones.",
   },
   {
     question: "Do you work with clients outside Ghana?",

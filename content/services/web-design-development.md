@@ -1,25 +1,25 @@
-﻿---
+---
 title: Web Design & Development
 tagline: Fast, responsive websites and web applications
 description: >-
-  We design and build fast, responsive, search-friendly websites, from
-  single landing pages to custom web applications with logins and dashboards.
+  We design and build fast, responsive, search-friendly websites, from single
+  landing pages to full company, union and charity sites.
 longDescription: >-
-  Whether you need a simple landing page or a full-scale web application, we
-  combine strong design with solid engineering. We focus on performance,
-  accessibility, and SEO so your site not only looks great but reaches the right
-  people.
+  Design and development happen in the same team, so the site you approve is
+  the site that ships. We build for speed on Ghanaian mobile networks, make
+  pages easy for search engines to read, and set up content editing so your
+  team can keep the site current without calling us.
 icon: Globe
 features:
   - Custom responsive websites
-  - E-commerce & SaaS platforms
-  - CMS integration (WordPress, Headless)
+  - Online stores and payment integration
+  - Content editing your team can manage
   - Performance optimisation & SEO
   - Ongoing maintenance & support
 approach:
   - We start with your goals and audience so the site is built for results, not just looks.
   - Design and development happen in sync — no handoff surprises or last-minute changes.
-  - We use modern stacks (Next.js, React, etc.) so your site is fast and maintainable.
+  - We build with modern tools such as React and TypeScript, so your site is fast and easy to maintain.
   - Launch includes training, documentation, and a clear support path so you're never stuck.
 image: https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80&auto=format&fit=crop
 imageAlt: Modern website on a laptop screen

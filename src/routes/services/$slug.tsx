@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/button";
@@ -10,7 +10,19 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { getService } from "@/lib/data.functions";
 import { seo } from "@/lib/seo";
 
+// Services we no longer offer. Old links go to the services list.
+const retiredServices = new Set([
+  "ai-integrations",
+  "mobile-app-development",
+  "computer-systems-sales-repairs",
+]);
+
 export const Route = createFileRoute("/services/$slug")({
+  beforeLoad: ({ params }) => {
+    if (retiredServices.has(params.slug)) {
+      throw redirect({ to: "/services", statusCode: 301 });
+    }
+  },
   loader: ({ params }) => getService({ data: params.slug }),
   head: ({ loaderData, params }) =>
     loaderData

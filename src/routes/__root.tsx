@@ -12,7 +12,7 @@ import { seo } from "@/lib/seo";
 import appCss from "@/styles/app.css?url";
 
 const description =
-  "FlowRiver Technologies is a design and development studio in Accra, Ghana. We build websites, web and mobile apps, school and database systems, e-commerce sites and AI integrations.";
+  "FlowRiver Technologies is a design and development studio in Accra, Ghana. We build websites, progressive web apps and custom business systems.";
 
 const jsonLd = {
   "@context": "https://schema.org",

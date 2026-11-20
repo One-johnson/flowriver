@@ -24,5 +24,5 @@ image: https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&q=80&a
 imageAlt: Creative graphic design workspace
 heroImage: https://images.unsplash.com/photo-1626785774573-4b799315345d?w=1200&q=85&auto=format&fit=crop
 faqs: []
-order: 3
+order: 5
 ---
