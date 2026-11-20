@@ -56,7 +56,7 @@ const team: TeamMember[] = [
   {
     name: "Prince Johnson",
     role: "Founder and CEO",
-    bio: "Runs FlowRiver, leads client relationships and oversees every project from scoping to delivery. Also works as an IT and ERP consultant on a public-sector implementation.",
+    bio: "Runs FlowRiver, leads client relationships and oversees every project from scoping to delivery. Also an IT Consultant with SourceOne Management Services, currently the ERP consultant at Tema Development Company.",
     socials: {},
   },
   {
