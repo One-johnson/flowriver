@@ -31,12 +31,12 @@ const servicesFaqs = [
   {
     question: "Do you work with clients outside Ghana?",
     answer:
-      "Yes. We work remotely with clients abroad using video calls, written updates and shared project tools.",
+      "Yes. I work remotely with clients abroad using video calls, written updates and shared project tools.",
   },
   {
     question: "What's included in a quote?",
     answer:
-      "Scope, deliverables, timeline, and fixed or phased pricing. We also list what is out of scope so there are no surprises later.",
+      "Scope, deliverables, timeline, and fixed or phased pricing. I also list what is out of scope so there are no surprises later.",
   },
   {
     question: "Do you provide support after launch?",
@@ -51,8 +51,8 @@ function ServicesPage() {
     <>
       <PageHero
         eyebrow="Services"
-        title="What we can build for you"
-        description="Most clients come to us for a website or a custom system, then stay for support, upgrades and the next project. Pick a service to see what's included."
+        title="What I can build for you"
+        description="Most clients come to me for a website or a custom system, then stay for support, upgrades and the next project. Pick a service to see what's included."
       />
 
       <Section>
@@ -100,7 +100,7 @@ function ServicesPage() {
       <Section id="process" tone="ink" className="scroll-mt-20">
         <SectionHeader
           eyebrow="Process"
-          title="How we work"
+          title="How I work"
           description="The same four stages for every project, whatever the size."
         />
         <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -135,7 +135,7 @@ function ServicesPage() {
                   to="/contact"
                   className="font-medium text-primary underline-offset-4 hover:underline"
                 >
-                  Ask us
+                  Ask me
                 </Link>
                 .
               </>
@@ -149,7 +149,7 @@ function ServicesPage() {
 
       <CTABanner
         title="Have a project in mind?"
-        description="Tell us what you need and we'll send a plan and a quote. There's no obligation."
+        description="Tell me what you need and I'll send a plan and a quote. There's no obligation."
         primaryLabel="Get a quote"
         primaryTo="/contact"
       />

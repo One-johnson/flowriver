@@ -152,7 +152,7 @@ function PortfolioDetailPage() {
           <AnimatedSection delay={0.1} className="lg:col-span-2">
             <div className="h-full rounded-xl bg-tint p-7">
               <h3 className="font-display text-lg font-semibold">
-                What we delivered
+                What I delivered
               </h3>
               <ul className="mt-5 space-y-3.5">
                 {project.highlights.map((item) => (
@@ -194,7 +194,7 @@ function PortfolioDetailPage() {
               Need something similar?
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              Tell us what you have in mind. We&apos;ll ask a few questions,
+              Tell me what you have in mind. I&apos;ll ask a few questions,
               then send a scope, timeline and quote.
             </p>
             <ul className="mt-8 space-y-3 text-sm text-muted-foreground">
@@ -214,7 +214,7 @@ function PortfolioDetailPage() {
           <AnimatedSection delay={0.1}>
             <div className="surface p-6 shadow-lg sm:p-8">
               <h3 className="font-display text-xl font-bold">
-                Send us a message
+                Send me a message
               </h3>
               <p className="mt-1 text-sm text-muted-foreground">
                 Mention &ldquo;{project.shortTitle}&rdquo; if you&apos;d like

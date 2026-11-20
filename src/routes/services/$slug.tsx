@@ -10,7 +10,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { getService } from "@/lib/data.functions";
 import { seo } from "@/lib/seo";
 
-// Services we no longer offer. Old links go to the services list.
+// Services no longer offered. Old links go to the services list.
 const retiredServices = new Set([
   "ai-integrations",
   "mobile-app-development",
@@ -69,7 +69,7 @@ function ServiceDetailPage() {
         <div className="grid gap-12 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
-              What we deliver
+              What you get
             </h2>
             {service.longDescription && (
               <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
@@ -157,7 +157,7 @@ function ServiceDetailPage() {
 
       <CTABanner
         title={`Need help with ${service.title.toLowerCase()}?`}
-        description="Tell us about your project and we'll send a plan and a quote. There's no obligation."
+        description="Tell me about your project and I'll send a plan and a quote. There's no obligation."
         primaryLabel="Get a quote"
         primaryTo="/contact"
       />

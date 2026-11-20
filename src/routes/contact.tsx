@@ -33,12 +33,12 @@ const contactFaqs = [
   {
     question: "What happens after I get in touch?",
     answer:
-      "We'll reply with a few questions or suggest a short call. After that we send a proposal with scope, timeline and price. There's no obligation and no payment needed to start the conversation.",
+      "I'll reply with a few questions or suggest a short call. After that I send a proposal with scope, timeline and price. There's no obligation and no payment needed to start the conversation.",
   },
   {
     question: "Do you take on small projects?",
     answer:
-      "Yes. We work on everything from single landing pages to full custom systems.",
+      "Yes. I work on everything from single landing pages to full custom systems.",
   },
   {
     question: "Do you offer support after delivery?",
@@ -54,8 +54,8 @@ function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="Tell us about your project"
-        description={`Send a message with whatever detail you have. We reply ${RESPONSE_TIME}.`}
+        title="Tell me about your project"
+        description={`Send a message with whatever detail you have. I reply ${RESPONSE_TIME}.`}
       />
 
       <Section tone="tint" className="pt-0 sm:pt-0 lg:pt-0">

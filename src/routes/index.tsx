@@ -22,17 +22,17 @@ const homeFaqs = [
   {
     question: "What does FlowRiver Technologies do?",
     answer:
-      "We design and build websites, progressive web apps that install on phones and work offline, and custom systems such as inventory, school and membership management. We also register domains, host sites and business email, and offer IT and ERP consultancy.",
+      "FlowRiver is a one-person studio. I design and build websites, progressive web apps that install on phones and work offline, and custom systems such as inventory, school and membership management. I also register domains, host sites and business email, and offer IT and ERP consultancy.",
   },
   {
     question: "How do I get started?",
     answer:
-      "Send us a message through the contact form or by email. We'll arrange a short call to understand what you need, then send a proposal with scope, timeline and price. There's no obligation.",
+      "Send a message through the contact form, by email or on WhatsApp. I'll arrange a short call to understand what you need, then send a proposal with scope, timeline and price. There's no obligation.",
   },
   {
     question: "Where are you based?",
     answer:
-      "Accra, Ghana. We work with clients in Ghana and abroad; most collaboration happens remotely, with regular updates.",
+      "Accra, Ghana. I work with clients in Ghana and abroad; most collaboration happens remotely, with regular updates.",
   },
   {
     question: "Do you offer support after delivery?",
@@ -50,12 +50,12 @@ const howWeWork = [
   {
     title: "Design and build together",
     description:
-      "Design and development happen in the same small team, so what you approve is what gets built.",
+      "I do the design and the development myself, so what you approve is exactly what gets built.",
   },
   {
     title: "Launch, training and support",
     description:
-      "We hand over with training and documentation, and stay available for fixes, updates and new features.",
+      "I hand over with training and documentation, and stay available for fixes, updates and new features.",
   },
 ];
 
@@ -70,15 +70,16 @@ function Home() {
         <FlowLines className="opacity-80" />
         <div className="relative grid items-center gap-16 lg:grid-cols-[1.15fr_1fr]">
           <AnimatedSection>
-            <p className="eyebrow">Design and development studio · Accra, Ghana</p>
+            <p className="eyebrow">Independent design and development studio · Accra, Ghana</p>
             <h1 className="mt-4 font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
               Websites, web apps and custom systems for organisations in Ghana.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              We build fast websites, progressive web apps that install on any
-              phone and work offline, and systems built around how your team
-              works. We also handle domains and hosting, and advise on IT and
-              ERP decisions for businesses, unions, schools and NGOs.
+              I&apos;m Prince Johnson. I build fast websites, progressive web
+              apps that install on any phone and work offline, and systems
+              built around how your team works. I also handle domains and
+              hosting, and advise on IT and ERP decisions. You deal with me
+              from the first call to support after launch.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
@@ -88,7 +89,7 @@ function Home() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link to="/portfolio">See our work</Link>
+                <Link to="/portfolio">See the work</Link>
               </Button>
             </div>
             <dl className="mt-12 flex gap-10 border-t border-border pt-8">
@@ -113,7 +114,7 @@ function Home() {
       {/* Clients */}
       <section className="theme-tint border-y border-border py-10">
         <p className="mb-6 text-center text-sm font-medium text-muted-foreground">
-          Organisations we&apos;ve built for
+          Organisations I&apos;ve built for
         </p>
         <ClientMarquee />
       </section>
@@ -124,7 +125,7 @@ function Home() {
           <SectionHeader
             eyebrow="Recent work"
             title="Recently launched"
-            description="Websites and systems we have built for clients this year."
+            description="Websites and systems I have built for clients this year."
           />
           <Link
             to="/portfolio"
@@ -148,7 +149,7 @@ function Home() {
         <div className="grid gap-12 lg:grid-cols-3">
           <SectionHeader
             eyebrow="Services"
-            title="What we do"
+            title="What I do"
             description="Each service has its own page with what's included and common questions."
           />
           <ul className="divide-y divide-border border-y border-border lg:col-span-2">
@@ -227,7 +228,7 @@ function Home() {
                   to="/contact"
                   className="font-medium text-primary underline-offset-4 hover:underline"
                 >
-                  Ask us
+                  Ask me
                 </Link>
                 .
               </>
@@ -240,8 +241,8 @@ function Home() {
       </Section>
 
       <CTABanner
-        title="Tell us about your project"
-        description="We'll reply with questions or a proposal covering scope, timeline and price."
+        title="Tell me about your project"
+        description="I'll reply with questions or a proposal covering scope, timeline and price."
         primaryLabel="Start a project"
         primaryTo="/contact"
         secondaryLabel="Browse services"

@@ -17,10 +17,10 @@ features:
   - Fast loading on slow or patchy connections
   - One codebase for web and mobile
 approach:
-  - We decide with you which features need to work offline and which can wait for a connection.
+  - We decide together which features need to work offline and which can wait for a connection.
   - The app is designed mobile-first, then scaled up for tablets and desktops.
-  - We test on low-end Android phones and slow networks, not just new devices on office Wi-Fi.
-  - After launch we monitor performance and ship updates without users having to reinstall.
+  - I test on low-end Android phones and slow networks, not just new devices on office Wi-Fi.
+  - After launch I monitor performance and ship updates without users having to reinstall.
 image: https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80&auto=format&fit=crop
 imageAlt: Smartphone showing an app home screen
 heroImage: https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&q=85&auto=format&fit=crop
@@ -33,11 +33,11 @@ faqs:
       content apps, a PWA does the job at a lower cost.
   - question: Can a PWA work without internet?
     answer: >-
-      Yes. We cache the screens and data your users need most, so they can
+      Yes. I cache the screens and data your users need most, so they can
       keep working offline. Changes sync back once they're connected again.
   - question: Can you turn our existing website into a PWA?
     answer: >-
-      Often, yes. We review your current site and tell you whether it can be
+      Often, yes. I review your current site and tell you whether it can be
       upgraded or would be better rebuilt.
 order: 2
 ---

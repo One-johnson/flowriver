@@ -6,7 +6,7 @@ description: >-
   built to fit your process rather than forcing you into off-the-shelf
   software.
 longDescription: >-
-  When spreadsheets and generic software stop keeping up, we build a system
+  When spreadsheets and generic software stop keeping up, I build a system
   around how your team really works. That can mean stock and sales tracking,
   student records, member databases or internal dashboards. Every system
   comes with user roles, reports and an admin area, and you own the code and
@@ -19,10 +19,10 @@ features:
   - Dashboards, reports and data exports
   - User accounts, roles and permissions
 approach:
-  - We start by mapping your current process, including the spreadsheets and paperwork it relies on.
+  - I start by mapping your current process, including the spreadsheets and paperwork it relies on.
   - You get working screens early and often, so problems surface before they're expensive.
   - Existing data is cleaned and migrated, so you don't start from zero.
-  - We train your staff and stay on for support, fixes and new features.
+  - I train your staff and stay on for support, fixes and new features.
 image: https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop
 imageAlt: Dashboard with charts and reports on a screen
 heroImage: https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=85&auto=format&fit=crop
@@ -34,11 +34,11 @@ faqs:
       and you own it outright.
   - question: Can it work on phones as well as computers?
     answer: >-
-      Yes. Our systems run in the browser on any device, and we can make them
+      Yes. My systems run in the browser on any device, and I can make them
       installable progressive web apps for staff who work on their phones.
   - question: Who owns the code and the data?
     answer: >-
-      You do. When the project is complete we hand over the source code and
+      You do. When the project is complete I hand over the source code and
       access to your data.
 order: 3
 ---

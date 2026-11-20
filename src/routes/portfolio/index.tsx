@@ -43,8 +43,8 @@ function PortfolioPage() {
     <>
       <PageHero
         eyebrow="Work"
-        title="Projects we've built"
-        description="Websites, web apps and custom systems for unions, foundations, conferences and businesses, many of them hosted and supported by us after launch. Each project page covers what we delivered and links to the live site."
+        title="Projects I've built"
+        description="Websites, web apps and custom systems for unions, foundations, conferences and businesses, many of them hosted and supported by me after launch. Each project page covers what I delivered and links to the live site."
       />
 
       <Section tone="tint" className="pt-12 sm:pt-14 lg:pt-16">
@@ -95,7 +95,7 @@ function PortfolioPage() {
 
       <CTABanner
         title="Have a similar project?"
-        description="Tell us what you need and we'll tell you how we'd approach it."
+        description="Tell me what you need and I'll tell you how I'd approach it."
         primaryLabel="Start a project"
         primaryTo="/contact"
       />

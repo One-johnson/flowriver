@@ -1,4 +1,4 @@
-﻿---
+---
 title: Tendzu Ventures — Inventory & Sales Management System
 shortTitle: Tendzu Ventures
 category: Systems
@@ -7,7 +7,7 @@ description: >-
   company, covering stock, restocking, sales, profits, reports, alerts, and
   administration.
 longDescription: >-
-  We built a responsive operations dashboard for Tendzu Ventures to manage its
+  I built a responsive operations dashboard for Tendzu Ventures to manage its
   heavy-equipment catalog and day-to-day commercial activity in one place. The
   system tracks machines and stock levels, supports restocking and sales
   workflows, calculates profit, surfaces reports and alerts, and gives

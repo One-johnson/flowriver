@@ -1,4 +1,4 @@
-﻿---
+---
 title: Mountain of the Lord — The Homecoming
 shortTitle: The Homecoming
 category: Events
@@ -7,7 +7,7 @@ description: >-
   registration, schedules, and information for Dag Heward-Mills Ministries'
   global gathering at Anagkazo Campus.
 longDescription: >-
-  We designed and built the official website for Mountain of the Lord — The
+  I designed and built the official website for Mountain of the Lord — The
   Homecoming, a landmark gathering hosted by Dag Heward-Mills Ministries. The
   site captures the energy of the event with bold typography, immersive
   visuals, and a clear registration journey so attendees from around the world

@@ -66,11 +66,11 @@ export function ContactForm() {
           Message sent!
         </h3>
         <p className="mt-2 text-sm text-muted-foreground">
-          Thanks for getting in touch. We&apos;ll reply {RESPONSE_TIME}.
+          Thanks for getting in touch. I&apos;ll reply {RESPONSE_TIME}.
           {submittedEmail && (
             <>
               {" "}
-              We&apos;ll reply to <strong className="text-foreground">{submittedEmail}</strong>.
+              I&apos;ll reply to <strong className="text-foreground">{submittedEmail}</strong>.
             </>
           )}
         </p>
@@ -136,7 +136,7 @@ export function ContactForm() {
         <Textarea
           id="message"
           name="message"
-          placeholder="Tell us what you're looking for..."
+          placeholder="Tell me what you're looking for..."
           rows={5}
           required
           disabled={state === "submitting"}

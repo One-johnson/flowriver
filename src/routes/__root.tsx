@@ -7,12 +7,13 @@ import {
 } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { SITE_EMAIL, SITE_NAME, SITE_PHONE, SITE_URL } from "@/lib/site-config";
 import { seo } from "@/lib/seo";
 import appCss from "@/styles/app.css?url";
 
 const description =
-  "FlowRiver Technologies is a design and development studio in Accra, Ghana. We build websites, progressive web apps and custom business systems, provide domains and hosting, and offer IT and ERP consultancy.";
+  "FlowRiver Technologies is an independent design and development studio in Accra, Ghana, run by Prince Johnson. Websites, progressive web apps, custom business systems, domains and hosting, and IT and ERP consultancy.";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -104,6 +105,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
           {children}
         </main>
         <Footer />
+        <WhatsAppButton />
         <Scripts />
       </body>
     </html>

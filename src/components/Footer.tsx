@@ -28,7 +28,7 @@ export function Footer() {
               />
             </Link>
             <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-              A design and development studio in Accra. We build websites, web
+              An independent studio in Accra run by Prince Johnson. I build websites, web
               apps and custom systems, host them, and advise on IT and ERP for
               organisations in Ghana and abroad.
             </p>
@@ -133,7 +133,7 @@ export function Footer() {
                 Have a project in mind?
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Tell us what you need. We reply {RESPONSE_TIME}.
+                Tell me what you need. I reply {RESPONSE_TIME}.
               </p>
               <Button asChild className="mt-5">
                 <Link to="/contact">Get in touch</Link>
