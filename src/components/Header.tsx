@@ -24,14 +24,14 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/75">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center" aria-label="FlowRiver Technologies home">
           <img
-            src="/logo.png"
+            src="/logo-header.png"
             alt="FlowRiver Technologies"
-            width={150}
-            height={100}
-            className="h-12 w-auto rounded-md dark:bg-white"
+            width={253}
+            height={156}
+            className="h-15 w-auto rounded-md dark:bg-white dark:p-1"
           />
         </Link>
 
@@ -44,7 +44,7 @@ export function Header() {
               className="relative rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               activeProps={{
                 className:
-                  "!text-foreground after:absolute after:inset-x-3 after:-bottom-[13px] after:h-0.5 after:rounded-full after:bg-primary",
+                  "!text-foreground after:absolute after:inset-x-3 after:-bottom-[17px] after:h-0.5 after:rounded-full after:bg-primary",
                 "aria-current": "page",
               }}
             >

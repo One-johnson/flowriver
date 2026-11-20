@@ -99,7 +99,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
           Skip to main content
         </a>
         <Header />
-        <main id="main-content" className="min-h-[calc(100vh-4rem)]">
+        <main id="main-content" className="min-h-[calc(100vh-4.5rem)]">
           {children}
         </main>
         <Footer />

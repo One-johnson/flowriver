@@ -106,7 +106,7 @@ function AboutPage() {
         </dl>
       </Section>
 
-      <Section id="team" tone="tint" className="scroll-mt-16">
+      <Section id="team" tone="tint" className="scroll-mt-20">
         <SectionHeader eyebrow="Team" title="The people you'll work with" />
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {team.map((person, i) => {

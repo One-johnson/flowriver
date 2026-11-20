@@ -16,12 +16,12 @@ export function Footer() {
           <div className="space-y-5 lg:col-span-4">
             <Link to="/" className="inline-flex rounded-md bg-white p-1.5">
               <img
-                src="/logo.png"
+                src="/logo-header.png"
                 alt="FlowRiver Technologies"
-                width={150}
-                height={100}
+                width={253}
+                height={156}
                 loading="lazy"
-                className="h-14 w-auto"
+                className="h-16 w-auto"
               />
             </Link>
             <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">

@@ -97,7 +97,7 @@ function ServicesPage() {
         </div>
       </Section>
 
-      <Section id="process" tone="ink" className="scroll-mt-16">
+      <Section id="process" tone="ink" className="scroll-mt-20">
         <SectionHeader
           eyebrow="Process"
           title="How we work"
